@@ -58,3 +58,13 @@ h1 {
 footer {
   color: rgb(255, 255, 255);
 }
+
+
+/* Promotional Banner Styling */
+.promo-banner {
+  width: 100%;
+  max-width: 1000px; /* Limits maximum size to keep it sharp */
+  height: auto;       /* Maintains the aspect ratio */
+  display: block;
+  border-radius: 8px; /* Optional: rounds the corners slightly to match your buttons */
+}
