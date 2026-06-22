@@ -1,10 +1,9 @@
 body {
-  /* This is the main background colour fallback of the website */ 
   background-color: rgb(0, 0, 0);
   font-family: 'Inter', sans-serif;
   
-  /* Set the cheeseburger meal image as the layout background */
-  background-image: url('Classic_Cafe_Cheeseburger_Meal.png');
+  /* FIX: Added ../ to tell the browser to look out of the CSS folder into the root directory */
+  background-image: url('../Classic_Cafe_Cheeseburger_Meal.png');
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -47,12 +46,12 @@ h1 {
   color: rgb(255, 255, 255);
   font-weight: bold;
   font-size: 40px;
-  margin-left: 20px; /* Gives the heading a clean alignment offset */
+  margin-left: 5px; /* Gives the heading a clean alignment offset */
 }
 
 
 /* Styles used in the <footer> element */
 footer {
   color: rgb(255, 255, 255);
-  padding: 20px;
+  padding: 5px;
 }
