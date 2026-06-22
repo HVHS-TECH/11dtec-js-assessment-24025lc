@@ -5,15 +5,20 @@ body {
   margin: 0;
 }
 
-/* FIX: Refined styling to cleanly position and crop the background layout image */
+/* FIX: Configuration to fit the entire promotional banner image */
 .top-banner-section {
-  height: 33.33vh; /* Restricts the section to exactly 1/3 of the screen height */
+  height: 33.33vh; /* Retains layout restriction to exactly 1/3 of the screen height */
   width: 100%;
   background-image: url('images.html/Classic_Cafe_Cheeseburger_Meal.png');
   background-repeat: no-repeat;
-  background-position: center center; /* Keeps the burger focused in the center of the crop */
-  background-size: cover; /* Crops the image proportionally without squishing it */
-  margin: 20px 0; /* Adds layout separation spacing above and below the banner */
+  
+  /* FIX: Centers the entire image structure without cutting off the edges */
+  background-position: center center; 
+  
+  /* FIX: Fits the complete image proportionally inside the box space */
+  background-size: contain; 
+  
+  margin: 20px 0;
 }
 
 
