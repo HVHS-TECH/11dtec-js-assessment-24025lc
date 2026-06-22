@@ -1,7 +1,7 @@
 body {
   background-color: rgb(0, 0, 0);
   font-family: 'Inter', sans-serif;
-  min-height: 50vh;
+  height: 1000px;
   margin: 0;
 }
 
@@ -18,7 +18,7 @@ body {
   background-position: center;
   
   /* FIX: Forces the image to scale up and fully cover the width of the screen */
-  background-size: cover; 
+  background-size: auto; 
   
   margin: 5px 0;
 }
