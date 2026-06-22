@@ -5,22 +5,23 @@ body {
   margin: 0;
 }
 
-/* FIX: Configuration to fit the entire promotional banner image */
+/* Promotional Banner Styling */
 .top-banner-section {
-  height: 33.33vh; /* Retains layout restriction to exactly 1/3 of the screen height */
+  height: 33.33vh; /* Sets the layout restriction to exactly 1/3 of the viewport height */
   width: 100%;
-  background-image: url('images.html/Classic_Cafe_Cheeseburger_Meal.png');
+  
+  /* Points specifically to your saved cheeseburger meal banner file */
+  background-image: url('images.html/Classic_Cafe_Cheeseburger_Meal.png'); 
   background-repeat: no-repeat;
   
-  /* FIX: Centers the entire image structure without cutting off the edges */
-  background-position: center center; 
+  /* Centers the graphic elements safely inside the container */
+  background-position: left;
   
-  /* FIX: Fits the complete image proportionally inside the box space */
+  /* FIX: Forces the entire burger image layout to fit neatly inside the 1/3 height box */
   background-size: contain; 
   
   margin: 20px 0;
 }
-
 
 /* Styles used in the <nav> element */
 .button {
