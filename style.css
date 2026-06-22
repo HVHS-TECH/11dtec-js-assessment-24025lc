@@ -10,6 +10,11 @@ body {
   margin: 0;
 }
 
+/* NEW: Added container that takes up exactly one-third of the screen height */
+.top-banner-section {
+  height: 33.33vh; /* Sets height to exactly 1/3 of the viewport height */
+  width: 100%; }
+
 
 /* Styles used in the <nav> element */
 .button {
