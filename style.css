@@ -1,19 +1,20 @@
 body {
   background-color: rgb(0, 0, 0);
   font-family: 'Inter', sans-serif;
-
-  background-image: url('../images.html/Classic_Cafe_Cheeseburger_Meal.png'); background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-  background-attachment: fixed;
   min-height: 100vh;
   margin: 0;
 }
 
-/* NEW: Added container that takes up exactly one-third of the screen height */
+/* FIX: Refined styling to cleanly position and crop the background layout image */
 .top-banner-section {
-  height: 33.33vh; /* Sets height to exactly 1/3 of the viewport height */
-  width: 100%; }
+  height: 33.33vh; /* Restricts the section to exactly 1/3 of the screen height */
+  width: 100%;
+  background-image: url('images.html/Classic_Cafe_Cheeseburger_Meal.png');
+  background-repeat: no-repeat;
+  background-position: center center; /* Keeps the burger focused in the center of the crop */
+  background-size: cover; /* Crops the image proportionally without squishing it */
+  margin: 20px 0; /* Adds layout separation spacing above and below the banner */
+}
 
 
 /* Styles used in the <nav> element */
@@ -26,6 +27,8 @@ body {
   border-radius: 50px;
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 .button:hover {
@@ -49,12 +52,12 @@ h1 {
   color: rgb(255, 255, 255);
   font-weight: bold;
   font-size: 40px;
-  margin-left: 5px; /* Gives the heading a clean alignment offset */
+  margin: 10px 0 0 20px;
 }
 
 
 /* Styles used in the <footer> element */
 footer {
   color: rgb(255, 255, 255);
-  padding: 5px;
+  padding: 20px;
 }
