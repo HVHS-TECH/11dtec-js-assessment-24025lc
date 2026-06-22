@@ -10,7 +10,7 @@ body {
   height: 33.33vh; /* Sets the layout restriction to exactly 1/3 of the viewport height */
   width: 100%;
   
-  /* Points specifically to your saved cheeseburger meal banner file */
+  /* Points specifically to saved cheeseburger meal banner file */
   background-image: url('images.html/Classic_Cafe_Cheeseburger_Meal.png'); 
   background-repeat: no-repeat;
   
