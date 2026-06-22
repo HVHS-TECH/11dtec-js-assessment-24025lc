@@ -1,10 +1,8 @@
 body {
   background-color: rgb(0, 0, 0);
   font-family: 'Inter', sans-serif;
-  
-  /* FIX: Added ../ to tell the browser to look out of the CSS folder into the root directory */
-  background-image: url('../Classic_Cafe_Cheeseburger_Meal.png');
-  background-repeat: no-repeat;
+
+  background-image: url('../images.html/Classic_Cafe_Cheeseburger_Meal.png'); background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
   background-attachment: fixed;
