@@ -20,7 +20,7 @@ body {
   /* FIX: Forces the entire burger image layout to fit neatly inside the 1/3 height box */
   background-size: contain; 
   
-  margin: 20px 0;
+  margin: 5px 0;
 }
 
 /* Styles used in the <nav> element */
