@@ -6,8 +6,8 @@ body {
 }
 
 /* Promotional Banner Styling */
-.top-banner-section {
-  height: 33.33vh; /* Sets the layout restriction to exactly 1/3 of the viewport height */
+.top-banner-section > img {
+  height: auto; /* Sets the layout restriction to exactly 1/3 of the viewport height */
   width: 100%;
   
   /* Points specifically to saved cheeseburger meal banner file */
