@@ -5,22 +5,13 @@ body {
   margin: 0;
 }
 
-/* Promotional Banner Styling */
 .top-banner-section > img {
-  height: auto; /* Sets the layout restriction to exactly 1/3 of the viewport height */
-  width: 100%;
-  
-  /* Points specifically to saved cheeseburger meal banner file */
-  background-image: url('images.html/Classic_Cafe_Cheeseburger_Meal.png'); 
-  background-repeat: no-repeat;
-  
-  /* Centers the image perfectly so the focus stays on the middle */
-  background-position: center;
-  
-  /* FIX: Forces the image to scale up and fully cover the width of the screen */
-  background-size: auto; 
-  
-  margin: 5px 0;
+  width: 100%;            /* Allows it to stretch up to its max constraints */
+  max-width: 600px;       /* Keeps the image from getting too wide/large */
+  max-height: 300px;      /* Restricts the absolute height of the image */
+  object-fit: contain;    /* Prevents the burger and fries from stretching out of proportion */
+  display: block;         /* Removes unwanted spacing beneath the image */
+  margin: 10px auto;      /* Centers the smaller image horizontally on the screen */
 }
 
 /* Styles used in the <nav> element */
