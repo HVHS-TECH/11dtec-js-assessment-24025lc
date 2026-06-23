@@ -11,7 +11,7 @@ body {
   max-height: 300px;      /* Restricts the absolute height of the image */
   object-fit: contain;    /* Prevents the burger and fries from stretching out of proportion */
   display: block;         /* Removes unwanted spacing beneath the image */
-  margin: 10px 0;      /* Centers the smaller image horizontally on the screen */
+  margin: 10px 0 10px 5px;      /* Centers the smaller image horizontally on the screen */
 }
 
 /* Styles used in the <nav> element */
