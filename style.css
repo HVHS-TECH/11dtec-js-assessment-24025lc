@@ -56,5 +56,8 @@ h1 {
 /* Styles used in the <footer> element */
 footer {
   color: rgb(255, 255, 255);
-  padding: 20px;
+  margin: 15px 0;
+  
+  /* FIX: Keeps top, right, and bottom padding at 20px, but drops left padding to 0 */
+padding: 10px 10; 
 }
