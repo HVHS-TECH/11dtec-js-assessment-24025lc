@@ -8,7 +8,7 @@ body {
 /* This rule only applies when body has the .menu-page class */
 body.menu-page {
   background-color: transparent;   /* FIX: Overrides the solid black color */
-  background-image: url("images.html/Mountain_Sunset.png"); 
+  background-image: url("images.html/Mountain_Sunset.png");
   background-size: cover;          
   background-position: center;     
   background-repeat: no-repeat;    
