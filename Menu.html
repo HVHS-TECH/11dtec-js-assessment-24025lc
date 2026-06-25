@@ -1,219 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>The Pavilion Kitchen - Menu</title>
   <meta charset="UTF-8">
-
-  <!-- Google Fonts Inter configuration -->
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com" rel="stylesheet">
-  
-  <!-- favicon: correct path and include shortcut for older browsers -->
-  <link rel="icon" type="image/x-icon" href="images.html/lc_icon.ico">
   <link href="style.css" rel="stylesheet">
-
-  <!-- CRITICAL BACKGROUND IMAGE ENFORCEMENT EMBED -->
   <style>
     body.menu-page {
-      background-color: rgb(0, 0, 0) !important;
+      background-color: rgb(0, 0, 0);
       background-image: url("images.html/Mountain_Sunset.png") !important;
-      background-size: cover !important;
-      background-position: center !important;
-      background-repeat: no-repeat !important;
-      background-attachment: fixed !important;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
     }
-    
-    /* Elegant contrast layout fixes for readability over sunset sky */
-    .menu-header-block {
-      background: rgba(255, 255, 255, 0.88);
-      padding: 25px;
-      border-radius: 8px;
-      margin-bottom: 30px;
-    }
-
-    /* Flex box card structure to fit the image on the left */
-    .menu-item-card {
-      background: rgba(255, 255, 255, 0.94);
-      margin-bottom: 15px;
-      display: flex;
-      gap: 20px;
-      padding: 15px;
-      border-radius: 8px;
-      align-items: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-
-    /* Styled Thumbnail Containers */
-    .menu-item-image-box {
-      width: 120px;
-      height: 120px;
-      flex-shrink: 0;
-      border-radius: 6px;
-      overflow: hidden;
-      background: #eee;
-    }
-
-    .menu-item-image-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .menu-item-content {
-      flex-grow: 1;
-    }
-
-    .category-heading {
-      background-color: #27ae60;
-      color: white;
-    }
-
-    footer p {
-      color: white;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-    }
+    .menu-header-block { background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+    .menu-item-card { background: rgba(255, 255, 255, 0.95); margin-bottom: 15px; display: flex; gap: 20px; padding: 15px; border-radius: 8px; align-items: center; }
+    .menu-item-image-box { width: 100px; height: 100px; background: #eee; border-radius: 6px; overflow: hidden; }
+    .menu-item-image-box img { width: 100%; height: 100%; object-fit: cover; }
+    .menu-item-content { flex-grow: 1; }
+    .category-heading { background-color: #27ae60; color: white; padding: 10px; border-radius: 4px; }
+    .order-btn { background: #27ae60; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: bold; margin-top: 5px; }
+    .price-badge { float: right; color: #27ae60; font-weight: bold; }
   </style>
 </head>
-
-
+<body class="menu-page">
 
   <nav>
-    <a class="button" href="index.html">Home</a>
-    <a class="button" href="Menu.html">Menu</a>
-    <a class="button" href="Ordering.html">Ordering</a>
-    <hr class="horizontal">
+    <a href="index.html">Home</a> | <a href="Menu.html">Menu</a> | <a href="Ordering.html">Ordering</a>
   </nav>
 
   <header>
-    <h1>The Pavilion Kitchen Menu</h1>
+    <h1 style="color: white; text-shadow: 2px 2px 4px #000;">The Pavilion Kitchen Menu</h1>
   </header>    
 
- <body class="menu-page"></body>
-
-  <!-- MAIN MENU DISPLAY SECTION -->
   <main class="menu-display-container">
-    
     <div class="menu-header-block">
       <h2>Our Culinary Selection</h2>
-      <p class="menu-subtitle">Freshly prepared premium items for your dining pleasure</p>
+      <p>Freshly prepared premium items for your dining pleasure — <strong>ALL ITEMS ONLY $5.00!</strong></p>
     </div>
 
-    <!-- Category: Gourmet Burgers -->
     <section class="menu-category-section">
       <h3 class="category-heading">Gourmet Burgers</h3>
-      <div class="menu-items-grid">
-        
-        <!-- Item 1 (Buttermilk Fried Chicken) -->
-        <div class="menu-item-card">
-          <div class="menu-item-image-box">
-            <img src="images.html/Buttermilk_Fried_Chicken_Burger.png" alt="Buttermilk Fried Chicken Burger">
-          </div>
-          <div class="menu-item-content">
-            <div class="menu-item-header">
-              <span class="menu-item-title">Buttermilk Fried Chicken Burger</span>
-            </div>
-            <p class="menu-item-description">Crispy fried chicken breast, creamy slaw, pickles, and spicy chipotle mayo.</p>
-          </div>
+      
+      <!-- Item 1 -->
+      <div class="menu-item-card">
+        <div class="menu-item-image-box"><img src="images.html/Buttermilk_Fried_Chicken_Burger.png" alt="Burger"></div>
+        <div class="menu-item-content">
+          <h4>Buttermilk Fried Chicken Burger <span class="price-badge">$5.00</span></h4>
+          <p>Crispy fried chicken breast, creamy slaw, pickles, and spicy chipotle mayo.</p>
+          <button class="order-btn" onclick="selectAndGo('item_1')">Order This Item</button>
         </div>
+      </div>
 
-        <!-- Item 2 (Smoky BBQ Bacon) -->
-        <div class="menu-item-card">
-          <div class="menu-item-image-box">
-            <img src="images.html/Smoky_BBQ_Bacon_Burger.png" alt="Smoky BBQ Bacon Burger">
-          </div>
-          <div class="menu-item-content">
-            <div class="menu-item-header">
-              <span class="menu-item-title">Smoky BBQ Bacon Burger</span>
-            </div>
-            <p class="menu-item-description">Beef patty, crispy bacon, cheddar, crispy onion rings, and smoky barbecue sauce.</p>
-          </div>
+      <!-- Item 2 -->
+      <div class="menu-item-card">
+        <div class="menu-item-image-box"><img src="images.html/Smoky_BBQ_Bacon_Burger.png" alt="Burger"></div>
+        <div class="menu-item-content">
+          <h4>Smoky BBQ Bacon Burger <span class="price-badge">$5.00</span></h4>
+          <p>Beef patty, crispy bacon, cheddar, crispy onion rings, and smoky barbecue sauce.</p>
+          <button class="order-btn" onclick="selectAndGo('item_2')">Order This Item</button>
         </div>
+      </div>
 
-        <!-- Item 3 (Smashed Avocado & Veggie) -->
-        <div class="menu-item-card">
-          <div class="menu-item-image-box">
-            <img src="images.html/Smashed_Avocado_and_Veggie_Burger.png" alt="Smashed Avocado & Veggie Burger">
-          </div>
-          <div class="menu-item-content">
-            <div class="menu-item-header">
-              <span class="menu-item-title">Smashed Avocado & Veggie Burger</span>
-            </div>
-            <p class="menu-item-description">Plant-based patty or grilled halloumi cheese, smashed avocado, rocket, tomato, and garlic aioli.</p>
-          </div>
+      <!-- Item 3 -->
+      <div class="menu-item-card">
+        <div class="menu-item-image-box"><img src="images.html/Smashed_Avocado_and_Veggie_Burger.png" alt="Burger"></div>
+        <div class="menu-item-content">
+          <h4>Smashed Avocado & Veggie Burger <span class="price-badge">$5.00</span></h4>
+          <p>Plant-based patty, smashed avocado, rocket, tomato, and garlic aioli.</p>
+          <button class="order-btn" onclick="selectAndGo('item_3')">Order This Item</button>
         </div>
-
       </div>
     </section>
-
-    <!-- Category: Savory Pies -->
-    <section class="menu-category-section">
-      <h3 class="category-heading">Savory Pies</h3>
-      <div class="menu-items-grid">
-        
-        <!-- Item 4 -->
-        <div class="menu-item-card">
-          <div class="menu-item-image-box">
-            <img src="images.html/Chunky_Steak_and_Mushroom_Pie.png" alt="Chunky Steak & Mushroom Pie">
-          </div>
-          <div class="menu-item-content">
-            <div class="menu-item-header">
-              <span class="menu-item-title">Chunky Steak & Mushroom Pie</span>
-            </div>
-            <p class="menu-item-description">Slow-cooked beef chunks in a rich gravy with button mushrooms, encased in a flaky puff pastry.</p>
-          </div>
-        </div>
-
-        <!-- Item 5 -->
-        <div class="menu-item-card">
-          <div class="menu-item-image-box">
-            <img src="images.html/Classic_Mince_and_Cheese_Pie.png" alt="Classic Mince & Cheese Pie">
-          </div>
-          <div class="menu-item-content">
-            <div class="menu-item-header">
-              <span class="menu-item-title">Classic Mince & Cheese Pie</span>
-            </div>
-            <p class="menu-item-description">Seasoned lean minced beef with a thick layer of melted cheddar or mozzarella.</p>
-          </div>
-        </div>
-
-        <!-- Item 6 -->
-        <div class="menu-item-card">
-          <div class="menu-item-image-box">
-            <img src="images.html/Creamy_Chicken_and_Leak_Pie.png" alt="Creamy Chicken & Leek Pie">
-          </div>
-          <div class="menu-item-content">
-            <div class="menu-item-header">
-              <span class="menu-item-title">Creamy Chicken & Leek Pie</span>
-            </div>
-            <p class="menu-item-description">Tender chicken breast pieces cooked in a creamy white wine and leek sauce.</p>
-          </div>
-        </div>
-
-        <!-- Item 7 -->
-        <div class="menu-item-card">
-          <div class="menu-item-image-box">
-            <img src="images.html/Roasted_Vegetable_and_Feta_Pie.png" alt="Roasted Vegetable & Feta Pie">
-          </div>
-          <div class="menu-item-content">
-            <div class="menu-item-header">
-              <span class="menu-item-title">Roasted Vegetable & Feta Pie</span>
-            </div>
-            <p class="menu-item-description">Seasonal roasted Mediterranean vegetables with crumbled feta cheese in a shortcrust pastry.</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
   </main>
 
-  <footer>
-    <hr class="horizontal">
-    <p>&copy; Liam Chung Web Design Solutions, 2026</p>
-  </footer>
-
-  <script src="script.js"></script>
+  <script>
+    function selectAndGo(itemId) {
+      localStorage.setItem("selectedItemId", itemId);
+      window.location.href = "Ordering.html";
+    }
+  </script>
 </body>
 </html>
