@@ -1,3 +1,6 @@
+/* ==========================================
+   1. GLOBAL STYLES & FONTS
+   ========================================== */
 body {
   background-color: rgb(0, 0, 0);
   font-family: 'Inter', sans-serif;
@@ -5,27 +8,42 @@ body {
   margin: 0;
 }
 
-/* This rule only applies when body has the .menu-page class */
+/* ==========================================
+   2. PAGE SPECIFIC BACKGROUNDS
+   ========================================== */
 body.menu-page {
-  background-color: transparent;   /* FIX: Overrides the solid black color */
-  background-image: url("images.html/Mountain_Sunset.png");
-  background-size: cover;          
-  background-position: center;     
-  background-repeat: no-repeat;    
-  background-attachment: fixed;    
+  background-color: rgb(0, 0, 0) !important;
+  background-image: url("images.html/Mountain_Sunset.png") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: Arial, sans-serif;
 }
 
+body.ordering-page {
+  background-color: rgb(0, 0, 0) !important;
+  background-image: url("images.html/Singapore_City.png") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
 
+/* ==========================================
+   3. ORIGINAL NAVIGATION & BANNERS
+   ========================================== */
 .top-banner-section > img {
-  width: 100%;            /* Allows it to stretch up to its max constraints */
-  max-width: 600px;       /* Keeps the image from getting too wide/large */
-  max-height: 300px;      /* Restricts the absolute height of the image */
-  object-fit: contain;    /* Prevents the burger and fries from stretching out of proportion */
-  display: block;         /* Removes unwanted spacing beneath the image */
-  margin: 10px 0 10px 5px;      /* Centers the smaller image horizontally on the screen */
+  width: 100%;            
+  max-width: 600px;       
+  max-height: 300px;      
+  object-fit: contain;    
+  display: block;         
+  margin: 10px 0 10px 5px;      
 }
 
-/* Styles used in the <nav> element */
 .button {
   background-color: #28a745;
   color: white;
@@ -53,8 +71,6 @@ body.menu-page {
   margin: 20px auto;
 }
 
-
-/* Styles used in the <main> element */
 /* Headers */
 h1 {
   color: rgb(255, 255, 255);
@@ -70,72 +86,179 @@ h2 {
   margin: 5px 0 0 5px;
 }
 
+/* ==========================================
+   4. MASTER LAYOUT GRID (THE FIX)
+   ========================================== */
+.pos-container {
+  max-width: 1200px;         
+  margin: 20px auto;         
+  display: grid;             
+  grid-template-columns: 1fr 1fr; 
+  gap: 30px;                 
+  padding: 0 40px;           
+}
 
-/* Styles used in the <footer> element */
+/* ==========================================
+   5. MENU & COMPONENT PANELS
+   ========================================== */
+.menu-header-block { 
+  background: rgba(255, 255, 255, 0.9); 
+  padding: 20px; 
+  border-radius: 8px; 
+  margin-bottom: 20px; 
+}
+
+.menu-item-card { 
+  background: rgba(255, 255, 255, 0.95); 
+  margin-bottom: 15px; 
+  display: flex; 
+  gap: 20px; 
+  padding: 15px; 
+  border-radius: 8px; 
+  align-items: center; 
+}
+
+.menu-item-image-box { 
+  width: 100px; 
+  height: 100px; 
+  background: #eee; 
+  border-radius: 6px; 
+  overflow: hidden; 
+  flex-shrink: 0; 
+}
+
+.menu-item-image-box img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+
+.menu-item-content { 
+  flex-grow: 1; 
+}
+
+.category-heading { 
+  background-color: #27ae60; 
+  color: white; 
+  padding: 10px; 
+  border-radius: 4px; 
+  margin-top: 25px; 
+}
+
+.order-btn { 
+  background: #27ae60; 
+  color: white; 
+  border: none; 
+  padding: 6px 12px; 
+  cursor: pointer; 
+  border-radius: 4px; 
+  font-weight: bold; 
+  margin-top: 5px; 
+}
+
+.price-badge { 
+  float: right; 
+  color: #27ae60; 
+  font-weight: bold; 
+}
+
+/* ==========================================
+   6. ORDER PANEL ELEMENTS
+   ========================================== */
+.pos-card { 
+  background: rgba(255, 255, 255, 0.95); 
+  padding: 20px; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+}
+
+.form-group { 
+  margin-bottom: 15px; 
+}
+
+.form-group label { 
+  display: block; 
+  font-weight: bold; 
+  margin-bottom: 5px; 
+}
+
+.form-group input { 
+  width: 100%; 
+  padding: 8px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
+}
+
+.alert-danger { 
+  background: #f8d7da; 
+  color: #721c24; 
+  padding: 10px; 
+  border-radius: 4px; 
+  margin-bottom: 15px; 
+  display: none; 
+  border: 1px solid #f5c6cb; 
+  font-weight: bold; 
+}
+
+.selection-preview-box { 
+  background: #eee; 
+  padding: 15px; 
+  border-radius: 4px; 
+  margin-top: 15px; 
+}
+
+.btn-reset { 
+  background: #e74c3c; 
+  color: white; 
+  border: none; 
+  padding: 10px; 
+  cursor: pointer; 
+  font-weight: bold; 
+  border-radius: 4px; 
+}
+
+.btn-order { 
+  background: #27ae60; 
+  color: white; 
+  border: none; 
+  padding: 10px; 
+  cursor: pointer; 
+  font-weight: bold; 
+  border-radius: 4px; 
+}
+
+/* ==========================================
+   7. RECEIPT SUMMARY MODULE
+   ========================================== */
+.receipt-container { 
+  background: white; 
+  padding: 20px; 
+  border-radius: 4px; 
+  margin-top: 20px; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+  display: none; 
+  font-family: monospace; 
+  border-top: 4px dashed #333; 
+}
+
+.receipt-row { 
+  display: flex; 
+  justify-content: space-between; 
+  margin: 8px 0; 
+  font-size: 1.1rem; 
+}
+
+/* ==========================================
+   8. FOOTERS
+   ========================================== */
 footer {
   color: rgb(255, 255, 255);
   margin: 15px 0;
-  
-  /* FIX: Keeps top, right, and bottom padding at 20px, but drops left padding to 0 */
-padding: 20px 20px 20px 5px; 
+  padding: 20px 20px 20px 5px; 
 }
 
-
-
-body.ordering-page {
-      
-      background-color: rgb(0, 0, 0) !important;
-      background-image: url("images.html/Singapore_City.png") !important;
-      background-size: cover !important;
-      background-position: center !important;
-      background-repeat: no-repeat !important;
-      background-attachment: fixed !important;
-    }
-
-    body.menu-page {
-      background-color: rgb(0, 0, 0);
-      background-image: url("images.html/Mountain_Sunset.png") !important;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      font-family: Arial, sans-serif;
-    }
-
-  
-    
-.menu-header-block { background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-    .menu-item-card { background: rgba(255, 255, 255, 0.95); margin-bottom: 15px; display: flex; gap: 20px; padding: 15px; border-radius: 8px; align-items: center; }
-    .menu-item-image-box { width: 100px; height: 100px; background: #eee; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
-    .menu-item-image-box img { width: 100%; height: 100%; object-fit: cover; }
-    .menu-item-content { flex-grow: 1; }
-    .category-heading { background-color: #27ae60; color: white; padding: 10px; border-radius: 4px; margin-top: 25px; }
-    .order-btn { background: #27ae60; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: bold; margin-top: 5px; }
-    .price-badge { float: right; color: #27ae60; font-weight: bold; }
-    footer p { color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
-
-    body.ordering-page {
-      background-image: url("images.html/Singapore_City.png") !important;
-      background-size: cover; background-position: center; background-attachment: fixed;
-      font-family: Arial, sans-serif; color: #333;
-    }
-    .pos-card { background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 8px; flex: 1; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-    .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
-    .form-group input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-    .alert-danger { background: #f8d7da; color: #721c24; padding: 10px; border-radius: 4px; margin-bottom: 15px; display: none; border: 1px solid #f5c6cb; font-weight: bold; }
-    .selection-preview-box { background: #eee; padding: 15px; border-radius: 4px; margin-top: 15px; }
-    .btn-reset { background: #e74c3c; color: white; border: none; padding: 10px; cursor: pointer; font-weight: bold; border-radius: 4px; }
-    .btn-order { background: #27ae60; color: white; border: none; padding: 10px; cursor: pointer; font-weight: bold; border-radius: 4px; }
-    .receipt-container { background: white; padding: 20px; border-radius: 4px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); display: none; font-family: monospace; border-top: 4px dashed #333; }
-    .receipt-row { display: flex; justify-content: space-between; margin: 8px 0; font-size: 1.1rem; }
-    footer p { color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
-    
-
-.pos-container {
-  max-width: 1200px;         /* Expands the container width */
-  margin: 20px auto;         /* Centers the entire container on the page */
-  display: grid;             /* Switches to a precise layout grid */
-  grid-template-columns: 1fr 1fr; /* Gives both boxes exact equal half-screen widths */
-  gap: 30px;                 /* Adds a clean, professional space between the boxes */
-  padding: 0 40px;           /* Aligns the boxes perfectly with your horizontal lines */
+footer p { 
+  color: white; 
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8); 
 }
