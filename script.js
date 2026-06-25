@@ -187,11 +187,6 @@ function processOrder() {
   receiptBox.scrollIntoView({ behavior: 'smooth' });
 }
 
-function selectAndGo(itemId) {
-      localStorage.setItem("selectedItemId", itemId);
-      window.location.href = "Ordering.html";
-    }
-
 function triggerError(msgText) {
   const alertBox = document.getElementById("errorAlert");
   alertBox.textContent = msgText;
@@ -208,9 +203,21 @@ function resetForm() {
   document.getElementById("receiptContainer").style.display = "none";
   localStorage.removeItem("cartItemIds");
 }
-
-
-// Local storage array initialization
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    // Local storage array initialization
     if (!localStorage.getItem("cartItemIds")) {
       localStorage.setItem("cartItemIds", JSON.stringify([]));
     }
