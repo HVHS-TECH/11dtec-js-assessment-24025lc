@@ -1,26 +1,12 @@
-<!DOCTYPE html>
+html<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>The Pavilion Kitchen - Menu</title>
   <meta charset="UTF-8">
   <link href="style.css" rel="stylesheet">
   <style>
-    body.menu-page {
-      background-color: rgb(0, 0, 0);
-      background-image: url("images.html/Mountain_Sunset.png") !important;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      font-family: Arial, sans-serif;
-    }
-    .menu-header-block { background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-    .menu-item-card { background: rgba(255, 255, 255, 0.95); margin-bottom: 15px; display: flex; gap: 20px; padding: 15px; border-radius: 8px; align-items: center; }
-    .menu-item-image-box { width: 100px; height: 100px; background: #eee; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
-    .menu-item-image-box img { width: 100%; height: 100%; object-fit: cover; }
-    .menu-item-content { flex-grow: 1; }
-    .category-heading { background-color: #27ae60; color: white; padding: 10px; border-radius: 4px; margin-top: 25px; }
-    .order-btn { background: #27ae60; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: bold; margin-top: 5px; }
-    .price-badge { float: right; color: #27ae60; font-weight: bold; }
+    
+    
   </style>
 </head>
 <body class="menu-page">
@@ -40,12 +26,22 @@
   <main class="menu-display-container">
     <div class="menu-header-block">
       <h2>Our Culinary Selection</h2>
-      <p>Freshly prepared premium items for your dining pleasure — <strong>All Iteams under $30!</strong></p>
+      <p>Freshly prepared premium items for your dining pleasure — <strong>ALL ITEMS ONLY $5.00!</strong></p>
     </div>
 
     <!-- Category: Gourmet Burgers -->
     <section class="menu-category-section">
       <h3 class="category-heading">Gourmet Burgers</h3>
+      
+      <!-- Added: The Classic Cafe Cheeseburger -->
+      <div class="menu-item-card">
+        <div class="menu-item-image-box"><img src="images.html/Classic_Cafe_Cheeseburger.png" alt="Burger"></div>
+        <div class="menu-item-content">
+          <h4>The Classic Cafe Cheeseburger <span class="price-badge">$5.00</span></h4>
+          <p>Premium beef patty, melted cheddar, lettuce, tomato, pickles, and signature house burger sauce on a toasted brioche bun.</p>
+          <button class="order-btn" onclick="selectAndGo('burg_0')">Order This Item</button>
+        </div>
+      </div>
       
       <div class="menu-item-card">
         <div class="menu-item-image-box"><img src="images.html/Buttermilk_Fried_Chicken_Burger.png" alt="Burger"></div>
