@@ -118,7 +118,6 @@ body.ordering-page {
       background-size: cover; background-position: center; background-attachment: fixed;
       font-family: Arial, sans-serif; color: #333;
     }
-    .pos-container { max-width: 1000px; margin: 30px auto; display: flex; gap: 20px; padding: 20px; }
     .pos-card { background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 8px; flex: 1; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
     .form-group { margin-bottom: 15px; }
     .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
