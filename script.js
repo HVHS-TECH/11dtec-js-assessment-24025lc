@@ -186,6 +186,37 @@ function processOrder() {
   receiptBox.style.display = "block";
   receiptBox.scrollIntoView({ behavior: 'smooth' });
 }
+// Local storage array initialization
+    if (!localStorage.getItem("cartItemIds")) {
+      localStorage.setItem("cartItemIds", JSON.stringify([]));
+    }
+
+    function addToCart(itemId) {
+      let cart = JSON.stringify([]);
+      try {
+        cart = localStorage.getItem("cartItemIds") || JSON.stringify([]);
+      } catch (e) {
+        cart = JSON.stringify([]);
+      }
+      let currentCart = JSON.parse(cart);
+      
+      if (!currentCart.includes(itemId)) {
+        currentCart.push(itemId);
+        localStorage.setItem("cartItemIds", JSON.stringify(currentCart));
+      }
+      
+      // Give the user visual feedback that the item was added
+      const btn = document.getElementById("btn_" + itemId);
+      if (btn) {
+        btn.textContent = "Added ✓";
+        btn.style.backgroundColor = "#2ecc71";
+        setTimeout(() => {
+          btn.textContent = "Add to Order";
+          btn.style.backgroundColor = "#27ae60";
+        }, 1500);
+      }
+    }
+
 
 function triggerError(msgText) {
   const alertBox = document.getElementById("errorAlert");
