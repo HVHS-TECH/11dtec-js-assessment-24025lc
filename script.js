@@ -186,6 +186,30 @@ function processOrder() {
   receiptBox.style.display = "block";
   receiptBox.scrollIntoView({ behavior: 'smooth' });
 }
+
+function selectAndGo(itemId) {
+      localStorage.setItem("selectedItemId", itemId);
+      window.location.href = "Ordering.html";
+    }
+
+function triggerError(msgText) {
+  const alertBox = document.getElementById("errorAlert");
+  alertBox.textContent = msgText;
+  alertBox.style.display = "block";
+}
+
+function resetForm() {
+  document.getElementById("orderForm").reset();
+  selectedItemIds = [];
+  document.getElementById("previewName").textContent = "None Selected";
+  document.getElementById("previewPrice").textContent = "$0.00";
+  updateUISelectionStates();
+  document.getElementById("errorAlert").style.display = "none";
+  document.getElementById("receiptContainer").style.display = "none";
+  localStorage.removeItem("cartItemIds");
+}
+
+
 // Local storage array initialization
     if (!localStorage.getItem("cartItemIds")) {
       localStorage.setItem("cartItemIds", JSON.stringify([]));
@@ -216,21 +240,3 @@ function processOrder() {
         }, 1500);
       }
     }
-
-
-function triggerError(msgText) {
-  const alertBox = document.getElementById("errorAlert");
-  alertBox.textContent = msgText;
-  alertBox.style.display = "block";
-}
-
-function resetForm() {
-  document.getElementById("orderForm").reset();
-  selectedItemIds = [];
-  document.getElementById("previewName").textContent = "None Selected";
-  document.getElementById("previewPrice").textContent = "$0.00";
-  updateUISelectionStates();
-  document.getElementById("errorAlert").style.display = "none";
-  document.getElementById("receiptContainer").style.display = "none";
-  localStorage.removeItem("cartItemIds");
-}
