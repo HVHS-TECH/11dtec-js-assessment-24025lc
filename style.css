@@ -63,6 +63,13 @@ h1 {
   margin: 5px 0 0 5px;
 }
 
+h2 {
+  color: rgb(0, 51, 255);
+  font-weight: bold;
+  font-size: 40px;
+  margin: 5px 0 0 5px;
+}
+
 
 /* Styles used in the <footer> element */
 footer {
@@ -104,4 +111,22 @@ body.ordering-page {
     .category-heading { background-color: #27ae60; color: white; padding: 10px; border-radius: 4px; margin-top: 25px; }
     .order-btn { background: #27ae60; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: bold; margin-top: 5px; }
     .price-badge { float: right; color: #27ae60; font-weight: bold; }
+    footer p { color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+
+    body.ordering-page {
+      background-image: url("images.html/Singapore_City.png") !important;
+      background-size: cover; background-position: center; background-attachment: fixed;
+      font-family: Arial, sans-serif; color: #333;
+    }
+    .pos-container { max-width: 1000px; margin: 30px auto; display: flex; gap: 20px; padding: 20px; }
+    .pos-card { background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 8px; flex: 1; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
+    .form-group input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    .alert-danger { background: #f8d7da; color: #721c24; padding: 10px; border-radius: 4px; margin-bottom: 15px; display: none; border: 1px solid #f5c6cb; font-weight: bold; }
+    .selection-preview-box { background: #eee; padding: 15px; border-radius: 4px; margin-top: 15px; }
+    .btn-reset { background: #e74c3c; color: white; border: none; padding: 10px; cursor: pointer; font-weight: bold; border-radius: 4px; }
+    .btn-order { background: #27ae60; color: white; border: none; padding: 10px; cursor: pointer; font-weight: bold; border-radius: 4px; }
+    .receipt-container { background: white; padding: 20px; border-radius: 4px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); display: none; font-family: monospace; border-top: 4px dashed #333; }
+    .receipt-row { display: flex; justify-content: space-between; margin: 8px 0; font-size: 1.1rem; }
     footer p { color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
