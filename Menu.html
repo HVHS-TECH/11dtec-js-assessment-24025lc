@@ -32,14 +32,44 @@
       border-radius: 8px;
       margin-bottom: 30px;
     }
+
+    /* Flex row card structure to fit the image on the left */
     .menu-item-card {
       background: rgba(255, 255, 255, 0.94);
       margin-bottom: 15px;
+      display: flex;
+      gap: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
+
+    /* Styled Thumbnail Containers */
+    .menu-item-image-box {
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #eee;
+    }
+
+    .menu-item-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .menu-item-content {
+      flex-grow: 1;
+    }
+
     .category-heading {
       background-color: #27ae60;
       color: white;
     }
+
     footer p {
       color: white;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
@@ -62,8 +92,6 @@
 
  <body class="menu-page"></body>
 
-
- 
   <!-- MAIN MENU DISPLAY SECTION -->
   <main class="menu-display-container">
     
@@ -77,36 +105,43 @@
       <h3 class="category-heading">Gourmet Burgers</h3>
       <div class="menu-items-grid">
         
-        <!-- Item 1 -->
+        <!-- Item 1 (Buttermilk Fried Chicken) -->
         <div class="menu-item-card">
-          <div class="menu-item-header">
-            <span class="menu-item-title">The Classic Cafe Cheeseburger</span>
+          <div class="menu-item-image-box">
+            <img src="images.html/Buttermilk_Fried_Chicken_Burger.png" alt="Buttermilk Fried Chicken Burger">
           </div>
-          <p class="menu-item-description">Premium beef patty, melted cheddar, lettuce, tomato, pickles, and signature house burger sauce on a toasted brioche bun.</p>
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <span class="menu-item-title">Buttermilk Fried Chicken Burger</span>
+            </div>
+            <p class="menu-item-description">Crispy fried chicken breast, creamy slaw, pickles, and spicy chipotle mayo.</p>
+          </div>
         </div>
 
-        <!-- Item 2 -->
+        <!-- Item 2 (Smoky BBQ Bacon) -->
         <div class="menu-item-card">
-          <div class="menu-item-header">
-            <span class="menu-item-title">Buttermilk Fried Chicken Burger</span>
+          <div class="menu-item-image-box">
+            <img src="images.html/Smoky_BBQ_Bacon_Burger.png" alt="Smoky BBQ Bacon Burger">
           </div>
-          <p class="menu-item-description">Crispy fried chicken breast, creamy slaw, pickles, and spicy chipotle mayo.</p>
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <span class="menu-item-title">Smoky BBQ Bacon Burger</span>
+            </div>
+            <p class="menu-item-description">Beef patty, crispy bacon, cheddar, crispy onion rings, and smoky barbecue sauce.</p>
+          </div>
         </div>
 
-        <!-- Item 3 -->
+        <!-- Item 3 (Smashed Avocado & Veggie) -->
         <div class="menu-item-card">
-          <div class="menu-item-header">
-            <span class="menu-item-title">Smoky BBQ Bacon Burger</span>
+          <div class="menu-item-image-box">
+            <img src="images.html/Smashed_Avocado_and_Veggie_Burger.png" alt="Smashed Avocado & Veggie Burger">
           </div>
-          <p class="menu-item-description">Beef patty, crispy bacon, cheddar, crispy onion rings, and smoky barbecue sauce.</p>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="menu-item-card">
-          <div class="menu-item-header">
-            <span class="menu-item-title">Smashed Avocado & Veggie Burger</span>
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <span class="menu-item-title">Smashed Avocado & Veggie Burger</span>
+            </div>
+            <p class="menu-item-description">Plant-based patty or grilled halloumi cheese, smashed avocado, rocket, tomato, and garlic aioli.</p>
           </div>
-          <p class="menu-item-description">Plant-based patty or grilled halloumi cheese, smashed avocado, rocket, tomato, and garlic aioli.</p>
         </div>
 
       </div>
@@ -117,36 +152,56 @@
       <h3 class="category-heading">Savory Pies</h3>
       <div class="menu-items-grid">
         
+        <!-- Item 4 -->
+        <div class="menu-item-card">
+          <div class="menu-item-image-box">
+            <img src="images.html/Chunky_Steak_and_Mushroom_Pie.png" alt="Chunky Steak & Mushroom Pie">
+          </div>
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <span class="menu-item-title">Chunky Steak & Mushroom Pie</span>
+            </div>
+            <p class="menu-item-description">Slow-cooked beef chunks in a rich gravy with button mushrooms, encased in a flaky puff pastry.</p>
+          </div>
+        </div>
+
         <!-- Item 5 -->
         <div class="menu-item-card">
-          <div class="menu-item-header">
-            <span class="menu-item-title">Chunky Steak & Mushroom Pie</span>
+          <div class="menu-item-image-box">
+            <img src="images.html/Classic_Mince_and_Cheese_Pie.png" alt="Classic Mince & Cheese Pie">
           </div>
-          <p class="menu-item-description">Slow-cooked beef chunks in a rich gravy with button mushrooms, encased in a flaky puff pastry.</p>
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <span class="menu-item-title">Classic Mince & Cheese Pie</span>
+            </div>
+            <p class="menu-item-description">Seasoned lean minced beef with a thick layer of melted cheddar or mozzarella.</p>
+          </div>
         </div>
 
         <!-- Item 6 -->
         <div class="menu-item-card">
-          <div class="menu-item-header">
-            <span class="menu-item-title">Classic Mince & Cheese Pie</span>
+          <div class="menu-item-image-box">
+            <img src="images.html/Creamy_Chicken_and_Leak_Pie.png" alt="Creamy Chicken & Leek Pie">
           </div>
-          <p class="menu-item-description">Seasoned lean minced beef with a thick layer of melted cheddar or mozzarella.</p>
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <span class="menu-item-title">Creamy Chicken & Leek Pie</span>
+            </div>
+            <p class="menu-item-description">Tender chicken breast pieces cooked in a creamy white wine and leek sauce.</p>
+          </div>
         </div>
 
         <!-- Item 7 -->
         <div class="menu-item-card">
-          <div class="menu-item-header">
-            <span class="menu-item-title">Creamy Chicken & Leek Pie</span>
+          <div class="menu-item-image-box">
+            <img src="images.html/Roasted_Vegetable_and_Feta_Pie.png" alt="Roasted Vegetable & Feta Pie">
           </div>
-          <p class="menu-item-description">Tender chicken breast pieces cooked in a creamy white wine and leek sauce.</p>
-        </div>
-
-        <!-- Item 8 -->
-        <div class="menu-item-card">
-          <div class="menu-item-header">
-            <span class="menu-item-title">Roasted Vegetable & Feta Pie</span>
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <span class="menu-item-title">Roasted Vegetable & Feta Pie</span>
+            </div>
+            <p class="menu-item-description">Seasonal roasted Mediterranean vegetables with crumbled feta cheese in a shortcrust pastry.</p>
           </div>
-          <p class="menu-item-description">Seasonal roasted Mediterranean vegetables with crumbled feta cheese in a shortcrust pastry.</p>
         </div>
 
       </div>
@@ -161,3 +216,4 @@
 
   <script src="script.js"></script>
 </body>
+</html>
