@@ -4,27 +4,11 @@
   <title>The Pavilion Kitchen - Menu</title>
   <meta charset="UTF-8">
   <link href="style.css" rel="stylesheet">
-  <style>
-    body.menu-page {
-      background-color: rgb(0, 0, 0);
-      background-image: url("images.html/Mountain_Sunset.png") !important;
-      background-size: cover; background-position: center; background-attachment: fixed;
-      font-family: Arial, sans-serif;
-    }
-    .menu-header-block { background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-    .menu-item-card { background: rgba(255, 255, 255, 0.95); margin-bottom: 15px; display: flex; gap: 20px; padding: 15px; border-radius: 8px; align-items: center; }
-    .menu-item-image-box { width: 100px; height: 100px; background: #eee; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
-    .menu-item-image-box img { width: 100%; height: 100%; object-fit: cover; }
-    .menu-item-content { flex-grow: 1; }
-    .category-heading { background-color: #27ae60; color: white; padding: 10px; border-radius: 4px; margin-top: 25px; }
-    .order-btn { background: #27ae60; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: bold; margin-top: 5px; }
-    .go-checkout-btn { background: #e67e22; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px; }
-    .price-badge { float: right; color: #27ae60; font-weight: bold; }
-    footer p { color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
-  </style>
+  
 </head>
 <body class="menu-page">
 
+ 
   <nav>
     <a class="button" href="index.html">Home</a>
     <a class="button" href="Menu.html">Menu</a>
@@ -39,19 +23,19 @@
   <main class="menu-display-container">
     <div class="menu-header-block">
       <h2>Our Culinary Selection</h2>
-      <p>Select multiple items to build your feast, then head over to the checkout!</p>
-      <a href="Ordering.html" class="go-checkout-btn">🛒 Go to Checkout / Place Order</a>
+      <p>Freshly prepared premium items for your dining pleasure — <strong>ALL ITEMS ONLY $30.00 or less!</strong></p>
     </div>
 
+    <!-- Category: Gourmet Burgers -->
     <section class="menu-category-section">
       <h3 class="category-heading">Gourmet Burgers</h3>
       
       <div class="menu-item-card">
-        <div class="menu-item-image-box"><img src="images.html/Classic_Cafe_Cheeseburger.png" alt="Burger"></div>
+        <div class="menu-item-image-box"><img src="images.html/Classic_Cafe_Cheeseburger_Meal.png" alt="Burger"></div>
         <div class="menu-item-content">
           <h4>The Classic Cafe Cheeseburger Meal <span class="price-badge">$17.00</span></h4>
-          <p>Premium beef patty, melted cheddar, lettuce, tomato, pickles, house burger sauce, Large Fries, and Nuggets.</p>
-          <button class="order-btn" id="btn_burg_0" onclick="addToCart('burg_0')">Add to Order</button>
+          <p>Premium beef patty, melted cheddar, lettuce, tomato, pickles, and signature house along with Large Fries and Chicken Nuggets.</p>
+          <button class="order-btn" onclick="selectAndGo('burg_0')">Order This Item</button>
         </div>
       </div>
       
@@ -60,25 +44,72 @@
         <div class="menu-item-content">
           <h4>Buttermilk Fried Chicken Burger <span class="price-badge">$12.00</span></h4>
           <p>Crispy fried chicken breast, creamy slaw, pickles, and spicy chipotle mayo.</p>
-          <button class="order-btn" id="btn_burg_1" onclick="addToCart('burg_1')">Add to Order</button>
+          <button class="order-btn" onclick="selectAndGo('burg_1')">Order This Item</button>
+        </div>
+      </div>
+
+      <div class="menu-item-card">
+        <div class="menu-item-image-box"><img src="images.html/Smoky_BBQ_Bacon_Burger.png" alt="Burger"></div>
+        <div class="menu-item-content">
+          <h4>Smoky BBQ Bacon Burger <span class="price-badge">$11.00</span></h4>
+          <p>Beef patty, crispy bacon, cheddar, crispy onion rings, and smoky barbecue sauce.</p>
+          <button class="order-btn" onclick="selectAndGo('burg_2')">Order This Item</button>
+        </div>
+      </div>
+
+      <div class="menu-item-card">
+        <div class="menu-item-image-box"><img src="images.html/Smashed_Avocado_and_Veggie_Burger.png" alt="Burger"></div>
+        <div class="menu-item-content">
+          <h4>Smashed Avocado & Veggie Burger <span class="price-badge">$11.00</span></h4>
+          <p>Plant-based patty, smashed avocado, rocket, tomato, and garlic aioli.</p>
+          <button class="order-btn" onclick="selectAndGo('burg_3')">Order This Item</button>
         </div>
       </div>
     </section>
 
+    <!-- Category: Savory Pies -->
     <section class="menu-category-section">
       <h3 class="category-heading">Savory Pies</h3>
       
       <div class="menu-item-card">
         <div class="menu-item-image-box"><img src="images.html/Chunky_Steak_and_Mushroom_Pie.png" alt="Pie"></div>
         <div class="menu-item-content">
-          <h4>Chunky Steak & Mushroom Pie <span class="price-badge">$5.00</span></h4>
+          <h4>Chunky Steak & Mushroom Pie <span class="price-badge">$8.00</span></h4>
           <p>Slow-cooked beef chunks in a rich gravy with button mushrooms, encased in a flaky puff pastry.</p>
-          <button class="order-btn" id="btn_pie_1" onclick="addToCart('pie_1')">Add to Order</button>
+          <button class="order-btn" onclick="selectAndGo('pie_1')">Order This Item</button>
+        </div>
+      </div>
+
+      <div class="menu-item-card">
+        <div class="menu-item-image-box"><img src="images.html/Classic_Mince_and_Cheese_Pie.png" alt="Pie"></div>
+        <div class="menu-item-content">
+          <h4>Classic Mince & Cheese Pie <span class="price-badge">$5.00</span></h4>
+          <p>Seasoned lean minced beef with a thick layer of melted cheddar or mozzarella.</p>
+          <button class="order-btn" onclick="selectAndGo('pie_2')">Order This Item</button>
+        </div>
+      </div>
+
+      <div class="menu-item-card">
+        <div class="menu-item-image-box"><img src="images.html/Creamy_Chicken_and_Leak_Pie.png" alt="Pie"></div>
+        <div class="menu-item-content">
+          <h4>Creamy Chicken & Leek Pie <span class="price-badge">$5.00</span></h4>
+          <p>Tender chicken breast pieces cooked in a creamy white wine and leek sauce.</p>
+          <button class="order-btn" onclick="selectAndGo('pie_3')">Order This Item</button>
+        </div>
+      </div>
+
+      <div class="menu-item-card">
+        <div class="menu-item-image-box"><img src="images.html/Roasted_Vegetable_and_Feta_Pie.png" alt="Pie"></div>
+        <div class="menu-item-content">
+          <h4>Roasted Vegetable & Feta Pie <span class="price-badge">$5.00</span></h4>
+          <p>Seasonal roasted Mediterranean vegetables with crumbled feta cheese in a shortcrust pastry.</p>
+          <button class="order-btn" onclick="selectAndGo('pie_4')">Order This Item</button>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- ORIGINAL FOOTER -->
   <footer>
     <hr class="horizontal">
     <p>&copy; Liam Chung Web Design Solutions, 2026</p>
