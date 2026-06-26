@@ -5,11 +5,12 @@
    ========================================================================== */
 body {
   background-color: rgb(0, 0, 0); 
-  background-image: url("images.html/Fancy_Forest.png") !important; /* Space removed */
-  background-size: cover; /* Optional: Ensures the forest image fills the whole screen */
-  background-position: center; /* Optional: Centers the forest image */
+  background-image: url("images.html/Fancy_Forest.png") !important; 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps the forest background anchored smoothly */
   font-family: 'Inter', sans-serif;
-  height: 1000px; 
+  min-height: 100vh; /* Lets the page grow dynamically but remain at least screen-length */
   margin: 0;
 }
 /* ==========================================================================
