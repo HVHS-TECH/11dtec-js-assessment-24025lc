@@ -4,13 +4,14 @@
    PURPOSE: Reset margins and establish fallback typography for the web project.
    ========================================================================== */
 body {
-  background-color: rgb(0, 0, 0); /* Fallback base color if images fail to load */
-  background-image: url ("images.html/Fancy_Forest.png") !important; /* Forces theme over global default */
+  background-color: rgb(0, 0, 0); 
+  background-image: url("images.html/Fancy_Forest.png") !important; /* Space removed */
+  background-size: cover; /* Optional: Ensures the forest image fills the whole screen */
+  background-position: center; /* Optional: Centers the forest image */
   font-family: 'Inter', sans-serif;
-  height: 1000px; /* Forces uniform length across test displays to prevent footer jumping */
+  height: 1000px; 
   margin: 0;
 }
-
 /* ==========================================================================
    2. PAGE SPECIFIC BACKGROUNDS
    DEVELOPER NOTE: Handled body overrides for specific views using separate classes.
