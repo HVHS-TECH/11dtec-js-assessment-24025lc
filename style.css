@@ -1,55 +1,57 @@
-/* ==========================================
+/* ==========================================================================
    1. GLOBAL STYLES & FONTS
-   ========================================== */
+   AUTHOR: Liam Chung (Liam Chung Web Design Solutions)
+   PURPOSE: Reset margins and establish fallback typography for the web project.
+   ========================================================================== */
 body {
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0); /* Fallback base color if images fail to load */
   font-family: 'Inter', sans-serif;
-  height: 1000px;
+  height: 1000px; /* Forces uniform length across test displays to prevent footer jumping */
   margin: 0;
 }
 
-/* ==========================================
+/* ==========================================================================
    2. PAGE SPECIFIC BACKGROUNDS
-   ========================================== */
+   DEVELOPER NOTE: Handled body overrides for specific views using separate classes.
+   ========================================================================== */
 body.menu-page {
-      background-color: rgb(0, 0, 0);
-      background-image: url("images.html/Mountain_Sunset.png") !important;
-      background-size: cover; background-position: center; background-attachment: fixed;
-      font-family: Arial, sans-serif;
-    }
-    .menu-header-block { background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-    .menu-item-card { background: rgba(255, 255, 255, 0.95); margin-bottom: 15px; display: flex; gap: 20px; padding: 15px; border-radius: 8px; align-items: center; }
-    .menu-item-image-box { width: 100px; height: 100px; background: #eee; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
-    .menu-item-image-box img { width: 100%; height: 100%; object-fit: cover; }
-    .menu-item-content { flex-grow: 1; }
-    .category-heading { background-color: #27ae60; color: white; padding: 10px; border-radius: 4px; margin-top: 25px; }
-    .order-btn { background: #27ae60; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: bold; margin-top: 5px; }
-    .go-checkout-btn { background: #e67e22; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px; }
-    .price-badge { float: right; color: #27ae60; font-weight: bold; }
-    footer p { color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
-
-
-
+  background-color: rgb(0, 0, 0);
+  background-image: url("images.html/Mountain_Sunset.png") !important; /* Forces theme over global default */
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed; /* Parallax effect for modern layout aesthetics */
+  font-family: Arial, sans-serif;
+}
+.menu-header-block { background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+.menu-item-card { background: rgba(255, 255, 255, 0.95); margin-bottom: 15px; display: flex; gap: 20px; padding: 15px; border-radius: 8px; align-items: center; }
+.menu-item-image-box { width: 100px; height: 100px; background: #eee; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+.menu-item-image-box img { width: 100%; height: 100%; object-fit: cover; }
+.menu-item-content { flex-grow: 1; }
+.category-heading { background-color: #27ae60; color: white; padding: 10px; border-radius: 4px; margin-top: 25px; }
+.order-btn { background: #27ae60; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: bold; margin-top: 5px; }
+.go-checkout-btn { background: #e67e22; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px; }
+.price-badge { float: right; color: #27ae60; font-weight: bold; }
+footer p { color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); } /* High contrast drop-shadow against image backgrounds */
 
 body.ordering-page {
   background-color: rgb(0, 0, 0) !important;
-  background-image: url("images.html/Singapore_City.png") !important;
+  background-image: url("images.html/Singapore_City.png") !important; /* Specific backdrop choice for POS page */
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-attachment: fixed !important;
   font-family: Arial, sans-serif;
-  color: #333;
+  color: #333; /* Dark slate content text color for readability against light interface card layers */
 }
 
-/* ==========================================
+/* ==========================================================================
    3. ORIGINAL NAVIGATION & BANNERS
-   ========================================== */
+   ========================================================================== */
 .top-banner-section > img {
   width: 100%;            
   max-width: 600px;       
   max-height: 300px;      
-  object-fit: contain;    
+  object-fit: contain; /* Prevents aspect ratio distortion of branding graphics */   
   display: block;         
   margin: 10px 0 10px 5px;      
 }
@@ -60,7 +62,7 @@ body.ordering-page {
   padding: 10px 30px;
   text-decoration: none;
   display: inline-block;
-  border-radius: 50px;
+  border-radius: 50px; /* Pill-shaped navigational controls design choice */
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   margin-top: 10px;
@@ -68,7 +70,7 @@ body.ordering-page {
 }
 
 .button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px); /* Subtle lifting motion on pointer hover states */
   box-shadow: 0 6px 8px rgba(0,0,0,0.15);
 }
 
@@ -81,7 +83,7 @@ body.ordering-page {
   margin: 20px auto;
 }
 
-/* Headers */
+/* Typography Hierarchy Headers */
 h1 {
   color: rgb(255, 255, 255);
   font-weight: bold;
@@ -96,21 +98,22 @@ h2 {
   margin: 5px 0 0 5px;
 }
 
-/* ==========================================
+/* ==========================================================================
    4. MASTER LAYOUT GRID (THE FIX)
-   ========================================== */
+   DESIGN INTENTION: Split-pane setup dividing menu generation from configuration controls.
+   ========================================================================== */
 .pos-container {
   max-width: 1200px;         
   margin: 20px auto;         
   display: grid;             
-  grid-template-columns: 1fr 1fr; 
+  grid-template-columns: 1fr 1fr; /* Two columns split evenly side-by-side */
   gap: 30px;                 
   padding: 0 40px;           
 }
 
-/* ==========================================
+/* ==========================================================================
    5. MENU & COMPONENT PANELS
-   ========================================== */
+   ========================================================================== */
 .menu-header-block { 
   background: rgba(255, 255, 255, 0.9); 
   padding: 20px; 
@@ -121,7 +124,7 @@ h2 {
 .menu-item-card { 
   background: rgba(255, 255, 255, 0.95); 
   margin-bottom: 15px; 
-  display: flex; 
+  display: flex; /* Dynamic element sizing inside custom cards */
   gap: 20px; 
   padding: 15px; 
   border-radius: 8px; 
@@ -133,8 +136,8 @@ h2 {
   height: 100px; 
   background: #eee; 
   border-radius: 6px; 
-  overflow: hidden; 
-  flex-shrink: 0; 
+  overflow: hidden; /* Clips overlapping boundaries cleanly */
+  flex-shrink: 0; /* Prevents thumbnails from collapsing inside narrow layout screens */
 }
 
 .menu-item-image-box img { 
@@ -172,14 +175,14 @@ h2 {
   font-weight: bold; 
 }
 
-/* ==========================================
+/* ==========================================================================
    6. ORDER PANEL ELEMENTS
-   ========================================== */
+   ========================================================================== */
 .pos-card { 
-  background: rgba(255, 255, 255, 0.95); 
+  background: rgba(255, 255, 255, 0.95); /* High transparency white contrast sheet overlays */
   padding: 20px; 
   border-radius: 8px; 
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Pronounced depth shadow to separate interaction card layers */
 }
 
 .form-group { 
@@ -197,7 +200,7 @@ h2 {
   padding: 8px; 
   border: 1px solid #ccc; 
   border-radius: 4px; 
-  box-sizing: border-box; 
+  box-sizing: border-box; /* Force padding adjustments to remain within fixed widths */
 }
 
 .alert-danger { 
@@ -206,7 +209,7 @@ h2 {
   padding: 10px; 
   border-radius: 4px; 
   margin-bottom: 15px; 
-  display: none; 
+  display: none; /* Managed conditionally by validation blocks inside script.js */
   border: 1px solid #f5c6cb; 
   font-weight: bold; 
 }
@@ -219,7 +222,7 @@ h2 {
 }
 
 .btn-reset { 
-  background: #e74c3c; 
+  background: #e74c3c; /* Noticeable alert red for layout clearing controls */
   color: white; 
   border: none; 
   padding: 10px; 
@@ -229,7 +232,7 @@ h2 {
 }
 
 .btn-order { 
-  background: #27ae60; 
+  background: #27ae60; /* Vibrant corporate green for successful path trigger actions */
   color: white; 
   border: none; 
   padding: 10px; 
@@ -238,9 +241,9 @@ h2 {
   border-radius: 4px; 
 }
 
-/* ==========================================
+/* ==========================================================================
    7. RECEIPT SUMMARY MODULE
-   ========================================== */
+   ========================================================================== */
 .receipt-container { 
   background: white; 
   padding: 20px; 
@@ -248,20 +251,20 @@ h2 {
   margin-top: 20px; 
   box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
   display: none; 
-  font-family: monospace; 
-  border-top: 4px dashed #333; 
+  font-family: monospace; /* Monospacing simulates authentic thermal receipt outputs */
+  border-top: 4px dashed #333; /* Perforated layout style visual details */
 }
 
 .receipt-row { 
   display: flex; 
-  justify-content: space-between; 
+  justify-content: space-between; /* Pins field item descriptions left and values right */
   margin: 8px 0; 
   font-size: 1.1rem; 
 }
 
-/* ==========================================
+/* ==========================================================================
    8. FOOTERS
-   ========================================== */
+   ========================================================================== */
 footer {
   color: rgb(255, 255, 255);
   margin: 15px 0;
