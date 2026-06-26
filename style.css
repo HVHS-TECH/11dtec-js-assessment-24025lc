@@ -273,4 +273,51 @@ footer {
   padding: 20px 20px 20px 5px; 
 }
 
+.fancy-menu-link {
+  display: block;
+  text-align: center;
+  padding: 22px;
+  background: linear-gradient(135deg, #e67e22, #d35400);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 12px;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
 
+
+
+/* Container to pin layout components safely to the left */
+.menu-shortcut-container {
+  max-width: 600px;
+  margin: 20px 0 20px 5px;
+  display: block;
+}
+
+/* Premium styled large button layout rules */
+.fancy-menu-link {
+  display: block;
+  text-align: center;
+  padding: 25px 20px; /* Increased top/bottom padding to make it physically bigger */
+  background: linear-gradient(135deg, #e67e22, #d35400);
+  color: white;
+  font-size: 1.6rem; /* Slightly larger typography size for premium legibility */
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 12px;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Dynamic lifting behavior when user points to button */
+.fancy-menu-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+}
