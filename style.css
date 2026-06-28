@@ -109,7 +109,7 @@ h1.menu-title {
 }
 
 h1.ordering-title {
-  color:rgb(255, 255, 255)
+  color:rgb(255, 255, 255);
   background: rgb(0, 0, 0);
   display: inline-block; /* Shortens the background to match the text length */
   font-weight: bold;
