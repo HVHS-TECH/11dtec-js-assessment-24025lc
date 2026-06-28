@@ -150,9 +150,14 @@ function updateUISelectionStates() {
 }
 
 function calculateLivePreview() {
+  const previewName = document.getElementById("previewName");
+  const previewPrice = document.getElementById("previewPrice");
+  
+  if (!previewName || !previewPrice) return;
+
   if (selectedItemIds.length === 0) {
-    document.getElementById("previewName").textContent = "None Selected";
-    document.getElementById("previewPrice").textContent = "$0.00";
+    previewName.textContent = "None Selected";
+    previewPrice.textContent = "$0.00";
     return;
   }
   let totalCost = 0;
@@ -169,8 +174,8 @@ function calculateLivePreview() {
     }
   });
   
-  document.getElementById("previewName").innerHTML = namesArray.join("<br>+ ");
-  document.getElementById("previewPrice").textContent = `$${totalCost.toFixed(2)}`;
+  previewName.innerHTML = namesArray.join("<br>+ ");
+  previewPrice.textContent = `$${totalCost.toFixed(2)}`;
 }
 
 function checkCrossPageRedirect() {
