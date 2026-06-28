@@ -219,6 +219,35 @@ function addToCart(itemId) {
   }
 }
 
+function resetForm() {
+  // 1. Reset all input fields inside the customer form
+  const form = document.getElementById("orderForm");
+  if (form) form.reset();
+  
+  // 2. Clear out the entire selection tracking list
+  selectedItemIds = [];
+  
+  // 3. Reset the Live Preview box texts back to zero
+  const pName = document.getElementById("previewName");
+  const pPrice = document.getElementById("previewPrice");
+  if (pName) pName.textContent = "None Selected";
+  if (pPrice) pPrice.textContent = "$0.00";
+  
+  // 4. Update the visual menu items to uncheck cards and hide quantity badges
+  updateUISelectionStates();
+  
+  // 5. Hide the error message bar and the receipt slips from the screen
+  const alertBox = document.getElementById("errorAlert");
+  const receiptBox = document.getElementById("receiptContainer");
+  if (alertBox) alertBox.style.display = "none";
+  if (receiptBox) receiptBox.style.display = "none";
+  
+  // 6. Wipe out the cross-page memory transfer trail completely
+  localStorage.removeItem("cartItemIds");
+}
+
+
+
 
 function processOrder() {
   const nameNode = document.getElementById("customerName");
@@ -289,3 +318,5 @@ function processOrder() {
     receiptBox.scrollIntoView({ behavior: 'smooth' });
   }
 }
+
+
