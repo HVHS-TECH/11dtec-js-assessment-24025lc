@@ -108,6 +108,16 @@ function toggleItemSelection(itemId) {
 }
 
 
+function removeOneItem(itemId) {
+  // Finds the first instance of this item ID in the array and removes it
+  const index = selectedItemIds.indexOf(itemId);
+  if (index > -1) {
+    selectedItemIds.splice(index, 1);
+  }
+  updateUISelectionStates();
+  calculateLivePreview();
+}
+
 
 function updateUISelectionStates() {
   menuItems.forEach(item => {
