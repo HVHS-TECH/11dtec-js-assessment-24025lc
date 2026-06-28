@@ -218,3 +218,74 @@ function addToCart(itemId) {
     }, 1500);
   }
 }
+
+
+function processOrder() {
+  const nameNode = document.getElementById("customerName");
+  const cashNode = document.getElementById("cashPaid");
+  const alertBox = document.getElementById("errorAlert");
+  const receiptBox = document.getElementById("receiptContainer");
+  
+  if (alertBox) alertBox.style.display = "none";
+  if (receiptBox) receiptBox.style.display = "none";
+  
+  const customerName = nameNode ? nameNode.value.trim() : "";
+  const cashValue = cashNode ? parseFloat(cashNode.value) : 0;
+  
+  if (customerName === "") {
+    triggerError("Missing Field: Customer Name is required to place an order.");
+    return;
+  }
+  if (selectedItemIds.length === 0) {
+    triggerError("No Selection: Please select at least one menu item by clicking the options.");
+    return;
+  }
+  if (isNaN(cashValue) || cashValue < 0) {
+    triggerError("Invalid Payment: Please input a valid cash total paid.");
+    return;
+  }
+  
+  let orderTotalCost = 0;
+  let summaryItemNames = [];
+  const distinctIds = [...new Set(selectedItemIds)];
+  
+  distinctIds.forEach(id => {
+    const matchedObject = menuItems.find(item => item.id === id);
+    if (matchedObject) {
+      const quantity = selectedItemIds.filter(selectedId => selectedId === id).length;
+      const combinedLinePrice = matchedObject.price * quantity;
+      orderTotalCost += combinedLinePrice;
+      
+      // FIXED: Used proper backtick syntax wrappers to ensure string variable interpolation works safely
+      summaryItemNames.push(`${quantity}x ${matchedObject.name} ($${combinedLinePrice.toFixed(2)})`);
+    }
+  });
+  
+  if (cashValue < orderTotalCost) {
+    // FIXED: Corrected loose text variables into clean backtick templates
+    triggerError(`Insufficient Funds: Your order costs $${orderTotalCost.toFixed(2)}. You are short by $${(orderTotalCost - cashValue).toFixed(2)}.`);
+    return;
+  }
+  
+  let balanceChange = cashValue - orderTotalCost;
+  
+  const rcptName = document.getElementById("rcptName");
+  const rcptItem = document.getElementById("rcptItem");
+  const rcptTotal = document.getElementById("rcptTotal");
+  const rcptCash = document.getElementById("rcptCash");
+  const rcptChange = document.getElementById("rcptChange");
+  const rcptTime = document.getElementById("receiptTime");
+  
+  if (rcptName) rcptName.textContent = customerName;
+  if (rcptItem) rcptItem.innerHTML = summaryItemNames.join("<br>");
+  if (rcptTotal) rcptTotal.textContent = `$${orderTotalCost.toFixed(2)}`;
+  if (rcptCash) rcptCash.textContent = `$${cashValue.toFixed(2)}`;
+  if (rcptChange) rcptChange.textContent = `$${balanceChange.toFixed(2)}`;
+  if (rcptTime) rcptTime.textContent = new Date().toLocaleString('en-NZ');
+  
+  // Forces the hidden receipt block wrapper to show up on screen
+  if (receiptBox) {
+    receiptBox.style.display = "block";
+    receiptBox.scrollIntoView({ behavior: 'smooth' });
+  }
+}
