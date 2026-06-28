@@ -39,7 +39,7 @@ const menuItems = [
   { id: "extra_5", category: "Extras", name: "Garlic Bread", price: 3.00, desc: "Toasted baguette slices layered with premium herb and garlic butter." }
 ];
 
-// Stores item IDs. Multiple clicks push duplicate IDs here to allow multi-quantity orders.
+// Holds order items. Multiple clicks add the same ID over and over to stack quantities.
 let selectedItemIds = [];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -80,6 +80,7 @@ function renderWireframeMenu() {
       itemRow.onclick = () => toggleItemSelection(item.id);
       itemRow.style = "padding: 10px; margin-bottom: 6px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; display: flex; gap: 10px; transition: 0.2s;";
       
+      // FIXED HTML INNER DOM: Added matching ID placeholders for badge and minus elements to clear console properties error
       itemRow.innerHTML = `
         <div class="item-checkbox-wrapper" style="display: flex; align-items: center; justify-content: center; min-width: 25px;"> 
           <input type="checkbox" id="chk_${item.id}" value="${item.id}" style="pointer-events: none;"> 
@@ -178,113 +179,7 @@ function checkCrossPageRedirect() {
     cart = localStorage.getItem("cartItemIds") || JSON.stringify([]);
   } catch (e) {
     cart = JSON.stringify([]);
-  } }
+  }
   const incomingIds = JSON.parse(cart);
   
-if (incomingIds && incomingIds.length > 0) {
-  selectedItemIds = incomingIds;
-  updateUISelectionStates();
-  calculateLivePreview();
-  localStorage.removeItem("cartItemIds"); // Clean cart storage trail
-}
-
-function processOrder() {
-  const nameNode = document.getElementById("customerName");
-  const cashNode = document.getElementById("cashPaid");
-  const alertBox = document.getElementById("errorAlert");
-  const receiptBox = document.getElementById("receiptContainer");
-  const customerName = nameNode.value.trim();
-  const cashValue = parseFloat(cashNode.value);
-  
-  alertBox.style.display = "none";
-  receiptBox.style.display = "none";
-  
-  if (customerName === "") {
-    triggerError("Missing Field: Customer Name is required to place an order.");
-    return;
-  }
-  if (selectedItemIds.length === 0) {
-    triggerError("No Selection: Please select at least one menu item by clicking the options.");
-    return;
-  }
-  if (isNaN(cashValue) || cashValue < 0) {
-    triggerError("Invalid Payment: Please input a valid cash total paid.");
-    return;
-  }
-  
-  let orderTotalCost = 0;
-  let summaryItemNames = [];
-  const distinctIds = [...new Set(selectedItemIds)];
-  
-  distinctIds.forEach(id => {
-    const matchedObject = menuItems.find(item => item.id === id);
-    if (matchedObject) {
-      const quantity = selectedItemIds.filter(selectedId => selectedId === id).length;
-      const combinedLinePrice = matchedObject.price * quantity;
-      orderTotalCost += combinedLinePrice;
-      summaryItemNames.push(`${quantity}x ${matchedObject.name} ($${combinedLinePrice.toFixed(2)})`);
-    }
-  });
-  
-  if (cashValue < orderTotalCost) {
-    triggerError(`Insufficient Funds: Your order costs $${orderTotalCost.toFixed(2)}. You are short by $${(orderTotalCost - cashValue).toFixed(2)}.`);
-    return;
-  }
-  
-  let balanceChange = cashValue - orderTotalCost;
-  
-  document.getElementById("rcptName").textContent = customerName;
-  document.getElementById("rcptItem").innerHTML = summaryItemNames.join("<br>");
-  document.getElementById("rcptTotal").textContent = `$${orderTotalCost.toFixed(2)}`;
-  document.getElementById("rcptCash").textContent = `$${cashValue.toFixed(2)}`;
-  document.getElementById("rcptChange").textContent = `$${balanceChange.toFixed(2)}`;
-  document.getElementById("receiptTime").textContent = new Date().toLocaleString('en-NZ');
-  
-  receiptBox.style.display = "block";
-  receiptBox.scrollIntoView({ behavior: 'smooth' });
-}
-
-function triggerError(msgText) {
-  const alertBox = document.getElementById("errorAlert");
-  alertBox.textContent = msgText;
-  alertBox.style.display = "block";
-}
-
-function resetForm() {
-  document.getElementById("orderForm").reset();
-  selectedItemIds = [];
-  document.getElementById("previewName").textContent = "None Selected";
-  document.getElementById("previewPrice").textContent = "$0.00";
-  updateUISelectionStates();
-  document.getElementById("errorAlert").style.display = "none";
-  document.getElementById("receiptContainer").style.display = "none";
-  localStorage.removeItem("cartItemIds");
-}
-
-// Local storage array initialization
-if (!localStorage.getItem("cartItemIds")) {
-  localStorage.setItem("cartItemIds", JSON.stringify([]));
-}
-
-function addToCart(itemId) {
-  let cart = JSON.stringify([]);
-  try {
-    cart = localStorage.getItem("cartItemIds") || JSON.stringify([]);
-  } catch (e) {
-    cart = JSON.stringify([]);
-  }
-  let currentCart = JSON.parse(cart);
-  currentCart.push(itemId);
-  localStorage.setItem("cartItemIds", JSON.stringify(currentCart));
-  
-  // Give the user visual feedback that the item was added
-  const btn = document.getElementById("btn_" + itemId);
-  if (btn) {
-    btn.textContent = "Added ✓";
-    btn.style.backgroundColor = "#2ecc71";
-    setTimeout(() => {
-      btn.textContent = "Add to Order";
-      btn.style.backgroundColor = "#27ae60";
-    }, 1500);
-  }
-}
+  if (incomingIds && incomingIds.length > 0) {selectedItemIds = incomingIds;updateUISelectionStates();calculateLivePreview();localStorage.removeItem("cartItemIds");}}function processOrder() {const nameNode = document.getElementById("customerName");const cashNode = document.getElementById("cashPaid");const alertBox = document.getElementById("errorAlert");const receiptBox = document.getElementById("receiptContainer");const customerName = nameNode.value.trim();const cashValue = parseFloat(cashNode.value);alertBox.style.display = "none";receiptBox.style.display = "none";if (customerName === "") {triggerError("Missing Field: Customer Name is required to place an order.");return;}if (selectedItemIds.length === 0) {triggerError("No Selection: Please select at least one menu item by clicking the options.");return;}if (isNaN(cashValue) || cashValue < 0) {triggerError("Invalid Payment: Please input a valid cash total paid.");return;}let orderTotalCost = 0;let summaryItemNames = [];const distinctIds = [...new Set(selectedItemIds)];distinctIds.forEach(id => {const matchedObject = menuItems.find(item => item.id === id);if (matchedObject) {const quantity = selectedItemIds.filter(selectedId => selectedId === id).length;const combinedLinePrice = matchedObject.price * quantity;orderTotalCost += combinedLinePrice;summaryItemNames.push(${quantity}x ${matchedObject.name} ($${combinedLinePrice.toFixed(2)}));}});if (cashValue < orderTotalCost) {triggerError(Insufficient Funds: Your order costs $${orderTotalCost.toFixed(2)}. You are short by $${(orderTotalCost - cashValue).toFixed(2)}.);return;}let balanceChange = cashValue - orderTotalCost;document.getElementById("rcptName").textContent = customerName;document.getElementById("rcptItem").innerHTML = summaryItemNames.join("");document.getElementById("rcptTotal").textContent = $${orderTotalCost.toFixed(2)};document.getElementById("rcptCash").textContent = $${cashValue.toFixed(2)};document.getElementById("rcptChange").textContent = $${balanceChange.toFixed(2)};document.getElementById("receiptTime").textContent = new Date().toLocaleString('en-NZ');receiptBox.style.display = "block";receiptBox.scrollIntoView({ behavior: 'smooth' });}function triggerError(msgText) {const alertBox = document.getElementById("errorAlert");alertBox.textContent = msgText;alertBox.style.display = "block";}function resetForm() {document.getElementById("orderForm").reset();selectedItemIds = [];document.getElementById("previewName").textContent = "None Selected";document.getElementById("previewPrice").textContent = "$0.00";updateUISelectionStates();document.getElementById("errorAlert").style.display = "none";document.getElementById("receiptContainer").style.display = "none";localStorage.removeItem("cartItemIds");}if (!localStorage.getItem("cartItemIds")) {localStorage.setItem("cartItemIds", JSON.stringify([]));}function addToCart(itemId) {let cart = JSON.stringify([]);try {cart = localStorage.getItem("cartItemIds") || JSON.stringify([]);} catch (e) {cart = JSON.stringify([]);}let currentCart = JSON.parse(cart);currentCart.push(itemId);localStorage.setItem("cartItemIds", JSON.stringify(currentCart));const btn = document.getElementById("btn_" + itemId);if (btn) {btn.textContent = "Added ✓";btn.style.backgroundColor = "#2ecc71";setTimeout(() => {btn.textContent = "Add to Order";btn.style.backgroundColor = "#27ae60";}, 1500);}}
