@@ -102,18 +102,8 @@ function renderWireframeMenu() {
 }
 
 function toggleItemSelection(itemId) {
-  // Push the clicked item ID into the list every single time it is clicked
+  // Adds the item ID to the array every single time it is clicked
   selectedItemIds.push(itemId);
-  
-  updateUISelectionStates();
-  calculateLivePreview();
-}
-
-function removeOneItem(itemId) {
-  const index = selectedItemIds.indexOf(itemId);
-  if (index > -1) {
-    selectedItemIds.splice(index, 1);
-  }
   updateUISelectionStates();
   calculateLivePreview();
 }
@@ -125,13 +115,14 @@ function updateUISelectionStates() {
     const badge = document.getElementById(`badge_${item.id}`);
     const minusBox = document.getElementById(`minus_box_${item.id}`);
     
+    // Count how many times this specific item ID appears in the order list
     const itemQuantity = selectedItemIds.filter(id => id === item.id).length;
     
-    if (row && checkbox) {
+    if (row) {
       if (itemQuantity > 0) {
         row.style.borderColor = "#27ae60";
         row.style.background = "#e8f8f0";
-        checkbox.checked = true;
+        if (checkbox) checkbox.checked = true;
         if (badge) {
           badge.textContent = `(x${itemQuantity})`;
           badge.style.display = "inline";
@@ -140,15 +131,14 @@ function updateUISelectionStates() {
       } else {
         row.style.borderColor = "#ddd";
         row.style.background = "#f9f9f9";
-        checkbox.checked = false;
-        if (badge) {
-          badge.style.display = "none";
-        }
+        if (checkbox) checkbox.checked = false;
+        if (badge) badge.style.display = "none";
         if (minusBox) minusBox.style.display = "none";
       }
     }
   });
 }
+
 
 function calculateLivePreview() {
   if (selectedItemIds.length === 0) {
