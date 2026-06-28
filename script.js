@@ -102,11 +102,14 @@ function renderWireframeMenu() {
 }
 
 function toggleItemSelection(itemId) {
-  // Adds the item ID to the array every single time it is clicked
+  // Pushes the item ID into the tracking array every single time it is clicked
   selectedItemIds.push(itemId);
   updateUISelectionStates();
   calculateLivePreview();
 }
+
+
+
 
 function updateUISelectionStates() {
   menuItems.forEach(item => {
