@@ -102,7 +102,9 @@ function renderWireframeMenu() {
 }
 
 function toggleItemSelection(itemId) {
+  // Push the clicked item ID into the list every single time it is clicked
   selectedItemIds.push(itemId);
+  
   updateUISelectionStates();
   calculateLivePreview();
 }
