@@ -100,14 +100,12 @@ function renderWireframeMenu() {
     targetContainer.appendChild(block);
   });
 }
-
 function toggleItemSelection(itemId) {
-  // Pushes the item ID into the tracking array every single time it is clicked
+  // Adds the item ID to the array every single time it is clicked
   selectedItemIds.push(itemId);
   updateUISelectionStates();
   calculateLivePreview();
 }
-
 
 
 
@@ -141,7 +139,6 @@ function updateUISelectionStates() {
     }
   });
 }
-
 
 function calculateLivePreview() {
   if (selectedItemIds.length === 0) {
