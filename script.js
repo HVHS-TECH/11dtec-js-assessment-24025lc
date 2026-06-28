@@ -1,5 +1,3 @@
-console.log("Welcome to Pavilion Kitchen - Final Balanced Edition");
-
 const menuItems = [
   { id: "burg_0", category: "Gourmet Burgers", name: "The Classic Cafe Cheeseburger", price: 8.00, desc: "Premium beef patty, melted cheddar, lettuce, tomato, pickles."},
   { id: "burg_1", category: "Gourmet Burgers", name: "The Classic Cafe Cheeseburger Meal", price: 17.00, desc: "Premium beef patty, melted cheddar, lettuce, tomato, pickles, house burger sauce, Large Fries, and Nuggets." },
@@ -9,7 +7,34 @@ const menuItems = [
   { id: "pie_1", category: "Savory Pies", name: "Chunky Steak & Mushroom Pie", price: 5.00, desc: "Slow-cooked beef chunks in a rich gravy with button mushrooms, encased in a flaky puff pastry." },
   { id: "pie_2", category: "Savory Pies", name: "Classic Mince & Cheese Pie", price: 5.00, desc: "Seasoned lean minced beef with a thick layer of melted cheddar or mozzarella." },
   { id: "pie_3", category: "Savory Pies", name: "Creamy Chicken & Leek Pie", price: 5.00, desc: "Tender chicken breast pieces cooked in a creamy white wine and leek sauce." },
-  { id: "pie_4", category: "Savory Pies", name: "Roasted Vegetable & Feta Pie", price: 5.00, desc: "Seasonal roasted Mediterranean vegetables with crumbled feta cheese in a shortcrust pastry." }
+  { id: "pie_4", category: "Savory Pies", name: "Roasted Vegetable & Feta Pie", price: 5.00, desc: "Seasonal roasted Mediterranean vegetables with crumbled feta cheese in a shortcrust pastry." },
+  
+  // Steaks Category
+  { id: "steak_1", category: "Steaks", name: "Eye Fillet (Filet Mignon)", price: 25.00, desc: "Tender eye fillet grilled to perfection." },
+  { id: "steak_2", category: "Steaks", name: "Ribeye (Scotch Fillet)", price: 27.00, desc: "Juicy scotch fillet cooked to your liking." },
+  { id: "steak_3", category: "Steaks", name: "New York Strip", price: 25.00, desc: "Classic strip steak seasoned and grilled." },
+  
+  // Pastas Category
+  { id: "pasta_1", category: "Pastas", name: "Chicken and Mushroom Fettuccine", price: 18.00, desc: "Fettuccine pasta with chicken and mushrooms in a creamy sauce." },
+  { id: "pasta_2", category: "Pastas", name: "Basil Pesto and Bocconcini Fusilli", price: 16.00, desc: "Fusilli pasta tossed in basil pesto with fresh bocconcini." },
+  { id: "pasta_3", category: "Pastas", name: "Chilli Garlic Prawn Linguine", price: 21.00, desc: "Linguine pasta with prawns in a spicy chilli garlic sauce." },
+  { id: "pasta_4", category: "Pastas", name: "Extra Roasted Vegetable and Ricotta Cannelloni", price: 17.00, desc: "Cannelloni filled with roasted vegetables and ricotta cheese." },
+  
+  // Drinks Category
+  { id: "drink_1", category: "Drinks", name: "Coke", price: 3.50, desc: "Refreshing classic Coca-Cola." },
+  { id: "drink_2", category: "Drinks", name: "Fanta", price: 3.50, desc: "Bright and bubbly orange soda." },
+  { id: "drink_3", category: "Drinks", name: "Sprite", price: 3.50, desc: "Crisp, clean lemon-lime soda." },
+  { id: "drink_4", category: "Drinks", name: "Coke Zero", price: 3.50, desc: "Great Coca-Cola taste with zero sugar." },
+  { id: "drink_5", category: "Drinks", name: "Frozen Coke", price: 3.50, desc: "Icy, slushy frozen classic Coca-Cola." },
+  { id: "drink_6", category: "Drinks", name: "Frozen Sprite", price: 3.50, desc: "Icy, slushy frozen lemon-lime refreshing drink." },
+  { id: "drink_7", category: "Drinks", name: "Frozen Fanta", price: 3.50, desc: "Icy, slushy frozen orange Fanta treat." },
+  
+  // Extras Category
+  { id: "extra_1", category: "Extras", name: "Large Side of Chips", price: 4.00, desc: "Thick-cut chunky pub style chips seasoned with sea salt." },
+  { id: "extra_2", category: "Extras", name: "Crispy Bacon", price: 3.50, desc: "Add an extra portion of perfectly crisped bacon rasher strips." },
+  { id: "extra_3", category: "Extras", name: "Chicken Nuggets", price: 6.00, desc: "Golden, bite-sized chicken nuggets served with choice of dipping sauce." },
+  { id: "extra_4", category: "Extras", name: "Crispy Onion Rings", price: 5.00, desc: "Battered and deep-fried whole onion rings served crunchy and warm." },
+  { id: "extra_5", category: "Extras", name: "Garlic Bread", price: 3.00, desc: "Toasted baguette slices layered with premium herb and garlic butter." }
 ];
 
 let selectedItemIds = [];
