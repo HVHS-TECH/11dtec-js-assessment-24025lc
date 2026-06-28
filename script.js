@@ -100,13 +100,13 @@ function renderWireframeMenu() {
     targetContainer.appendChild(block);
   });
 }
+
 function toggleItemSelection(itemId) {
   // Adds the item ID to the array every single time it is clicked
   selectedItemIds.push(itemId);
   updateUISelectionStates();
   calculateLivePreview();
 }
-
 
 function removeOneItem(itemId) {
   // Finds the first instance of this item ID in the array and removes it
@@ -117,7 +117,6 @@ function removeOneItem(itemId) {
   updateUISelectionStates();
   calculateLivePreview();
 }
-
 
 function updateUISelectionStates() {
   menuItems.forEach(item => {
@@ -180,14 +179,30 @@ function checkCrossPageRedirect() {
     cart = localStorage.getItem("cartItemIds") || JSON.stringify([]);
   } catch (e) {
     cart = JSON.stringify([]);
-  } }
+  } 
+  
   const incomingIds = JSON.parse(cart);
   
   if (incomingIds && incomingIds.length > 0) {
     selectedItemIds = incomingIds;
-    updateUISelectionStates(); }
+    updateUISelectionStates(); 
+    calculateLivePreview();
+    localStorage.removeItem("cartItemIds"); 
+  }
+}
 
-    // Give the user visual feedback that the item was added
+function addToCart(itemId) {
+  let cart = JSON.stringify([]);
+  try {
+    cart = localStorage.getItem("cartItemIds") || JSON.stringify([]);
+  } catch (e) {
+    cart = JSON.stringify([]);
+  }
+  let currentCart = JSON.parse(cart);
+  currentCart.push(itemId);
+  localStorage.setItem("cartItemIds", JSON.stringify(currentCart));
+
+  // Give the user visual feedback that the item was added
   const btn = document.getElementById("btn_" + itemId);
   if (btn) {
     btn.textContent = "Added ✓";
@@ -197,3 +212,4 @@ function checkCrossPageRedirect() {
       btn.style.backgroundColor = "#27ae60";
     }, 1500);
   }
+}
