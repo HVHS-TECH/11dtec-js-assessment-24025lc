@@ -320,3 +320,51 @@ function processOrder() {
 }
 
 
+function selectAndGo(itemId) {
+  let currentCart = [];
+  
+  try {
+    // 1. Fetch existing list of queued items from memory
+    const existingCartData = localStorage.getItem("cartItemIds");
+    if (existingCartData) {
+      currentCart = JSON.parse(existingCartData);
+    }
+  } catch (e) {
+    currentCart = [];
+  }
+  
+  // 2. Append the newly clicked item to the list (allowing duplicates)
+  currentCart.push(itemId);
+  
+  // 3. Save the updated continuous list back to memory
+  localStorage.setItem("cartItemIds", JSON.stringify(currentCart));
+
+  // 4. Redirect the browser straight to the checkout system
+  window.location.href = "Ordering.html";
+}
+
+
+function checkCrossPageRedirect() {
+  let cart = JSON.stringify([]);
+  try {
+    cart = localStorage.getItem("cartItemIds") || JSON.stringify([]);
+  } catch (e) {
+    cart = JSON.stringify([]);
+  } 
+  
+  const incomingIds = JSON.parse(cart);
+  
+  if (incomingIds && incomingIds.length > 0) {
+    // FIX: Push incoming items into active list instead of replacing it
+    incomingIds.forEach(id => {
+      selectedItemIds.push(id);
+    });
+    
+    // Refresh  user interface graphics, counts, and previews
+    updateUISelectionStates(); 
+    calculateLivePreview();
+    
+    // Wipe out the cross-page transfer file so it doesn't duplicate on page reloads
+    localStorage.removeItem("cartItemIds"); 
+  }
+}
