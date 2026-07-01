@@ -277,61 +277,93 @@ window.onload = function() {
 
 
 
-function selectAndGo(itemId) {
-  const currentQty = getCartQuantities()[itemId] || 0;
+function processOrder() {
+  const customerNameInput = document.getElementById("customerName");
+  const cashPaidInput = document.getElementById("cashPaid");
+  const errorAlert = document.getElementById("errorAlert");
+  const receiptContainer = document.getElementById("receiptContainer");
 
-  // 1. Click Logic: If item is selected, a click adds another. (To let users order multiple different items, they just click their respective buttons).
-  addToCart(itemId);
+  const customerName = customerNameInput ? customerNameInput.value.trim() : "";
+  const cashPaidValue = cashPaidInput ? cashPaidInput.value : "";
 
+  if (errorAlert) {
+    errorAlert.style.display = "none";
+    errorAlert.textContent = "";
+  }
+
+  const itemQuantities = getCartQuantities();
+  let totalCost = 0;
+  let itemsSummaryArray = [];
+
+  for (const itemId in itemQuantities) {
+    // Adjusted comparison to loose equality so string itemIds match numeric menu IDs
+    const itemMatch = menuItems.find(i => i.id == itemId);
+    if (itemMatch) {
+      const qty = itemQuantities[itemId];
+      totalCost += itemMatch.price * qty;
+      itemsSummaryArray.push(`${qty}x ${itemMatch.name}`);
+    }
+  }
+
+  if (totalCost === 0) {
+    if (errorAlert) {
+      errorAlert.textContent = "Validation Error: Please select at least one item from the menu.";
+      errorAlert.style.display = "block";
+    }
+    return;
+  }
+
+  if (customerName === "") {
+    if (errorAlert) {
+      errorAlert.textContent = "Validation Error: Customer Name cannot be left blank.";
+      errorAlert.style.display = "block";
+    }
+    return;
+  }
+
+  const cashPaid = parseFloat(cashPaidValue);
+  if (isNaN(cashPaid) || cashPaid < totalCost) {
+    if (errorAlert) {
+      errorAlert.textContent = `Validation Error: Cash given ($${isNaN(cashPaid) ? '0.00' : cashPaid.toFixed(2)}) must be greater than or equal to the total order cost ($${totalCost.toFixed(2)}).`;
+      errorAlert.style.display = "block";
+    }
+    return;
+  }
+
+  const changeDue = cashPaid - totalCost;
+  const now = new Date();
+  const timeString = now.toLocaleDateString() + " " + now.toLocaleTimeString();
+
+  if (document.getElementById("receiptTime")) document.getElementById("receiptTime").textContent = timeString;
+  if (document.getElementById("rcptName")) document.getElementById("rcptName").textContent = customerName;
+  if (document.getElementById("rcptItem")) document.getElementById("rcptItem").innerHTML = itemsSummaryArray.join("<br>");
+  if (document.getElementById("rcptTotal")) document.getElementById("rcptTotal").textContent = `$${totalCost.toFixed(2)}`;
+  if (document.getElementById("rcptCash")) document.getElementById("rcptCash").textContent = `$${cashPaid.toFixed(2)}`;
+  if (document.getElementById("rcptChange")) document.getElementById("rcptChange").textContent = `$${changeDue.toFixed(2)}`;
+
+  if (receiptContainer) {
+    receiptContainer.style.display = "block";
+  }
+}
+
+// 8. CLEAR RESET METHOD: Wipes cache memory data back to fresh states
+function resetForm() {
+  localStorage.removeItem("cartItemIds");
+  if (document.getElementById("customerName")) document.getElementById("customerName").value = "";
+  if (document.getElementById("cashPaid")) document.getElementById("cashPaid").value = "";
+  if (document.getElementById("receiptContainer")) document.getElementById("receiptContainer").style.display = "none";
+  if (document.getElementById("errorAlert")) document.getElementById("errorAlert").style.display = "none";
+  updateInterface();
+}
+
+window.onload = function() {
+  updateInterface();
   
-  const buttons = document.querySelectorAll(`button[onclick*="'${itemId}'"], button[onclick*='"${itemId}"']`);
-  
-  buttons.forEach(btn => {
-
-    const cardBlock = btn.closest('.menu-item-row') || btn.parentElement;
-    
-
-    const freshQty = getCartQuantities()[itemId] || 0;
-
-    if (cardBlock && freshQty > 0) {
-      // Apply the exact light-green color aesthetics from ordering.html
-      cardBlock.style.borderColor = "#27ae60";
-      cardBlock.style.backgroundColor = "#f0fff4";
-      cardBlock.style.borderStyle = "solid";
-      cardBlock.style.borderWidth = "1px";
-      
-      
-      btn.textContent = `Order This Item (x${freshQty})`;
-      btn.style.backgroundColor = "#2ecc71";
-
-     
-      let removeLink = cardBlock.querySelector(`.remove-link-${itemId}`);
-      if (!removeLink) {
-        removeLink = document.createElement("span");
-        removeLink.className = `remove-link-${itemId}`;
-        removeLink.textContent = "Remove 1";
-        removeLink.style = "color: #c0392b; text-decoration: underline; cursor: pointer; font-size: 0.85rem; font-weight: bold; margin-left: 15px; display: inline-block; vertical-align: middle;";
-        
-        
-        removeLink.onclick = function(e) {
-          e.stopPropagation(); // Stop click from triggering add item again
-          removeFromCart(itemId);
-          
-          const updatedQty = getCartQuantities()[itemId] || 0;
-          if (updatedQty <= 0) {
-            
-            cardBlock.style.borderColor = "#ddd";
-            cardBlock.style.backgroundColor = "#fff";
-            btn.textContent = "Order This Item";
-            btn.style.backgroundColor = "";
-            removeLink.remove();
-          } else {
-            btn.textContent = `Order This Item (x${updatedQty})`;
-          }
-        };
-        
-        btn.parentNode.insertBefore(removeLink, btn.nextSibling);
-      }
+  window.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      processOrder();
+    } else if (event.key === "Backspace") {
+      resetForm();
     }
   });
-}
+};
