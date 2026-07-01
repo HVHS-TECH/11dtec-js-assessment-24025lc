@@ -269,13 +269,11 @@ window.onload = function() {
   window.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
       processOrder();
-    } else if (event.key === "Delete") {
+    } else if (event.key === "Backspace") {
       resetForm();
     }
   });
 };
-
-
 
 
 
