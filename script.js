@@ -204,8 +204,7 @@ function processOrder() {
   let itemsSummaryArray = [];
 
   for (const itemId in itemQuantities) {
-    // Satisfies both conditions: handles loose string matching and absolute numeric ID lookups
-    const itemMatch = menuItems.find(i => i.id == itemId || i.id === parseInt(itemId));
+    const itemMatch = menuItems.find(i => String(i.id) === String(itemId));
     if (itemMatch) {
       const qty = itemQuantities[itemId];
       totalCost += itemMatch.price * qty;
@@ -275,8 +274,6 @@ window.onload = function() {
     }
   });
 };
-
-
 
 function selectAndGo(itemId) {
   const currentQty = getCartQuantities()[itemId] || 0;
