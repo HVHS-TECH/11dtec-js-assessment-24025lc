@@ -216,6 +216,11 @@ function addToCart(itemId) {
       btn.textContent = "Add to Order";
       btn.style.backgroundColor = "#27ae60";
     }, 1500);
+
+     setTimeout(() => { 
+    btn.textContent = "Add to Order";
+    btn.style.backgroundColor = "#27ae60";
+  }, 1500);
   }
 }
 
@@ -367,4 +372,28 @@ function checkCrossPageRedirect() {
     // Wipe out the cross-page transfer file so it doesn't duplicate on page reloads
     localStorage.removeItem("cartItemIds"); 
   }
+}
+
+
+  localStorage.setItem("cartItemIds", JSON.stringify(currentCart));
+  
+  
+  updateInterface(); 
+
+
+  function getCartQuantities() {
+  let cart = [];
+  try {
+    cart = JSON.parse(localStorage.getItem("cartItemIds")) || [];
+  } catch (e) {
+    cart = [];
+  }
+
+  // Count how many times each ID shows up
+  let counts = {};
+  cart.forEach(itemId => {
+    counts[itemId] = (counts[itemId] || 0) + 1;
+  });
+  
+  return counts; // Returns an object like: { burg_0: 2, burg_2: 1 }
 }
