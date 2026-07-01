@@ -255,72 +255,77 @@ function resetForm() {
 
 
 function processOrder() {
-  const nameNode = document.getElementById("customerName");
-  const cashNode = document.getElementById("cashPaid");
-  const alertBox = document.getElementById("errorAlert");
-  const receiptBox = document.getElementById("receiptContainer");
-  
-  if (alertBox) alertBox.style.display = "none";
-  if (receiptBox) receiptBox.style.display = "none";
-  
-  const customerName = nameNode ? nameNode.value.trim() : "";
-  const cashValue = cashNode ? parseFloat(cashNode.value) : 0;
-  
-  if (customerName === "") {
-    triggerError("Missing Field: Customer Name is required to place an order.");
-    return;
+  const customerName = document.getElementById("customerName").value.trim();
+  const cashPaidInput = document.getElementById("cashPaid").value;
+  const errorAlert = document.getElementById("errorAlert");
+  const receiptContainer = document.getElementById("receiptContainer");
+
+  // Always clear old errors first
+  if (errorAlert) {
+    errorAlert.style.display = "none";
+    errorAlert.textContent = "";
   }
-  if (selectedItemIds.length === 0) {
-    triggerError("No Selection: Please select at least one menu item by clicking the options.");
-    return;
-  }
-  if (isNaN(cashValue) || cashValue < 0) {
-    triggerError("Invalid Payment: Please input a valid cash total paid.");
-    return;
-  }
-  
-  let orderTotalCost = 0;
-  let summaryItemNames = [];
-  const distinctIds = [...new Set(selectedItemIds)];
-  
-  distinctIds.forEach(id => {
-    const matchedObject = menuItems.find(item => item.id === id);
-    if (matchedObject) {
-      const quantity = selectedItemIds.filter(selectedId => selectedId === id).length;
-      const combinedLinePrice = matchedObject.price * quantity;
-      orderTotalCost += combinedLinePrice;
-      
-      // FIXED: Used proper backtick syntax wrappers to ensure string variable interpolation works safely
-      summaryItemNames.push(`${quantity}x ${matchedObject.name} ($${combinedLinePrice.toFixed(2)})`);
+
+  // CRUCIAL FIX: Read current items straight from localStorage so both pages match!
+  const itemQuantities = getCartQuantities(); 
+  let totalCost = 0;
+  let itemsSummaryArray = [];
+
+  for (const itemId in itemQuantities) {
+    const itemMatch = menuItems.find(i => i.id === itemId);
+    if (itemMatch) {
+      const qty = itemQuantities[itemId];
+      totalCost += itemMatch.price * qty;
+      itemsSummaryArray.push(`${qty}x ${itemMatch.name}`);
     }
-  });
-  
-  if (cashValue < orderTotalCost) {
-    // FIXED: Corrected loose text variables into clean backtick templates
-    triggerError(`Insufficient Funds: Your order costs $${orderTotalCost.toFixed(2)}. You are short by $${(orderTotalCost - cashValue).toFixed(2)}.`);
+  }
+
+  // 1. Validation Rule: Order must not be empty
+  if (totalCost === 0) {
+    if (errorAlert) {
+      errorAlert.textContent = "Validation Error: Please select at least one item from the menu.";
+      errorAlert.style.display = "block";
+    }
     return;
   }
-  
-  let balanceChange = cashValue - orderTotalCost;
-  
-  const rcptName = document.getElementById("rcptName");
-  const rcptItem = document.getElementById("rcptItem");
-  const rcptTotal = document.getElementById("rcptTotal");
-  const rcptCash = document.getElementById("rcptCash");
-  const rcptChange = document.getElementById("rcptChange");
-  const rcptTime = document.getElementById("receiptTime");
-  
-  if (rcptName) rcptName.textContent = customerName;
-  if (rcptItem) rcptItem.innerHTML = summaryItemNames.join("<br>");
-  if (rcptTotal) rcptTotal.textContent = `$${orderTotalCost.toFixed(2)}`;
-  if (rcptCash) rcptCash.textContent = `$${cashValue.toFixed(2)}`;
-  if (rcptChange) rcptChange.textContent = `$${balanceChange.toFixed(2)}`;
-  if (rcptTime) rcptTime.textContent = new Date().toLocaleString('en-NZ');
-  
-  // Forces the hidden receipt block wrapper to show up on screen
-  if (receiptBox) {
-    receiptBox.style.display = "block";
-    receiptBox.scrollIntoView({ behavior: 'smooth' });
+
+  // 2. Validation Rule: Name field must not be blank
+  if (customerName === "") {
+    if (errorAlert) {
+      errorAlert.textContent = "Validation Error: Customer Name cannot be left blank.";
+      errorAlert.style.display = "block";
+    }
+    return;
+  }
+
+  // 3. Validation Rule: Cash amount given must be valid and cover the cost
+  const cashPaid = parseFloat(cashPaidInput);
+  if (isNaN(cashPaid) || cashPaid < totalCost) {
+    if (errorAlert) {
+      errorAlert.textContent = `Validation Error: Cash given ($${isNaN(cashPaid) ? '0.00' : cashPaid.toFixed(2)}) must be greater than or equal to the total order cost ($${totalCost.toFixed(2)}).`;
+      errorAlert.style.display = "block";
+    }
+    return;
+  }
+
+  // Calculations
+  const changeDue = cashPaid - totalCost;
+
+  // Build terminal print timestamp
+  const now = new Date();
+  const timeString = now.toLocaleDateString() + " " + now.toLocaleTimeString();
+
+  // Populate Receipt UI (Only if the receipt elements exist on the current page layout)
+  if (document.getElementById("receiptTime")) document.getElementById("receiptTime").textContent = timeString;
+  if (document.getElementById("rcptName")) document.getElementById("rcptName").textContent = customerName;
+  if (document.getElementById("rcptItem")) document.getElementById("rcptItem").innerHTML = itemsSummaryArray.join("<br>");
+  if (document.getElementById("rcptTotal")) document.getElementById("rcptTotal").textContent = `$${totalCost.toFixed(2)}`;
+  if (document.getElementById("rcptCash")) document.getElementById("rcptCash").textContent = `$${cashPaid.toFixed(2)}`;
+  if (document.getElementById("rcptChange")) document.getElementById("rcptChange").textContent = `$${changeDue.toFixed(2)}`;
+
+  // Show the final summary panel
+  if (receiptContainer) {
+    receiptContainer.style.display = "block";
   }
 }
 
