@@ -87,10 +87,10 @@ function toggleItemSelection(itemId, isChecked) {
   }
 }
 
-// 5. GRID GENERATION LAYOUT: Dynamically paints item rows onto the web page interface
+// 5. GRID GENERATION LAYOUT: Dynamically paints item rows onto the web page interface for both pages
 function renderMenuLayout() {
   const container = document.getElementById("menuContainer");
-  if (!container) return;
+  if (!container) return; // Safely exit if the target layout hook doesn't exist on the current page
   
   container.innerHTML = ""; 
   const itemQuantities = getCartQuantities();
@@ -152,6 +152,7 @@ function renderMenuLayout() {
   });
 }
 
+
 // 6. SYNC ENGINE: Keeps prices and lists inside the preview board refreshed
 function updateInterface() {
   renderMenuLayout();
@@ -183,4 +184,85 @@ function updateInterface() {
   }
 }
 
-// 7. ORDERING SYSTEM CHECKOUT: Validates data fields and launches checkout layoutsfunction processOrder() {const customerNameInput = document.getElementById("customerName");const cashPaidInput = document.getElementById("cashPaid");const errorAlert = document.getElementById("errorAlert");const receiptContainer = document.getElementById("receiptContainer");const customerName = customerNameInput ? customerNameInput.value.trim() : "";const cashPaidValue = cashPaidInput ? cashPaidInput.value : "";if (errorAlert) {errorAlert.style.display = "none";errorAlert.textContent = "";}const itemQuantities = getCartQuantities();let totalCost = 0;let itemsSummaryArray = [];for (const itemId in itemQuantities) {const itemMatch = menuItems.find(i => i.id === itemId);if (itemMatch) {const qty = itemQuantities[itemId];totalCost += itemMatch.price * qty;itemsSummaryArray.push(${qty}x ${itemMatch.name});}}if (totalCost === 0) {if (errorAlert) {errorAlert.textContent = "Validation Error: Please select at least one item from the menu.";errorAlert.style.display = "block";}return;}if (customerName === "") {if (errorAlert) {errorAlert.textContent = "Validation Error: Customer Name cannot be left blank.";errorAlert.style.display = "block";}return;}const cashPaid = parseFloat(cashPaidValue);if (isNaN(cashPaid) || cashPaid < totalCost) {if (errorAlert) {errorAlert.textContent = Validation Error: Cash given ($${isNaN(cashPaid) ? '0.00' : cashPaid.toFixed(2)}) must be greater than or equal to the total order cost ($${totalCost.toFixed(2)}).;errorAlert.style.display = "block";}return;}const changeDue = cashPaid - totalCost;const now = new Date();const timeString = now.toLocaleDateString() + " " + now.toLocaleTimeString();if (document.getElementById("receiptTime")) document.getElementById("receiptTime").textContent = timeString;if (document.getElementById("rcptName")) document.getElementById("rcptName").textContent = customerName;if (document.getElementById("rcptItem")) document.getElementById("rcptItem").innerHTML = itemsSummaryArray.join("");if (document.getElementById("rcptTotal")) document.getElementById("rcptTotal").textContent = $${totalCost.toFixed(2)};if (document.getElementById("rcptCash")) document.getElementById("rcptCash").textContent = $${cashPaid.toFixed(2)};if (document.getElementById("rcptChange")) document.getElementById("rcptChange").textContent = $${changeDue.toFixed(2)};if (receiptContainer) {receiptContainer.style.display = "block";}}// 8. CLEAR RESET METHOD: Wipes cache memory data back to fresh statesfunction resetForm() {localStorage.removeItem("cartItemIds");if (document.getElementById("customerName")) document.getElementById("customerName").value = "";if (document.getElementById("cashPaid")) document.getElementById("cashPaid").value = "";if (document.getElementById("receiptContainer")) document.getElementById("receiptContainer").style.display = "none";if (document.getElementById("errorAlert")) document.getElementById("errorAlert").style.display = "none";updateInterface();}window.onload = function() {updateInterface();};
+// 7. ORDERING SYSTEM CHECKOUT: Validates data fields and launches checkout layouts
+function processOrder() {
+  const customerNameInput = document.getElementById("customerName");
+  const cashPaidInput = document.getElementById("cashPaid");
+  const errorAlert = document.getElementById("errorAlert");
+  const receiptContainer = document.getElementById("receiptContainer");
+
+  const customerName = customerNameInput ? customerNameInput.value.trim() : "";
+  const cashPaidValue = cashPaidInput ? cashPaidInput.value : "";
+
+  if (errorAlert) {
+    errorAlert.style.display = "none";
+    errorAlert.textContent = "";
+  }
+
+  const itemQuantities = getCartQuantities();
+  let totalCost = 0;
+  let itemsSummaryArray = [];
+
+  for (const itemId in itemQuantities) {
+    const itemMatch = menuItems.find(i => i.id === itemId);
+    if (itemMatch) {
+      const qty = itemQuantities[itemId];
+      totalCost += itemMatch.price * qty;
+      itemsSummaryArray.push(`${qty}x ${itemMatch.name}`);
+    }
+  }
+
+  if (totalCost === 0) {
+    if (errorAlert) {
+      errorAlert.textContent = "Validation Error: Please select at least one item from the menu.";
+      errorAlert.style.display = "block";
+    }
+    return;
+  }
+
+  if (customerName === "") {
+    if (errorAlert) {
+      errorAlert.textContent = "Validation Error: Customer Name cannot be left blank.";
+      errorAlert.style.display = "block";
+    }
+    return;
+  }
+
+  const cashPaid = parseFloat(cashPaidValue);
+  if (isNaN(cashPaid) || cashPaid < totalCost) {
+    if (errorAlert) {
+      errorAlert.textContent = `Validation Error: Cash given ($${isNaN(cashPaid) ? '0.00' : cashPaid.toFixed(2)}) must be greater than or equal to the total order cost ($${totalCost.toFixed(2)}).`;
+      errorAlert.style.display = "block";
+    }
+    return;
+  }
+
+  const changeDue = cashPaid - totalCost;
+  const now = new Date();
+  const timeString = now.toLocaleDateString() + " " + now.toLocaleTimeString();
+
+  if (document.getElementById("receiptTime")) document.getElementById("receiptTime").textContent = timeString;
+  if (document.getElementById("rcptName")) document.getElementById("rcptName").textContent = customerName;
+  if (document.getElementById("rcptItem")) document.getElementById("rcptItem").innerHTML = itemsSummaryArray.join("<br>");
+  if (document.getElementById("rcptTotal")) document.getElementById("rcptTotal").textContent = `$${totalCost.toFixed(2)}`;
+  if (document.getElementById("rcptCash")) document.getElementById("rcptCash").textContent = `$${cashPaid.toFixed(2)}`;
+  if (document.getElementById("rcptChange")) document.getElementById("rcptChange").textContent = `$${changeDue.toFixed(2)}`;
+
+  if (receiptContainer) {
+    receiptContainer.style.display = "block";
+  }
+}
+
+// 8. CLEAR RESET METHOD: Wipes cache memory data back to fresh states
+function resetForm() {
+  localStorage.removeItem("cartItemIds");
+  if (document.getElementById("customerName")) document.getElementById("customerName").value = "";
+  if (document.getElementById("cashPaid")) document.getElementById("cashPaid").value = "";
+  if (document.getElementById("receiptContainer")) document.getElementById("receiptContainer").style.display = "none";
+  if (document.getElementById("errorAlert")) document.getElementById("errorAlert").style.display = "none";
+  updateInterface();
+}
+
+window.onload = function() {
+  updateInterface();
+};
