@@ -255,6 +255,7 @@ function resetForm() {
 
 
 function processOrder() {
+  // ADD THESE 4 LINES HERE:
   const customerNameInput = document.getElementById("customerName");
   const cashPaidInput = document.getElementById("cashPaid");
   const errorAlert = document.getElementById("errorAlert");
@@ -294,7 +295,7 @@ function processOrder() {
 
 
 
-  
+
   // 2. Validation Checks: Customer Blank Check
   if (customerName === "") {
     if (errorAlert) {
