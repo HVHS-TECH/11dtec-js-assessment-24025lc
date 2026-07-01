@@ -265,7 +265,16 @@ function resetForm() {
 
 window.onload = function() {
   updateInterface();
+  
+  window.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      processOrder();
+    } else if (event.key === "Delete") {
+      resetForm();
+    }
+  });
 };
+
 
 
 
