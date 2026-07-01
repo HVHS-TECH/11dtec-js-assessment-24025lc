@@ -266,3 +266,33 @@ function resetForm() {
 window.onload = function() {
   updateInterface();
 };
+
+
+
+function selectAndGo(itemId) {
+
+  addToCart(itemId);
+  
+
+  const buttons = document.querySelectorAll(`button[onclick*="'${itemId}'"], button[onclick*='"${itemId}"']`);
+
+  const itemQuantities = getCartQuantities();
+  const qty = itemQuantities[itemId] || 0;
+
+  buttons.forEach(btn => {
+    // Find the white card block wrapper that surrounds this item row
+    const cardBlock = btn.closest('div[style*="background"], div') || btn.parentElement;
+    
+    if (cardBlock && qty > 0) {
+      // Apply the exact light-green color styling from Ordering.html
+      cardBlock.style.borderColor = "#27ae60";
+      cardBlock.style.backgroundColor = "#f0fff4";
+      cardBlock.style.borderStyle = "solid";
+      cardBlock.style.borderWidth = "1px";
+      
+    
+      btn.textContent = `Order This Item (x${qty})`;
+      btn.style.backgroundColor = "#2ecc71";
+    }
+  });
+}
