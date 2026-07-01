@@ -269,30 +269,62 @@ window.onload = function() {
 
 
 
+
 function selectAndGo(itemId) {
+  const currentQty = getCartQuantities()[itemId] || 0;
 
+  // 1. Click Logic: If item is selected, a click adds another. (To let users order multiple different items, they just click their respective buttons).
   addToCart(itemId);
+
   
-
   const buttons = document.querySelectorAll(`button[onclick*="'${itemId}'"], button[onclick*='"${itemId}"']`);
-
-  const itemQuantities = getCartQuantities();
-  const qty = itemQuantities[itemId] || 0;
-
+  
   buttons.forEach(btn => {
-    // Find the white card block wrapper that surrounds this item row
-    const cardBlock = btn.closest('div[style*="background"], div') || btn.parentElement;
+
+    const cardBlock = btn.closest('.menu-item-row') || btn.parentElement;
     
-    if (cardBlock && qty > 0) {
-      // Apply the exact light-green color styling from Ordering.html
+
+    const freshQty = getCartQuantities()[itemId] || 0;
+
+    if (cardBlock && freshQty > 0) {
+      // Apply the exact light-green color aesthetics from ordering.html
       cardBlock.style.borderColor = "#27ae60";
       cardBlock.style.backgroundColor = "#f0fff4";
       cardBlock.style.borderStyle = "solid";
       cardBlock.style.borderWidth = "1px";
       
-    
-      btn.textContent = `Order This Item (x${qty})`;
+      
+      btn.textContent = `Order This Item (x${freshQty})`;
       btn.style.backgroundColor = "#2ecc71";
+
+     
+      let removeLink = cardBlock.querySelector(`.remove-link-${itemId}`);
+      if (!removeLink) {
+        removeLink = document.createElement("span");
+        removeLink.className = `remove-link-${itemId}`;
+        removeLink.textContent = "Remove 1";
+        removeLink.style = "color: #c0392b; text-decoration: underline; cursor: pointer; font-size: 0.85rem; font-weight: bold; margin-left: 15px; display: inline-block; vertical-align: middle;";
+        
+        
+        removeLink.onclick = function(e) {
+          e.stopPropagation(); // Stop click from triggering add item again
+          removeFromCart(itemId);
+          
+          const updatedQty = getCartQuantities()[itemId] || 0;
+          if (updatedQty <= 0) {
+            
+            cardBlock.style.borderColor = "#ddd";
+            cardBlock.style.backgroundColor = "#fff";
+            btn.textContent = "Order This Item";
+            btn.style.backgroundColor = "";
+            removeLink.remove();
+          } else {
+            btn.textContent = `Order This Item (x${updatedQty})`;
+          }
+        };
+        
+        btn.parentNode.insertBefore(removeLink, btn.nextSibling);
+      }
     }
   });
 }
