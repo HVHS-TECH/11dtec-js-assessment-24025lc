@@ -255,19 +255,21 @@ function resetForm() {
 
 
 function processOrder() {
-  const customerName = document.getElementById("customerName").value.trim();
-  const cashPaidInput = document.getElementById("cashPaid").value;
+  const customerNameInput = document.getElementById("customerName");
+  const cashPaidInput = document.getElementById("cashPaid");
   const errorAlert = document.getElementById("errorAlert");
   const receiptContainer = document.getElementById("receiptContainer");
 
-  // Always clear old errors first
+  const customerName = customerNameInput ? customerNameInput.value.trim() : "";
+  const cashPaidValue = cashPaidInput ? cashPaidInput.value : "";
+
   if (errorAlert) {
     errorAlert.style.display = "none";
     errorAlert.textContent = "";
   }
 
-  // CRUCIAL FIX: Read current items straight from localStorage so both pages match!
-  const itemQuantities = getCartQuantities(); 
+  // Force system to look directly into shared localStorage counters
+  const itemQuantities = getCartQuantities();
   let totalCost = 0;
   let itemsSummaryArray = [];
 
@@ -280,7 +282,7 @@ function processOrder() {
     }
   }
 
-  // 1. Validation Rule: Order must not be empty
+  // 1. Validation Checks: Empty Cart Rule
   if (totalCost === 0) {
     if (errorAlert) {
       errorAlert.textContent = "Validation Error: Please select at least one item from the menu.";
@@ -289,7 +291,11 @@ function processOrder() {
     return;
   }
 
-  // 2. Validation Rule: Name field must not be blank
+
+
+
+  
+  // 2. Validation Checks: Customer Blank Check
   if (customerName === "") {
     if (errorAlert) {
       errorAlert.textContent = "Validation Error: Customer Name cannot be left blank.";
@@ -298,8 +304,8 @@ function processOrder() {
     return;
   }
 
-  // 3. Validation Rule: Cash amount given must be valid and cover the cost
-  const cashPaid = parseFloat(cashPaidInput);
+  // 3. Validation Checks: Insufficient Funds Guard
+  const cashPaid = parseFloat(cashPaidValue);
   if (isNaN(cashPaid) || cashPaid < totalCost) {
     if (errorAlert) {
       errorAlert.textContent = `Validation Error: Cash given ($${isNaN(cashPaid) ? '0.00' : cashPaid.toFixed(2)}) must be greater than or equal to the total order cost ($${totalCost.toFixed(2)}).`;
@@ -307,6 +313,30 @@ function processOrder() {
     }
     return;
   }
+
+  // Exact math calculations
+  const changeDue = cashPaid - totalCost;
+  const now = new Date();
+  const timeString = now.toLocaleDateString() + " " + now.toLocaleTimeString();
+
+  // Populate HTML elements on thermal layout slip safely
+  if (document.getElementById("receiptTime")) document.getElementById("receiptTime").textContent = timeString;
+  if (document.getElementById("rcptName")) document.getElementById("rcptName").textContent = customerName;
+  
+  // FIX: Formats multiple distinct items onto neat individual lines on receipt view
+  if (document.getElementById("rcptItem")) {
+    document.getElementById("rcptItem").innerHTML = itemsSummaryArray.join("<br>");
+  }
+  
+  if (document.getElementById("rcptTotal")) document.getElementById("rcptTotal").textContent = `$${totalCost.toFixed(2)}`;
+  if (document.getElementById("rcptCash")) document.getElementById("rcptCash").textContent = `$${cashPaid.toFixed(2)}`;
+  if (document.getElementById("rcptChange")) document.getElementById("rcptChange").textContent = `$${changeDue.toFixed(2)}`;
+
+  // Slide down and reveal the hidden receipt slip card container block
+  if (receiptContainer) {
+    receiptContainer.style.display = "block";
+  }
+}
 
   // Calculations
   const changeDue = cashPaid - totalCost;
