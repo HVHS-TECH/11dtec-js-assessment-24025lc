@@ -386,19 +386,33 @@ function checkCrossPageRedirect() {
   updateInterface(); 
 
 
-  function getCartQuantities() {
-  let cart = [];
-  try {
-    cart = JSON.parse(localStorage.getItem("cartItemIds")) || [];
-  } catch (e) {
-    cart = [];
+function updateInterface() {
+  renderMenuLayout();
+
+  const previewName = document.getElementById("previewName");
+  const previewPrice = document.getElementById("previewPrice");
+  if (!previewName || !previewPrice) return;
+
+  // CRUCIAL FIX: Force the live preview to use the exact same localStorage data!
+  const itemQuantities = getCartQuantities(); 
+  let totalCost = 0;
+  let itemsHtml = "";
+
+  for (const itemId in itemQuantities) {
+    const itemMatch = menuItems.find(i => i.id === itemId);
+    if (itemMatch) {
+      const qty = itemQuantities[itemId];
+      totalCost += itemMatch.price * qty;
+      itemsHtml += `<div style="color: #27ae60; font-weight: bold; margin-bottom: 3px;">+ ${qty}x ${itemMatch.name}</div>`;
+    }
   }
 
-  // Count how many times each ID shows up
-  let counts = {};
-  cart.forEach(itemId => {
-    counts[itemId] = (counts[itemId] || 0) + 1;
-  });
-  
-  return counts; // Returns an object like: { burg_0: 2, burg_2: 1 }
+  if (itemsHtml === "") {
+    previewName.innerHTML = "None Selected";
+    previewName.style.color = "";
+    previewPrice.textContent = "$0.00";
+  } else {
+    previewName.innerHTML = itemsHtml;
+    previewPrice.textContent = `$${totalCost.toFixed(2)}`;
+  }
 }
