@@ -1,5 +1,6 @@
 console.log("Welcome to Pavilion Kitchen - Final Balanced Edition");
 
+// 1. CENTRAL MENU DATABASE: Property names are perfectly unified to "desc"
 const menuItems = [
   { id: "burg_0", category: "Gourmet Burgers", name: "The Classic Cafe Cheeseburger", price: 8.00, desc: "Premium beef patty, melted cheddar, lettuce, tomato, pickles."},
   { id: "burg_1", category: "Gourmet Burgers", name: "The Classic Cafe Cheeseburger Meal", price: 17.00, desc: "Premium beef patty, melted cheddar, lettuce, tomato, pickles, house burger sauce, Large Fries, and Nuggets." },
@@ -39,384 +40,119 @@ const menuItems = [
   { id: "extra_5", category: "Extras", name: "Garlic Bread", price: 3.00, desc: "Toasted baguette slices layered with premium herb and garlic butter." }
 ];
 
-// Stores item IDs. Multiple clicks push duplicate IDs here to allow multi-quantity orders.
-let selectedItemIds = [];
+// 2. STORAGE ENGINE: Reads flat string lists from local application memory
+function getRawCart() {
+  try {
+    return JSON.parse(localStorage.getItem("cartItemIds")) || [];
+  } catch (e) {
+    return [];
+  }
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-  renderWireframeMenu();
-  checkCrossPageRedirect();
-});
-
-function renderWireframeMenu() {
-  const targetContainer = document.getElementById("menuContainer");
-  if (!targetContainer) return;
-  
-  targetContainer.innerHTML = ""; 
-  const categories = [];
-  
-  menuItems.forEach(item => {
-    if (!categories.includes(item.category)) {
-      categories.push(item.category);
-    }
+// 3. TALLY COUNTER MAP: Transforms ID string collections into quantity pairs
+function getCartQuantities() {
+  const rawCart = getRawCart();
+  let counts = {};
+  rawCart.forEach(itemId => {
+    counts[itemId] = (counts[itemId] || 0) + 1;
   });
+  return counts;
+}
+
+// 4. MULTI-ITEM OPERATIONS: Append or delete items smoothly
+function addToCart(itemId) {
+  let currentCart = getRawCart();
+  currentCart.push(itemId);
+  localStorage.setItem("cartItemIds", JSON.stringify(currentCart));
+  updateInterface();
+}
+
+function removeFromCart(itemId) {
+  let currentCart = getRawCart();
+  const index = currentCart.indexOf(itemId);
+  if (index > -1) {
+    currentCart.splice(index, 1);
+  }
+  localStorage.setItem("cartItemIds", JSON.stringify(currentCart));
+  updateInterface();
+}
+
+function toggleItemSelection(itemId, isChecked) {
+  if (isChecked) {
+    addToCart(itemId);
+  } else {
+    let currentCart = getRawCart().filter(id => id !== itemId);
+    localStorage.setItem("cartItemIds", JSON.stringify(currentCart));
+    updateInterface();
+  }
+}
+
+// 5. GRID GENERATION LAYOUT: Dynamically paints item rows onto the web page interface
+function renderMenuLayout() {
+  const container = document.getElementById("menuContainer");
+  if (!container) return;
+  
+  container.innerHTML = ""; 
+  const itemQuantities = getCartQuantities();
+  const categories = [...new Set(menuItems.map(item => item.category))];
 
   categories.forEach(catName => {
     const block = document.createElement("div");
     block.className = "category-block";
+    block.style.marginBottom = "25px";
+    
     const headerTitle = document.createElement("div");
     headerTitle.className = "category-title";
-    headerTitle.style = "margin: 15px 0 5px 0; color: #27ae60; font-weight: bold;";
+    headerTitle.style = "margin: 15px 0 10px 0; color: #27ae60; font-weight: bold; font-size: 1.15rem; text-align: left;";
     headerTitle.textContent = catName;
     block.appendChild(headerTitle);
-    
-    const grid = document.createElement("div");
-    grid.className = "grid-menu";
-    const items = menuItems.filter(item => item.category === catName);
-    
-    items.forEach(item => {
+
+    const itemsInCat = menuItems.filter(item => item.category === catName);
+
+    itemsInCat.forEach(item => {
+      const qty = itemQuantities[item.id] || 0;
+      const isSelected = qty > 0;
+
       const itemRow = document.createElement("div");
-      itemRow.className = "menu-row-item";
-      itemRow.id = `row_${item.id}`;
-      itemRow.onclick = () => toggleItemSelection(item.id);
-      itemRow.style = "padding: 10px; margin-bottom: 6px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; display: flex; gap: 10px; transition: 0.2s;";
-      
+      itemRow.className = "menu-item-row";
+      itemRow.style = `
+        border: 1px solid ${isSelected ? '#27ae60' : '#ddd'};
+        background-color: ${isSelected ? '#f0fff4' : '#fff'};
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+      `;
+
+      const qtyBadge = isSelected ? ` <span style="color: #27ae60; font-weight: bold;">(x${qty})</span>` : "";
+
       itemRow.innerHTML = `
-        <div class="item-checkbox-wrapper" style="display: flex; align-items: center; justify-content: center; min-width: 25px;"> 
-          <input type="checkbox" id="chk_${item.id}" value="${item.id}" style="pointer-events: none;"> 
-        </div> 
-        <div class="item-details" style="flex-grow: 1;"> 
-          <div class="item-name-row" style="display: flex; justify-content: space-between; font-weight: bold;"> 
-            <span>${item.name} <span id="badge_${item.id}" style="margin-left: 5px; color: #27ae60; font-weight: bold; display: none;"></span></span> 
-            <span class="item-price-tag" style="color: #27ae60;">$${item.price.toFixed(2)}</span> 
-          </div> 
-          <div class="item-desc" style="font-size: 0.85rem; color: #666; font-weight: normal; margin-top: 4px;">${item.desc}</div> 
-          <div id="minus_box_${item.id}" style="display: none; text-align: right; margin-top: 5px;">
-            <span onclick="event.stopPropagation(); removeOneItem('${item.id}');" style="font-size: 0.75rem; color: #c0392b; text-decoration: underline; font-weight: bold;">Remove 1</span>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleItemSelection('${item.id}', this.checked)" style="transform: scale(1.15); cursor: pointer;">
+            <span style="font-weight: bold; color: #111;">${item.name}${qtyBadge}</span>
           </div>
-        </div>`;
-      grid.appendChild(itemRow);
+          <span style="color: #27ae60; font-weight: bold;">$${item.price.toFixed(2)}</span>
+        </div>
+        <div style="font-size: 0.85rem; color: #555; margin: 6px 0 8px 26px; line-height: 1.4;">
+          ${item.desc}
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-left: 26px;">
+          <button id="btn_${item.id}" class="order-btn" onclick="addToCart('${item.id}'); event.stopPropagation();" style="background: #27ae60; color: white; border: none; padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; font-weight: bold;">Add to Order</button>
+          ${isSelected ? `
+            <span class="remove-link" onclick="removeFromCart('${item.id}'); event.stopPropagation();" style="color: #c0392b; text-decoration: underline; cursor: pointer; font-size: 0.85rem; font-weight: bold;">Remove 1</span>
+          ` : ''}
+        </div>
+      `;
+      block.appendChild(itemRow);
     });
-    block.appendChild(grid);
-    targetContainer.appendChild(block);
+    container.appendChild(block);
   });
 }
 
-function toggleItemSelection(itemId) {
-  // Adds the item ID to the array every single time it is clicked
-  selectedItemIds.push(itemId);
-  updateUISelectionStates();
-  calculateLivePreview();
-}
-
-function removeOneItem(itemId) {
-  // Finds the first instance of this item ID in the array and removes it
-  const index = selectedItemIds.indexOf(itemId);
-  if (index > -1) {
-    selectedItemIds.splice(index, 1);
-  }
-  updateUISelectionStates();
-  calculateLivePreview();
-}
-
-function updateUISelectionStates() {
-  menuItems.forEach(item => {
-    const row = document.getElementById(`row_${item.id}`);
-    const checkbox = document.getElementById(`chk_${item.id}`);
-    const badge = document.getElementById(`badge_${item.id}`);
-    const minusBox = document.getElementById(`minus_box_${item.id}`);
-    
-    // Count how many times this specific item ID appears in the order list
-    const itemQuantity = selectedItemIds.filter(id => id === item.id).length;
-    
-    if (row) {
-      if (itemQuantity > 0) {
-        row.style.borderColor = "#27ae60";
-        row.style.background = "#e8f8f0";
-        if (checkbox) checkbox.checked = true;
-        if (badge) {
-          badge.textContent = `(x${itemQuantity})`;
-          badge.style.display = "inline";
-        }
-        if (minusBox) minusBox.style.display = "block";
-      } else {
-        row.style.borderColor = "#ddd";
-        row.style.background = "#f9f9f9";
-        if (checkbox) checkbox.checked = false;
-        if (badge) badge.style.display = "none";
-        if (minusBox) minusBox.style.display = "none";
-      }
-    }
-  });
-}
-
-function calculateLivePreview() {
-  const previewName = document.getElementById("previewName");
-  const previewPrice = document.getElementById("previewPrice");
-  
-  if (!previewName || !previewPrice) return;
-
-  if (selectedItemIds.length === 0) {
-    previewName.textContent = "None Selected";
-    previewPrice.textContent = "$0.00";
-    return;
-  }
-  let totalCost = 0;
-  let namesArray = [];
-  
-  const distinctIds = [...new Set(selectedItemIds)];
-  
-  distinctIds.forEach(id => {
-    const itemMatch = menuItems.find(i => i.id === id);
-    if (itemMatch) {
-      const quantity = selectedItemIds.filter(selectedId => selectedId === id).length;
-      totalCost += (itemMatch.price * quantity);
-      namesArray.push(`${quantity}x ${itemMatch.name}`);
-    }
-  });
-  
-  previewName.innerHTML = namesArray.join("<br>+ ");
-  previewPrice.textContent = `$${totalCost.toFixed(2)}`;
-}
-
-function checkCrossPageRedirect() {
-  let cart = JSON.stringify([]);
-  try {
-    cart = localStorage.getItem("cartItemIds") || JSON.stringify([]);
-  } catch (e) {
-    cart = JSON.stringify([]);
-  } 
-  
-  const incomingIds = JSON.parse(cart);
-  
-  if (incomingIds && incomingIds.length > 0) {
-    selectedItemIds = incomingIds;
-    updateUISelectionStates(); 
-    calculateLivePreview();
-    localStorage.removeItem("cartItemIds"); 
-  }
-}
-
-function addToCart(itemId) {
-  let cart = JSON.stringify([]);
-  try {
-    cart = localStorage.getItem("cartItemIds") || JSON.stringify([]);
-  } catch (e) {
-    cart = JSON.stringify([]);
-  }
-  let currentCart = JSON.parse(cart);
-  currentCart.push(itemId);
-  localStorage.setItem("cartItemIds", JSON.stringify(currentCart));
-
-  // Give the user visual feedback that the item was added
-  const btn = document.getElementById("btn_" + itemId);
-  if (btn) {
-    btn.textContent = "Added ✓";
-    btn.style.backgroundColor = "#2ecc71";
-    setTimeout(() => { 
-      btn.textContent = "Add to Order";
-      btn.style.backgroundColor = "#27ae60";
-    }, 1500);
-
-     setTimeout(() => { 
-    btn.textContent = "Add to Order";
-    btn.style.backgroundColor = "#27ae60";
-  }, 1500);
-  }
-}
-
-function resetForm() {
-  // 1. Reset all input fields inside the customer form
-  const form = document.getElementById("orderForm");
-  if (form) form.reset();
-  
-  // 2. Clear out the entire selection tracking list
-  selectedItemIds = [];
-  
-  // 3. Reset the Live Preview box texts back to zero
-  const pName = document.getElementById("previewName");
-  const pPrice = document.getElementById("previewPrice");
-  if (pName) pName.textContent = "None Selected";
-  if (pPrice) pPrice.textContent = "$0.00";
-  
-  // 4. Update the visual menu items to uncheck cards and hide quantity badges
-  updateUISelectionStates();
-  
-  // 5. Hide the error message bar and the receipt slips from the screen
-  const alertBox = document.getElementById("errorAlert");
-  const receiptBox = document.getElementById("receiptContainer");
-  if (alertBox) alertBox.style.display = "none";
-  if (receiptBox) receiptBox.style.display = "none";
-  
-  // 6. Wipe out the cross-page memory transfer trail completely
-  localStorage.removeItem("cartItemIds");
-}
-
-
-
-
-function processOrder() {
-  // ADD THESE 4 LINES HERE:
-  const customerNameInput = document.getElementById("customerName");
-  const cashPaidInput = document.getElementById("cashPaid");
-  const errorAlert = document.getElementById("errorAlert");
-  const receiptContainer = document.getElementById("receiptContainer");
-
-  const customerName = customerNameInput ? customerNameInput.value.trim() : "";
-  const cashPaidValue = cashPaidInput ? cashPaidInput.value : "";
-
-  if (errorAlert) {
-    errorAlert.style.display = "none";
-    errorAlert.textContent = "";
-  }
-
-  // Force system to look directly into shared localStorage counters
-  const itemQuantities = getCartQuantities();
-  let totalCost = 0;
-  let itemsSummaryArray = [];
-
-  for (const itemId in itemQuantities) {
-    const itemMatch = menuItems.find(i => i.id === itemId);
-    if (itemMatch) {
-      const qty = itemQuantities[itemId];
-      totalCost += itemMatch.price * qty;
-      itemsSummaryArray.push(`${qty}x ${itemMatch.name}`);
-    
-  }
-
-  // 1. Validation Checks: Empty Cart Rule
-  if (totalCost === 0) {
-    if (errorAlert) {
-      errorAlert.textContent = "Validation Error: Please select at least one item from the menu.";
-      errorAlert.style.display = "block";
-    }
-    return;
-  }
-
-
-
-
-
-  // 2. Validation Checks: Customer Blank Check
-  if (customerName === "") {
-    if (errorAlert) {
-      errorAlert.textContent = "Validation Error: Customer Name cannot be left blank.";
-      errorAlert.style.display = "block";
-    }
-    return;
-  }
-
-  // 3. Validation Checks: Insufficient Funds Guard
-  const cashPaid = parseFloat(cashPaidValue);
-  if (isNaN(cashPaid) || cashPaid < totalCost) {
-    if (errorAlert) {
-      errorAlert.textContent = `Validation Error: Cash given ($${isNaN(cashPaid) ? '0.00' : cashPaid.toFixed(2)}) must be greater than or equal to the total order cost ($${totalCost.toFixed(2)}).`;
-      errorAlert.style.display = "block";
-    }
-    return;
-  }
-
-  // Exact math calculations
-  const changeDue = cashPaid - totalCost;
-  const now = new Date();
-  const timeString = now.toLocaleDateString() + " " + now.toLocaleTimeString();
-
-  // Populate HTML elements on thermal layout slip safely
-  if (document.getElementById("receiptTime")) document.getElementById("receiptTime").textContent = timeString;
-  if (document.getElementById("rcptName")) document.getElementById("rcptName").textContent = customerName;
-  
-  // FIX: Formats multiple distinct items onto neat individual lines on receipt view
-  if (document.getElementById("rcptItem")) {
-    document.getElementById("rcptItem").innerHTML = itemsSummaryArray.join("<br>");
-  }
-  
-  if (document.getElementById("rcptTotal")) document.getElementById("rcptTotal").textContent = `$${totalCost.toFixed(2)}`;
-  if (document.getElementById("rcptCash")) document.getElementById("rcptCash").textContent = `$${cashPaid.toFixed(2)}`;
-  if (document.getElementById("rcptChange")) document.getElementById("rcptChange").textContent = `$${changeDue.toFixed(2)}`;
-
-  // Slide down and reveal the hidden receipt slip card container block
-  if (receiptContainer) {
-    receiptContainer.style.display = "block";
-  }
-}
-
-  // Calculations
-  const changeDue = cashPaid - totalCost;
-
-  // Build terminal print timestamp
-  const now = new Date();
-  const timeString = now.toLocaleDateString() + " " + now.toLocaleTimeString();
-
-  // Populate Receipt UI (Only if the receipt elements exist on the current page layout)
-  if (document.getElementById("receiptTime")) document.getElementById("receiptTime").textContent = timeString;
-  if (document.getElementById("rcptName")) document.getElementById("rcptName").textContent = customerName;
-  if (document.getElementById("rcptItem")) document.getElementById("rcptItem").innerHTML = itemsSummaryArray.join("<br>");
-  if (document.getElementById("rcptTotal")) document.getElementById("rcptTotal").textContent = `$${totalCost.toFixed(2)}`;
-  if (document.getElementById("rcptCash")) document.getElementById("rcptCash").textContent = `$${cashPaid.toFixed(2)}`;
-  if (document.getElementById("rcptChange")) document.getElementById("rcptChange").textContent = `$${changeDue.toFixed(2)}`;
-
-  // Show the final summary panel
-  if (receiptContainer) {
-    receiptContainer.style.display = "block";
-  }
-}
-
-
-function selectAndGo(itemId) {
-  let currentCart = [];
-  
-  try {
-    // 1. Fetch existing list of queued items from memory
-    const existingCartData = localStorage.getItem("cartItemIds");
-    if (existingCartData) {
-      currentCart = JSON.parse(existingCartData);
-    }
-  } catch (e) {
-    currentCart = [];
-  }
-  
-  // 2. Append the newly clicked item to the list (allowing duplicates)
-  currentCart.push(itemId);
-  
-  // 3. Save the updated continuous list back to memory
-  localStorage.setItem("cartItemIds", JSON.stringify(currentCart));
-
-  // 4. Redirect the browser straight to the checkout system
-  window.location.href = "Ordering.html";
-}
-
-
-function checkCrossPageRedirect() {
-  let cart = JSON.stringify([]);
-  try {
-    cart = localStorage.getItem("cartItemIds") || JSON.stringify([]);
-  } catch (e) {
-    cart = JSON.stringify([]);
-  } 
-  
-  const incomingIds = JSON.parse(cart);
-  
-  if (incomingIds && incomingIds.length > 0) {
-    // FIX: Push incoming items into active list instead of replacing it
-    incomingIds.forEach(id => {
-      selectedItemIds.push(id);
-    });
-    
-    // Refresh  user interface graphics, counts, and previews
-    updateUISelectionStates(); 
-    calculateLivePreview();
-    
-    // Wipe out the cross-page transfer file so it doesn't duplicate on page reloads
-    localStorage.removeItem("cartItemIds"); 
-  }
-}
-
-
-  localStorage.setItem("cartItemIds", JSON.stringify(currentCart));
-  
-  
-  updateInterface(); 
-
-
+// 6. SYNC ENGINE: Keeps prices and lists inside the preview board refreshed
 function updateInterface() {
   renderMenuLayout();
 
@@ -424,8 +160,7 @@ function updateInterface() {
   const previewPrice = document.getElementById("previewPrice");
   if (!previewName || !previewPrice) return;
 
-  // CRUCIAL FIX: Force the live preview to use the exact same localStorage data!
-  const itemQuantities = getCartQuantities(); 
+  const itemQuantities = getCartQuantities();
   let totalCost = 0;
   let itemsHtml = "";
 
@@ -447,3 +182,5 @@ function updateInterface() {
     previewPrice.textContent = `$${totalCost.toFixed(2)}`;
   }
 }
+
+// 7. ORDERING SYSTEM CHECKOUT: Validates data fields and launches checkout layoutsfunction processOrder() {const customerNameInput = document.getElementById("customerName");const cashPaidInput = document.getElementById("cashPaid");const errorAlert = document.getElementById("errorAlert");const receiptContainer = document.getElementById("receiptContainer");const customerName = customerNameInput ? customerNameInput.value.trim() : "";const cashPaidValue = cashPaidInput ? cashPaidInput.value : "";if (errorAlert) {errorAlert.style.display = "none";errorAlert.textContent = "";}const itemQuantities = getCartQuantities();let totalCost = 0;let itemsSummaryArray = [];for (const itemId in itemQuantities) {const itemMatch = menuItems.find(i => i.id === itemId);if (itemMatch) {const qty = itemQuantities[itemId];totalCost += itemMatch.price * qty;itemsSummaryArray.push(${qty}x ${itemMatch.name});}}if (totalCost === 0) {if (errorAlert) {errorAlert.textContent = "Validation Error: Please select at least one item from the menu.";errorAlert.style.display = "block";}return;}if (customerName === "") {if (errorAlert) {errorAlert.textContent = "Validation Error: Customer Name cannot be left blank.";errorAlert.style.display = "block";}return;}const cashPaid = parseFloat(cashPaidValue);if (isNaN(cashPaid) || cashPaid < totalCost) {if (errorAlert) {errorAlert.textContent = Validation Error: Cash given ($${isNaN(cashPaid) ? '0.00' : cashPaid.toFixed(2)}) must be greater than or equal to the total order cost ($${totalCost.toFixed(2)}).;errorAlert.style.display = "block";}return;}const changeDue = cashPaid - totalCost;const now = new Date();const timeString = now.toLocaleDateString() + " " + now.toLocaleTimeString();if (document.getElementById("receiptTime")) document.getElementById("receiptTime").textContent = timeString;if (document.getElementById("rcptName")) document.getElementById("rcptName").textContent = customerName;if (document.getElementById("rcptItem")) document.getElementById("rcptItem").innerHTML = itemsSummaryArray.join("");if (document.getElementById("rcptTotal")) document.getElementById("rcptTotal").textContent = $${totalCost.toFixed(2)};if (document.getElementById("rcptCash")) document.getElementById("rcptCash").textContent = $${cashPaid.toFixed(2)};if (document.getElementById("rcptChange")) document.getElementById("rcptChange").textContent = $${changeDue.toFixed(2)};if (receiptContainer) {receiptContainer.style.display = "block";}}// 8. CLEAR RESET METHOD: Wipes cache memory data back to fresh statesfunction resetForm() {localStorage.removeItem("cartItemIds");if (document.getElementById("customerName")) document.getElementById("customerName").value = "";if (document.getElementById("cashPaid")) document.getElementById("cashPaid").value = "";if (document.getElementById("receiptContainer")) document.getElementById("receiptContainer").style.display = "none";if (document.getElementById("errorAlert")) document.getElementById("errorAlert").style.display = "none";updateInterface();}window.onload = function() {updateInterface();};
