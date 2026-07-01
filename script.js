@@ -280,7 +280,7 @@ function processOrder() {
       const qty = itemQuantities[itemId];
       totalCost += itemMatch.price * qty;
       itemsSummaryArray.push(`${qty}x ${itemMatch.name}`);
-    }
+    
   }
 
   // 1. Validation Checks: Empty Cart Rule
