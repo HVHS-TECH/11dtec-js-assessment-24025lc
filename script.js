@@ -275,61 +275,52 @@ window.onload = function() {
   });
 };
 
-function selectAndGo(itemId) {
-  const currentQty = getCartQuantities()[itemId] || 0;
+function selectAndGo(itemId, clickedButton) {
+  // 1. Target the item context directly from the clicked button instead of querying globally
+  const btn = clickedButton || document.querySelector(`button[onclick*="'${itemId}'"]`);
+  if (!btn) return;
 
-  // 1. Click Logic: If item is selected, a click adds another. (To let users order multiple different items, they just click their respective buttons).
+  const cardBlock = btn.closest('.menu-item-row') || btn.parentElement;
+  if (!cardBlock) return;
+
+  // 2. Click Logic: Add only the single specific item clicked to the cart
   addToCart(itemId);
+  const freshQty = getCartQuantities()[itemId] || 0;
 
-  
-  const buttons = document.querySelectorAll(`button[onclick*="'${itemId}'"], button[onclick*='"${itemId}"']`);
-  
-  buttons.forEach(btn => {
-
-    const cardBlock = btn.closest('.menu-item-row') || btn.parentElement;
+  if (freshQty > 0) {
+    // Apply the exact light-green color aesthetics from ordering.html
+    cardBlock.style.borderColor = "#27ae60";
+    cardBlock.style.backgroundColor = "#f0fff4";
+    cardBlock.style.borderStyle = "solid";
+    cardBlock.style.borderWidth = "1px";
     
+    btn.textContent = `Order This Item (x${freshQty})`;
+    btn.style.backgroundColor = "#2ecc71";
 
-    const freshQty = getCartQuantities()[itemId] || 0;
-
-    if (cardBlock && freshQty > 0) {
-      // Apply the exact light-green color aesthetics from ordering.html
-      cardBlock.style.borderColor = "#27ae60";
-      cardBlock.style.backgroundColor = "#f0fff4";
-      cardBlock.style.borderStyle = "solid";
-      cardBlock.style.borderWidth = "1px";
+    let removeLink = cardBlock.querySelector(`.remove-link-${itemId}`);
+    if (!removeLink) {
+      removeLink = document.createElement("span");
+      removeLink.className = `remove-link-${itemId}`;
+      removeLink.textContent = "Remove 1";
+      removeLink.style = "color: #c0392b; text-decoration: underline; cursor: pointer; font-size: 0.85rem; font-weight: bold; margin-left: 15px; display: inline-block; vertical-align: middle;";
       
+      removeLink.onclick = function(e) {
+        e.stopPropagation(); // Stop click from triggering add item again
+        removeFromCart(itemId);
+        
+        const updatedQty = getCartQuantities()[itemId] || 0;
+        if (updatedQty <= 0) {
+          cardBlock.style.borderColor = "#ddd";
+          cardBlock.style.backgroundColor = "#fff";
+          btn.textContent = "Order This Item";
+          btn.style.backgroundColor = "";
+          removeLink.remove();
+        } else {
+          btn.textContent = `Order This Item (x${updatedQty})`;
+        }
+      };
       
-      btn.textContent = `Order This Item (x${freshQty})`;
-      btn.style.backgroundColor = "#2ecc71";
-
-     
-      let removeLink = cardBlock.querySelector(`.remove-link-${itemId}`);
-      if (!removeLink) {
-        removeLink = document.createElement("span");
-        removeLink.className = `remove-link-${itemId}`;
-        removeLink.textContent = "Remove 1";
-        removeLink.style = "color: #c0392b; text-decoration: underline; cursor: pointer; font-size: 0.85rem; font-weight: bold; margin-left: 15px; display: inline-block; vertical-align: middle;";
-        
-        
-        removeLink.onclick = function(e) {
-          e.stopPropagation(); // Stop click from triggering add item again
-          removeFromCart(itemId);
-          
-          const updatedQty = getCartQuantities()[itemId] || 0;
-          if (updatedQty <= 0) {
-            
-            cardBlock.style.borderColor = "#ddd";
-            cardBlock.style.backgroundColor = "#fff";
-            btn.textContent = "Order This Item";
-            btn.style.backgroundColor = "";
-            removeLink.remove();
-          } else {
-            btn.textContent = `Order This Item (x${updatedQty})`;
-          }
-        };
-        
-        btn.parentNode.insertBefore(removeLink, btn.nextSibling);
-      }
+      btn.parentNode.insertBefore(removeLink, btn.nextSibling);
     }
-  });
+  }
 }
