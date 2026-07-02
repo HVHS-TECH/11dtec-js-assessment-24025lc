@@ -214,7 +214,7 @@ function processOrder() {
 
   if (totalCost === 0) {
     if (errorAlert) {
-      errorAlert.textContent = "Validation Error: Please select at least one item from the menu.";
+      errorAlert.textContent = "Insufficient funds: Please select at least one item from the menu.";
       errorAlert.style.display = "block";
     }
     return;
