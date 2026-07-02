@@ -222,7 +222,7 @@ if (totalCost === 0) {
   
   if (customerName === "") {
     if (errorAlert) {
-      errorAlert.textContent = "Validation Error: Customer Name cannot be left blank.";
+      errorAlert.textContent = "Missing Field: Customer Name is required to place an order.";
       errorAlert.style.display = "block";
     }
     return;
@@ -230,7 +230,7 @@ if (totalCost === 0) {
 
   const cashPaid = parseFloat(cashPaidValue);
   
-  // Calculate shortByAmount HERE so the computer knows what it means
+  // This calculates shortByAmount HERE so the computer knows what it means
   const shortByAmount = totalCost - (isNaN(cashPaid) ? 0 : cashPaid);
 
   if (isNaN(cashPaid) || cashPaid < totalCost) {
@@ -241,10 +241,9 @@ if (totalCost === 0) {
     return;
   }
 
-  // --- ORDER PROCESSES SUCCESSFULLY BELOW THIS LINE ---
-  // If the code reaches this point, the order is valid!
+
   if (errorAlert) {
-    errorAlert.style.display = "none"; // Hide any old error messages
+    errorAlert.style.display = "none";
   }
 
   const changeDue = cashPaid - totalCost;
