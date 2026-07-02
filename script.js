@@ -212,42 +212,13 @@ function processOrder() {
     }
   }
 
-if (totalCost === 0) {
-  if (errorAlert) {
-    // Note: If totalCost is 0, they haven't selected anything yet, 
-    // so you might want to keep a message like this for empty orders:
-    errorAlert.textContent = "Please select at least one item from the menu.";
-    errorAlert.style.display = "block";
+  if (totalCost === 0) {
+    if (errorAlert) {
+      errorAlert.textContent = "Validation Error: Please select at least one item from the menu.";
+      errorAlert.style.display = "block";
+    }
+    return;
   }
-  return;
-}
-
-// 1. Calculate how short they are (assuming you have a variable for user balance)
-const shortByAmount = totalCost - availableBalance;
-
-// 2. Check if the total cost exceeds their budget
-if (totalCost > availableBalance) {
-  if (errorAlert) {
-    // 3. Display the exact text with the calculated dollar amounts
-    errorAlert.textContent = `Insufficient funds. Your order costs $${totalCost.toFixed(2)}. You are short by $${shortByAmount.toFixed(2)}.`;
-    errorAlert.style.display = "block";
-  }
-  return;
-}
-
-// 1. Calculate how short they are (assuming you have a variable for user balance)
-const shortByAmount = totalCost - availableBalance;
-
-// 2. Check if the total cost exceeds their budget
-if (totalCost > availableBalance) {
-  if (errorAlert) {
-    // 3. Display the exact text with the calculated dollar amounts
-    errorAlert.textContent = `Insufficient funds. Your order costs $${totalCost.toFixed(2)}. You are short by $${shortByAmount.toFixed(2)}.`;
-    errorAlert.style.display = "block";
-  }
-  return;
-}
-
 
   if (customerName === "") {
     if (errorAlert) {
