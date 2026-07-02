@@ -275,27 +275,30 @@ window.onload = function() {
   });
 };
 
-function selectAndGo(itemId, clickedButton) {
-  // 1. Target the item context directly from the clicked button instead of querying globally
-  const btn = clickedButton || document.querySelector(`button[onclick*="'${itemId}'"]`);
-  if (!btn) return;
+function selectAndGo(itemId) {
+  // 1. Get the exact button element that was just clicked from the window event context
+  const btn = window.event ? window.event.currentTarget || window.event.target : null;
+  
+  // Fallback: If event tracking fails, use a localized selector for security
+  const targetBtn = (btn && btn.tagName === 'BUTTON') ? btn : document.querySelector(`button[onclick*="'${itemId}'"], button[onclick*='"${itemId}"']`);
+  if (!targetBtn) return;
 
-  const cardBlock = btn.closest('.menu-item-row') || btn.parentElement;
-  if (!cardBlock) return;
-
-  // 2. Click Logic: Add only the single specific item clicked to the cart
+  // 2. Click Logic: Only add the item to the cart state
   addToCart(itemId);
   const freshQty = getCartQuantities()[itemId] || 0;
 
-  if (freshQty > 0) {
+  // 3. Isolate the DOM changes strictly to this clicked item's card layout block
+  const cardBlock = targetBtn.closest('.menu-item-row') || targetBtn.parentElement;
+
+  if (cardBlock && freshQty > 0) {
     // Apply the exact light-green color aesthetics from ordering.html
     cardBlock.style.borderColor = "#27ae60";
     cardBlock.style.backgroundColor = "#f0fff4";
     cardBlock.style.borderStyle = "solid";
     cardBlock.style.borderWidth = "1px";
     
-    btn.textContent = `Order This Item (x${freshQty})`;
-    btn.style.backgroundColor = "#2ecc71";
+    targetBtn.textContent = `Order This Item (x${freshQty})`;
+    targetBtn.style.backgroundColor = "#2ecc71";
 
     let removeLink = cardBlock.querySelector(`.remove-link-${itemId}`);
     if (!removeLink) {
@@ -312,15 +315,15 @@ function selectAndGo(itemId, clickedButton) {
         if (updatedQty <= 0) {
           cardBlock.style.borderColor = "#ddd";
           cardBlock.style.backgroundColor = "#fff";
-          btn.textContent = "Order This Item";
-          btn.style.backgroundColor = "";
+          targetBtn.textContent = "Order This Item";
+          targetBtn.style.backgroundColor = "";
           removeLink.remove();
         } else {
-          btn.textContent = `Order This Item (x${updatedQty})`;
+          targetBtn.textContent = `Order This Item (x${updatedQty})`;
         }
       };
       
-      btn.parentNode.insertBefore(removeLink, btn.nextSibling);
+      targetBtn.parentNode.insertBefore(removeLink, targetBtn.nextSibling);
     }
   }
 }
