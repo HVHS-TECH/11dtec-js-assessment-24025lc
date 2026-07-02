@@ -212,14 +212,14 @@ function processOrder() {
     }
   }
 
-  if (totalCost === 0) {
+if (totalCost === 0) {
     if (errorAlert) {
       errorAlert.textContent = "Validation Error: Please select at least one item from the menu.";
       errorAlert.style.display = "block";
     }
     return;
   }
-
+  
   if (customerName === "") {
     if (errorAlert) {
       errorAlert.textContent = "Validation Error: Customer Name cannot be left blank.";
@@ -229,12 +229,22 @@ function processOrder() {
   }
 
   const cashPaid = parseFloat(cashPaidValue);
+  
+  // Calculate shortByAmount HERE so the computer knows what it means
+  const shortByAmount = totalCost - (isNaN(cashPaid) ? 0 : cashPaid);
+
   if (isNaN(cashPaid) || cashPaid < totalCost) {
     if (errorAlert) {
-      errorAlert.textContent = `Validation Error: Cash given ($${isNaN(cashPaid) ? '0.00' : cashPaid.toFixed(2)}) must be greater than or equal to the total order cost ($${totalCost.toFixed(2)}).`;
+      errorAlert.textContent = `Insufficient funds. Your order costs $${totalCost.toFixed(2)}. You are short by $${shortByAmount.toFixed(2)}.`;
       errorAlert.style.display = "block";
     }
     return;
+  }
+
+  // --- ORDER PROCESSES SUCCESSFULLY BELOW THIS LINE ---
+  // If the code reaches this point, the order is valid!
+  if (errorAlert) {
+    errorAlert.style.display = "none"; // Hide any old error messages
   }
 
   const changeDue = cashPaid - totalCost;
