@@ -284,20 +284,19 @@ window.onload = function() {
   });
 };
 
-function selectAndGo(itemId) {
-  // 1. Explicitly select the exact button string containing this unique itemId
+ function selectAndGo(itemId) {
+  // Directly targets the explicit button signature without relying on window click context
   const targetBtn = document.querySelector(`button[onclick="selectAndGo('${itemId}')"]`);
   if (!targetBtn) return;
 
-  // 2. Click Logic: Only add the item to the cart state
+  // State cart updating logic
   addToCart(itemId);
   const freshQty = getCartQuantities()[itemId] || 0;
 
-  // 3. Isolate the DOM changes strictly to this clicked item's card layout block
+  // Target the card block wrapper safely
   const cardBlock = targetBtn.closest('.menu-item-card');
 
   if (cardBlock && freshQty > 0) {
-    // Apply the exact light-green color aesthetics from ordering.html
     cardBlock.style.borderColor = "#27ae60";
     cardBlock.style.backgroundColor = "#f0fff4";
     cardBlock.style.borderStyle = "solid";
@@ -314,7 +313,7 @@ function selectAndGo(itemId) {
       removeLink.style = "color: #c0392b; text-decoration: underline; cursor: pointer; font-size: 0.85rem; font-weight: bold; margin-left: 15px; display: inline-block; vertical-align: middle;";
       
       removeLink.onclick = function(e) {
-        e.stopPropagation(); // Stop click from triggering add item again
+        e.stopPropagation();
         removeFromCart(itemId);
         
         const updatedQty = getCartQuantities()[itemId] || 0;
