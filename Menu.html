@@ -27,429 +27,278 @@
     <!-- Added the menu-title class here -->
     <h1 class="menu-title">The Pavilion Kitchen Menu</h1>
   </header>  
-      <main class="menu-display-container" style="max-width: 2000px; margin: 0 auto 0 20px; padding: 0 20px; background: rgba(255, 255, 255, 0.15); border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+      <!DOCTYPE html>
+<html lang="en">
 
-     <div class="menu-header-block" style="box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+<head>
+  <title>The Pavilion Kitchen</title>
+  <meta charset="UTF-8">
+
+  <!-- Google Fonts Inter configuration -->
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com" rel="stylesheet">
+
+  <!-- favicon: correct path and include shortcut for older browsers -->
+  <link rel="icon" type="image/x-icon" href="images.html/lc_icon.ico">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body class="menu-page">
+ 
+  <!-- Global Top Navigation Links -->
+  <nav>
+    <a class="button" href="index.html">Home</a>
+    <a class="button" href="Menu.html">Menu</a>
+    <a class="button" href="Ordering.html">Ordering</a>
+    <hr class="horizontal">
+  </nav>
+
+  <!-- Page Header Title Branding Block -->
+  <header>
+    <h1 class="menu-title">The Pavilion Kitchen Menu</h1>
+  </header>
+
+  <!-- Main Dynamic Grid Display Container Window -->
+  <main class="menu-display-container" style="max-width: 2000px; margin: 0 auto 0 20px; padding: 0 20px; background: rgba(255, 255, 255, 0.15); border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-family: 'Inter', system-ui, sans-serif;">
+
+    <div class="menu-header-block" style="box-shadow: 0 4px 15px rgba(0,0,0,0.15); padding: 15px; background: #fff; border-radius: 8px; margin-top: 20px;">
       <h2>Our Culinary Selection</h2>
       <p>Freshly prepared premium items for your dining pleasure — <strong>ALL ITEMS ONLY $30.00 or less!</strong></p>
     </div>
 
-    <!-- Category: Gourmet Burgers -->
-    <section class="menu-category-section">
-      <h3 class="category-heading" style="font-size: 1.5rem; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">Gourmet Burgers</h3>
-      
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Classic_Cafe_Cheeseburger.png" alt="Burger"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">The Classic Cafe Cheeseburger <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$8.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Premium beef patty, melted cheddar, lettuce, tomato, pickles.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('burg_0')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Classic_Cafe_Cheeseburger_Meal.png" alt="Burger"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">The Classic Cafe Cheeseburger Meal <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$17.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Contains the Classic Cafe Cheeseburger, along with Large Fries, Chicken Nuggets and a Coke all for just $17.00</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('burg_0_meal')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Buttermilk_Fried_Chicken_Burger.png" alt="Burger"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Buttermilk Fried Chicken Burger <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$12.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Crispy fried chicken breast, creamy slaw, pickles, and spicy chipotle mayo.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('burg_1')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
+    <!-- DOM Generation Mount Anchor Target: JavaScript loops inject all cards here -->
+    <div id="dynamic-menu-target"></div>
 
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Smoky_BBQ_Bacon_Burger.png" alt="Burger"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Smoky BBQ Bacon Burger <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$11.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Beef patty, crispy bacon, cheddar, crispy onion rings, and smoky barbecue sauce.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('burg_2')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
+  </main>
 
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Smashed_Avocado_and_Veggie_Burger.png" alt="Burger"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Smashed Avocado & Veggie Burger <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$11.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Plant-based patty, smashed avocado, rocket, and garlic aioli.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('burg_3')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Category: Savory Pies -->
-    <section class="menu-category-section">
-      <h3 class="category-heading" style="font-size: 1.5rem; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">Savory Pies</h3>
-      
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Chunky_Steak_and_Mushroom_Pie.png" alt="Pie"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Chunky Steak & Mushroom Pie <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$8.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Slow-cooked beef chunks in a rich gravy with button mushrooms, encased in a flaky puff pastry.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('pie_1')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Classic Mince & Cheese Pie -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Classic_Mince_and_Cheese_Pie.png" alt="Pie"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Classic Mince & Cheese Pie <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$5.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Seasoned lean minced beef with a thick layer of melted cheddar or mozzarella.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('pie_2')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Creamy Chicken & Leek Pie -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Creamy_Chicken_and_Leak_Pie.png" alt="Pie"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Creamy Chicken & Leek Pie <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$5.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Tender chicken breast pieces cooked in a creamy white wine and leek sauce.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('pie_3')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Roasted Vegetable & Feta Pie -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Roasted_Vegetable_and_Feta_Pie.png" alt="Pie"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Roasted Vegetable & Feta Pie <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$5.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Seasonal roasted Mediterranean vegetables with crumbled feta cheese in a shortcrust pastry.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('pie_4')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Category: Steaks -->
-    <section class="menu-category-section">
-      <h3 class="category-heading" style="font-size: 1.5rem; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">Steaks</h3>
-
-      <!-- Eye Fillet -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Filet_Mignon_(Eye Fillet).png" alt="Steak"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Eye Fillet (Filet Mignon) <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$25.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Tender eye fillet grilled to perfection.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('steak_1')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ribeye -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Ribeye_Stoch_Fillet.png" alt="Steak"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Ribeye (Scotch Fillet) <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$27.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Juicy scotch fillet cooked to your liking.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('steak_2')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- New York Strip -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/New_York_Strip.png" alt="Steak"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">New York Strip <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$25.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Classic strip steak seasoned and grilled.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('steak_3')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  <!-- Category: Pastas -->
-    <section class="menu-category-section">
-      <h3 class="category-heading" style="font-size: 1.5rem; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">Pastas</h3>
-
-      <!-- Chicken and Mushroom Fettuccine -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Chicken_and_Mushroom_Fettuccine.png" alt="Pasta"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Chicken and Mushroom Fettuccine <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$18.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Fettuccine pasta with chicken and mushrooms in a creamy sauce.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('pasta_1')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Pesto and Bocconcini Fusilli -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Basil_Pesto_and_Halloumi_Fusilli.png" alt="Pasta"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Pesto and Bocconcini Fusilli <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$16.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Fusilli pasta tossed in basil pesto with fresh bocconcini.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('pasta_2')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Chilli Garlic Prawn Linguine -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Chilli_garlic_prawn_linguine.png" alt="Pasta"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Chilli Garlic Prawn Linguine <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$21.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Linguine pasta with prawns in a spicy chilli garlic sauce.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('pasta_3')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Extra Roasted Vegetable and Ricotta Cannelloni -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Extra_Roasted_Vegetables_and_Ricotta_Cannelloni.png" alt="Pasta"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Extra Roasted Vegetable and Ricotta Cannelloni <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$17.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Cannelloni filled with roasted vegetables and ricotta cheese.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('pasta_4')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Category: Drinks -->
-    <section class="menu-category-section">
-      <h3 class="category-heading" style="font-size: 1.5rem; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">Drinks</h3>
-
-      <!-- Coke -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Coke.png" alt="Drink"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Coke <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$3.50</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Refreshing classic Coca-Cola.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('drink_1')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Fanta -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Fanta.png" alt="Drink"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Fanta <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$3.50</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Bright and bubbly orange soda.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('drink_2')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sprite -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Sprite.png" alt="Drink"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Sprite <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$3.50</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Crisp, clean lemon-lime soda.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('drink_3')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-    
-            
-<!-- Coke Zero -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Coke_Zero.png" alt="Drink"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Coke Zero <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$3.50</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Great Coca-Cola taste with zero sugar.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('drink_4')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Frozen Coke -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Frozen_Coke.png" alt="Drink"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Frozen Coke <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$3.50</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Icy, slushy frozen classic Coca-Cola.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('drink_5')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Frozen Sprite -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Frozen_Sprite.png" alt="Drink"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Frozen Sprite <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$3.50</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Icy, slushy frozen lemon-lime refreshing drink.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('drink_6')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Frozen Fanta -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Frozen_Fanta.png" alt="Drink"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Frozen Fanta <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$3.50</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Icy, slushy frozen orange Fanta treat.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('drink_7')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Category: Extras -->
-    <section class="menu-category-section">
-      <h3 class="category-heading" style="font-size: 1.5rem; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">Extras</h3>
-
-      <!-- Large Side of Chips -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Large_Side_Of_Hot_Chips.png" alt="Extra"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Large Side of Chips <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$4.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Thick-cut chunky pub style chips seasoned with sea salt.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('extra_1')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Crispy Bacon -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Crispy_Bacon.png" alt="Extra"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Crispy Bacon <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$3.50</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Add an extra portion of perfectly crisped bacon rasher strips.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('extra_2')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Chicken Nuggets -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Chicken_Nuggets.png" alt="Extra"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Chicken Nuggets <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$6.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Golden, bite-sized chicken nuggets served with choice of dipping sauce.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('extra_3')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Crispy Onion Rings -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Crispy_Onion_Rings.png" alt="Extra"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Crispy Onion Rings <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$5.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Battered and deep-fried whole onion rings served crunchy and warm.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('extra_4')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Garlic Bread -->
-      <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        <div class="menu-item-image-box"><img src="images.html/Garlic_Bread.png" alt="Extra"></div>
-        <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 0;">
-          <div>
-            <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50;">Garlic Bread <span class="price-badge" style="float: none; display: inline-block; margin-left: 10px; background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem;">$3.00</span></h4>
-            <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">Toasted baguette slices layered with premium herb and garlic butter.</p>
-          </div>
-          <div style="margin-top: 15px;">
-            <button class="order-btn" onclick="selectAndGo('extra_5')" style="padding: 10px 20px; font-size: 0.95rem; transition: background 0.2s;">Order This Item</button>
-          </div>
-        </div>       
+  <script>
+    // ==========================================================================
+    // CENTRAL APPLICATION ARRAY DATA STRUCTURE MATRIX
+    // ==========================================================================
+    // This master multi-layered array tracks all categories and individual menu items.
+    const menuData = [
+      {
+        categoryTitle: "Gourmet Burgers",
+        items: [
+          {
+            id: "burg_0",
+            title: "The Classic Cafe Cheeseburger",
+            price: "$8.00",
+            image: "images.html/Classic_Cafe_Cheeseburger.png",
+            description: "Premium beef patty, melted cheddar, lettuce, tomato, pickles."
+          },
+          {
+            id: "burg_0_meal",
+            title: "The Classic Cafe Cheeseburger Meal",
+            price: "$17.00",
+            image: "images.html/Classic_Cafe_Cheeseburger_Meal.png",
+            description: "Contains the Classic Cafe Cheeseburger, along with Large Fries, Chicken Nuggets and a Coke all for just $17.00"
+          },
+          {
+            id: "burg_1",
+            title: "Buttermilk Fried Chicken Burger",
+            price: "$12.00",
+            image: "images.html/Buttermilk_Fried_Chicken_Burger.png",
+            description: "Crispy fried chicken breast, creamy slaw, pickles, and spicy chipotle mayo."
+          },
+          {
+            id: "burg_2",
+            title: "Smoky BBQ Bacon Burger",
+            price: "$11.00",
+            image: "images.html/Smoky_BBQ_Bacon_Burger.png",
+            description: "Beef patty, crispy bacon, cheddar, crispy onion rings, and smoky barbecue sauce."
+          },
+          {
+            id: "burg_3",
+            title: "Smashed Avocado & Veggie Burger",
+            price: "$11.00",
+            image: "images.html/Smashed_Avocado_and_Veggie_Burger.png",
+            description: "Plant-based patty, smashed avocado, rocket, and garlic aioli."
+          }
+        ]
+      },
+      {
+        categoryTitle: "Savory Pies",
+        items: [
+          {
+            id: "pie_1",
+            title: "Chunky Steak & Mushroom Pie",
+            price: "$8.00",
+            image: "images.html/Chunky_Steak_and_Mushroom_Pie.png",
+            description: "Slow-cooked beef chunks in a rich gravy with button mushrooms, encased in a flaky puff pastry."
+          },
+          {
+            id: "pie_2",
+            title: "Classic Mince & Cheese Pie",
+            price: "$5.00",
+            image: "images.html/Classic_Mince_and_Cheese_Pie.png",
+            description: "Seasoned lean minced beef with a thick layer of melted cheddar or mozzarella."
+          },
+          {
+            id: "pie_3",
+            title: "Creamy Chicken & Leek Pie",
+            price: "$5.00",
+            image: "images.html/Creamy_Chicken_and_Leak_Pie.png",
+            description: "Tender chicken breast pieces cooked in a creamy white wine and leek sauce."
+          },
+          {
+            id: "pie_4",
+            title: "Roasted Vegetable & Feta Pie",
+            price: "$5.00",
+            image: "images.html/Roasted_Vegetable_and_Feta_Pie.png",
+            description: "Seasonal roasted Mediterranean vegetables with crumbled feta cheese in a shortcrust pastry."
+          }
+        ]
+      },
+      {
+        categoryTitle: "Steaks",
+        items: [
+          {
+            id: "steak_1",
+            title: "Eye Fillet (Filet Mignon)",
+            price: "$25.00",
+            image: "images.html/Filet_Mignon_(Eye Fillet).png",
+            description: "Tender eye fillet grilled to perfection."
+          },
+          {
+            id: "steak_2",
+            title: "Ribeye (Scotch Fillet)",
+            price: "$27.00",
+            image: "images.html/Ribeye_Stoch_Fillet.png",
+            description: "Juicy scotch fillet cooked to your liking."
+          },
+          {
+            id: "steak_3",
+            title: "New York Strip",
+            price: "$25.00",
+            image: "images.html/New_York_Strip.png",
+            description: "Classic strip steak seasoned and grilled."
+          }
+        ]
+      },
+      {
+        categoryTitle: "Pastas",
+        items: [
+          {
+            id: "pasta_1",
+            title: "Chicken and Mushroom Fettuccine",
+            price: "$18.00",
+            image: "images.html/Chicken_and_Mushroom_Fettuccine.png",
+            description: "Fettuccine pasta with chicken and mushrooms in a creamy sauce."
+          },
+          {
+            id: "pasta_2",
+            title: "Pesto and Bocconcini Fusilli",
+            price: "$16.00",
+            image: "images.html/Basil_Pesto_and_Halloumi_Fusilli.png",
+            description: "Fusilli pasta tossed in basil pesto with fresh bocconcini."
+          },
+          {
+            id: "pasta_3",
+            title: "Chilli Garlic Prawn Linguine",
+            price: "$21.00",
+            image: "images.html/Chilli_garlic_prawn_linguine.png",
+            description: "Linguine pasta with prawns in a spicy chilli garlic sauce."
+          },
+          {
+            id: "pasta_4",
+            title: "Extra Roasted Vegetable and Ricotta Cannelloni",
+            price: "$17.00",
+            image: "images.html/Extra_Roasted_Vegetables_and_Ricotta_Cannelloni.png",
+            description: "Cannelloni filled with roasted vegetables and ricotta cheese."
+          }
+        ]
+      },
+      {
+        categoryTitle: "Drinks",
+        items: [
+          {
+            id: "drink_1",
+            title: "Coke",
+            price: "$3.50",
+            image: "images.html/Coke.png",
+            description: "Refreshing classic Coca-Cola."
+          },
+          {
+            id: "drink_2",
+            title: "Fanta",
+            price: "$3.50",
+            image: "images.html/Fanta.png",
+            description: "Bright and bubbly orange soda."
+          },
+          {
+            id: "drink_3",
+            title: "Sprite",
+            price: "$3.50",
+            image: "images.html/Sprite.png",
+            description: "Crisp, clean lemon-lime soda."
+          },
+          {
+            id: "drink_4",
+            title: "Coke Zero",
+            price: "$3.50",
+            image: "images.html/Coke_Zero.png",
+            description: "Great Coca-Cola taste with zero sugar."
+          },
+          {
+            id: "drink_5",
+            title: "Frozen Coke",
+            price: "$3.50",
+            image: "images.html/Frozen_Coke.png",
+            description: "Icy, slushy frozen classic Coca-Cola."
+          },
+          {
+            id: "drink_6",
+            title: "Frozen Sprite",
+            price: "$3.50",
+            image: "images.html/Frozen_Sprite.png",
+            description: "Icy, slushy frozen lemon-lime refreshing drink."
+          },
+          {
+            id: "drink_7",
+            title: "Frozen Fanta",
+            price: "$3.50",
+            image: "images.html/Frozen_Fanta.png",
+            description: "Icy, slushy frozen orange Fanta treat."
+          }
+        ]
+      },
+      {
+        categoryTitle: "Extras",
+        items: [
+          {
+            id: "extra_1",
+            title: "Large Side of Chips",
+            price: "$4.00",
+            image: "images.html/Large_Side_Of_Hot_Chips.png",
+            description: "Thick-cut chunky pub style chips seasoned with sea salt."
+          },
+          {
+            id: "extra_2",
+            title: "Crispy Bacon",
+            price: "$3.50",
+            image: "images.html/Crispy_Bacon.png",
+            description: "Add an extra portion of perfectly crisped bacon rasher strips."
+          },
+          {
+            id: "extra_3",
+            title: "Chicken Nuggets",
+            price: "$6.00",
+            image: "images.html/Chicken_Nuggets.png",
+            description: "Golden, bite-sized chicken nuggets served with choice of dipping sauce."
+          },
+          {
+            id: "extra_4",
+            title: "Crispy Onion Rings",
+            price: "$5.00",
+            image: "images.html/Crispy_Onion_Rings.png",
+            description: "Battered and deep-fried whole onion rings served crunchy and warm."
+          },
+          {
+            id: "extra_5",
+            title: "Garlic Bread",
+            price: "$3.00",
+ "images.html/Garlic_Bread.png",description: "Toasted baguette slices layered with premium herb and garlic butter."}]}];// Global Order Action Logic Router Payload Interfacefunction selectAndGo(itemId) {console.log("Captured execution payload dispatch key configuration targeting:", itemId);}// ==========================================================================// AUTOMATION CORE COMPILER RENDERING EXECUTION LOOP// ==========================================================================// Pinpoint the anchor element node inside our HTML body to start populating data.const targetContainer = document.getElementById("dynamic-menu-target");// Parent Loop: Moves from category to category within the main menuData matrix array.menuData.forEach(category => {// A. Instantiates a clean structural HTML  block tagconst section = document.createElement("section");section.classList.add("menu-category-section");// B. Creates and injects titles directly inside structured  node containersconst heading = document.createElement("h3");heading.classList.add("category-heading");heading.style.cssText = "font-size: 1.5rem; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); background: white; padding: 10px; border-radius: 6px; margin-top: 30px;";heading.textContent = category.categoryTitle;section.appendChild(heading); // Lock heading into section layout tree// C. Constructs a  element wrapped around our dynamic 2-column flexbox stylesconst grid = document.createElement("div");grid.classList.add("menu-grid");// Child Loop: Steps row-by-row through every single product item property set.category.items.forEach(item => {// D. Initializes a standalone card container element blockconst card = document.createElement("div");card.classList.add("menu-item-card");// E. Formats template literal text blocks directly into production code output parameters.card.innerHTML = <div class="menu-item-image-box"> <img src="${item.image}" alt="${item.title}"> </div> <div class="menu-item-content" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; padding: 10px 15px; flex-grow: 1;"> <div> <h4 style="font-size: 1.3rem; margin: 0 0 10px 0; color: #2c3e50; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;"> <span>${item.title}</span>  <span class="price-badge" style="background: #e8f8f5; padding: 2px 10px; border-radius: 20px; font-size: 1.1rem; white-space: nowrap;"> ${item.price} </span> </h4> <p style="color: #555; margin: 0; font-size: 1rem; line-height: 1.5;">${item.description}</p> </div> <div style="margin-top: 15px;"> <button class="order-btn" onclick="selectAndGo('${item.id}')">Order This Item</button> </div> </div>;// F. Appends the freshly rendered card directly onto our wrapping grid section tree nodegrid.appendChild(card);});// G. Integrates the finished grid collection straight inside our active category sectionsection.appendChild(grid);// H. Injects the entirely constructed code chunk straight out onto our active display viewporttargetContainer.appendChild(section);});
 
         <!-- Order this item button -->
 

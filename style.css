@@ -347,3 +347,72 @@ footer {
   padding: 20px 20px 20px 5px; 
 }
 
+### Paste this at the bottom of your `style.css` file:
+```css
+/* ==========================================================================
+   2-COLUMN FLEXBOX GRID ENGINE FOR DYNAMIC LAYOUTS
+   ========================================================================== */
+
+/* Sets up the grid flex properties and gaps between item elements */
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+  padding: 0;
+  margin: 20px 0 30px 0;
+}
+
+/* Forces items to split evenly into 2 columns on desktop screens */
+.menu-item-card {
+  flex: 1 1 calc(50% - 10px); 
+  box-sizing: border-box;
+  background: white; 
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex; 
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
+  transition: transform 0.2s ease;
+}
+
+.menu-item-card:hover {
+  transform: translateY(-2px);
+}
+
+.menu-item-image-box {
+  width: 150px;
+  min-width: 150px;
+  background-color: #f7f7f7;
+}
+
+.menu-item-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.order-btn {
+  padding: 10px 20px; 
+  font-size: 0.95rem; 
+  transition: background 0.2s;
+  cursor: pointer;
+  background-color: #2c3e50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.order-btn:hover {
+  background-color: #34495e;
+}
+
+/* Mobile responsive breakpoint rules */
+@media (max-width: 768px) {
+  .menu-item-card {
+    flex: 1 1 100%;
+    flex-direction: column;
+  }
+  .menu-item-image-box {
+    width: 100%;
+    height: 200px;
+  }
+}
