@@ -285,11 +285,20 @@ window.onload = function() {
 };
 
 function selectAndGo(itemId) {
-  // 1. Get the exact button element that was just clicked from the window event context
-  const btn = window.event ? window.event.currentTarget || window.event.target : null;
+  // 1. Modern cross-browser approach to find the clicked element safely
+  let targetBtn = null;
+  if (window.event && (window.event.currentTarget || window.event.target)) {
+    const rawBtn = window.event.currentTarget || window.event.target;
+    // Ensure we are interacting with the button, not an icon/text inside it
+    targetBtn = rawBtn.tagName === 'BUTTON' ? rawBtn : rawBtn.closest('button');
+  }
+
+  // Fallback: If event tracking fails, target the button globally, but prioritize strict matches
+  if (!targetBtn) {
+    targetBtn = document.querySelector(`button[onclick="selectAndGo('${itemId}')"]`) || 
+                document.querySelector(`button[onclick*="'${itemId}'"]`);
+  }
   
-  // Fallback: If event tracking fails, use a localized selector for security
-  const targetBtn = (btn && btn.tagName === 'BUTTON') ? btn : document.querySelector(`button[onclick*="'${itemId}'"], button[onclick*='"${itemId}"']`);
   if (!targetBtn) return;
 
   // 2. Click Logic: Only add the item to the cart state
@@ -297,7 +306,8 @@ function selectAndGo(itemId) {
   const freshQty = getCartQuantities()[itemId] || 0;
 
   // 3. Isolate the DOM changes strictly to this clicked item's card layout block
-  const cardBlock = targetBtn.closest('.menu-item-row') || targetBtn.parentElement;
+  // Uses a fallback to .parentElement if your row container doesn't use the explicit class name
+  const cardBlock = targetBtn.closest('.menu-item-row') || targetBtn.parentElement.parentElement || targetBtn.parentElement;
 
   if (cardBlock && freshQty > 0) {
     // Apply the exact light-green color aesthetics from ordering.html
