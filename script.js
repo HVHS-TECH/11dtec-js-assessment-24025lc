@@ -285,20 +285,8 @@ window.onload = function() {
 };
 
 function selectAndGo(itemId) {
-  // 1. Modern cross-browser approach to find the clicked element safely
-  let targetBtn = null;
-  if (window.event && (window.event.currentTarget || window.event.target)) {
-    const rawBtn = window.event.currentTarget || window.event.target;
-    // Ensure we are interacting with the button, not an icon/text inside it
-    targetBtn = rawBtn.tagName === 'BUTTON' ? rawBtn : rawBtn.closest('button');
-  }
-
-  // Fallback: If event tracking fails, target the button globally, but prioritize strict matches
-  if (!targetBtn) {
-    targetBtn = document.querySelector(`button[onclick="selectAndGo('${itemId}')"]`) || 
-                document.querySelector(`button[onclick*="'${itemId}'"]`);
-  }
-  
+  // 1. Explicitly select the exact button string containing this unique itemId
+  const targetBtn = document.querySelector(`button[onclick="selectAndGo('${itemId}')"]`);
   if (!targetBtn) return;
 
   // 2. Click Logic: Only add the item to the cart state
@@ -306,8 +294,7 @@ function selectAndGo(itemId) {
   const freshQty = getCartQuantities()[itemId] || 0;
 
   // 3. Isolate the DOM changes strictly to this clicked item's card layout block
-  // Uses a fallback to .parentElement if your row container doesn't use the explicit class name
-  const cardBlock = targetBtn.closest('.menu-item-row') || targetBtn.parentElement.parentElement || targetBtn.parentElement;
+  const cardBlock = targetBtn.closest('.menu-item-card');
 
   if (cardBlock && freshQty > 0) {
     // Apply the exact light-green color aesthetics from ordering.html
@@ -332,8 +319,10 @@ function selectAndGo(itemId) {
         
         const updatedQty = getCartQuantities()[itemId] || 0;
         if (updatedQty <= 0) {
-          cardBlock.style.borderColor = "#ddd";
-          cardBlock.style.backgroundColor = "#fff";
+          cardBlock.style.borderColor = "";
+          cardBlock.style.backgroundColor = "";
+          cardBlock.style.borderStyle = "";
+          cardBlock.style.borderWidth = "";
           targetBtn.textContent = "Order This Item";
           targetBtn.style.backgroundColor = "";
           removeLink.remove();
