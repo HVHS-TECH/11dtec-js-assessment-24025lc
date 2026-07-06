@@ -407,26 +407,38 @@ footer {
 
 
 /* ==========================================================================
-   ORDERING PAGE DYNAMIC 2-COLUMN FLEXBOX BREAKTHROUGH
+   ORDERING PAGE: FORCE TWO ITEMS PER ROW FIX
    ========================================================================== */
 
-/* Target the generated button layout grid container on the Ordering view */
-#menuContainer > div {
+/* 1. Force each category block container to layout items horizontally */
+.category-block {
   display: flex !important;
   flex-flow: row wrap !important;
   gap: 16px !important;
   width: 100% !important;
-}
-
-/* Force each generated option item button to split into exactly 2 columns */
-.fancy-menu-selection-btn {
-  flex: 0 1 calc(50% - 8px) !important;
   box-sizing: border-box !important;
 }
 
-/* Mobile responsive fallback layout constraint */
-@media (max-width: 600px) {
-  .fancy-menu-selection-btn {
-    flex: 0 1 100% !important;
+/* 2. Keep the green category banner spanning 100% full row width */
+.category-title {
+  flex: 0 0 100% !important;
+  width: 100% !important;
+}
+
+/* 3. Constrain each card row item to exactly 50% width minus the flex gap */
+.menu-item-row {
+  flex: 0 0 calc(50% - 8px) !important;
+  width: calc(50% - 8px) !important;
+  max-width: calc(50% - 8px) !important;
+  box-sizing: border-box !important;
+  margin-bottom: 0px !important; /* Spacing is now cleanly managed by the gap property */
+}
+
+/* 4. Responsive adjustment: Stack into a clean single column layout on small screens */
+@media (max-width: 768px) {
+  .menu-item-row {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 }
