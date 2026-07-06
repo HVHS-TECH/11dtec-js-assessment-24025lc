@@ -372,3 +372,34 @@ footer {
     flex: 0 1 100% !important;
   }
 }
+
+
+/* ==========================================================================
+   PERFECT TWO-COLUMN MENU CARD FIX
+   ========================================================================== */
+
+/* 1. Turn the outer category containers into wrapping flex environments */
+.menu-category-section, .menu-category-container {
+  display: flex !important;
+  flex-flow: row wrap !important;
+  gap: 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 2. Make sure the green title banner stretches across the full width */
+.category-heading {
+  flex: 0 0 100% !important;
+  width: 100% !important;
+}
+
+/* 3. Force the cards to behave exactly like  layout image items */
+.menu-category-section .menu-item-card,
+.menu-category-container .menu-item-card {
+  /* This forces the card to shrink to exactly half the container width minus the gap */
+  flex: 0 0 calc(50% - 8px) !important;
+  width: calc(50% - 8px) !important;
+  max-width: calc(50% - 8px) !important;
+  box-sizing: border-box !important;
+  margin-bottom: 0px !important; /* Spacing is now handled cleanly by the container gap */
+}
