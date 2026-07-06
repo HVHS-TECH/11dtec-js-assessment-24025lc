@@ -403,3 +403,30 @@ footer {
   box-sizing: border-box !important;
   margin-bottom: 0px !important; /* Spacing is now handled cleanly by the container gap */
 }
+
+
+
+/* ==========================================================================
+   ORDERING PAGE DYNAMIC 2-COLUMN FLEXBOX BREAKTHROUGH
+   ========================================================================== */
+
+/* Target the generated button layout grid container on the Ordering view */
+#menuContainer > div {
+  display: flex !important;
+  flex-flow: row wrap !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+/* Force each generated option item button to split into exactly 2 columns */
+.fancy-menu-selection-btn {
+  flex: 0 1 calc(50% - 8px) !important;
+  box-sizing: border-box !important;
+}
+
+/* Mobile responsive fallback layout constraint */
+@media (max-width: 600px) {
+  .fancy-menu-selection-btn {
+    flex: 0 1 100% !important;
+  }
+}
