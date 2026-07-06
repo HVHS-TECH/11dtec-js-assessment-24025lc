@@ -152,6 +152,7 @@ function renderMenuLayout() {
   });
 }
 
+
 // 6. SYNC ENGINE: Keeps prices and lists inside the preview board refreshed
 function updateInterface() {
   renderMenuLayout();
@@ -183,5 +184,153 @@ function updateInterface() {
   }
 }
 
+// 7. ORDERING SYSTEM CHECKOUT: Validates data fields and launches checkout layouts
+function processOrder() {
+  const customerNameInput = document.getElementById("customerName");
+  const cashPaidInput = document.getElementById("cashPaid");
+  const errorAlert = document.getElementById("errorAlert");
+  const receiptContainer = document.getElementById("receiptContainer");
 
-previewName.innerHTML = itemsHtml;previewPrice.textContent = $${totalCost.toFixed(2)};}}// 7. ORDERING SYSTEM CHECKOUT: Validates data fields and launches checkout layoutsfunction processOrder() {const customerNameInput = document.getElementById("customerName");const cashPaidInput = document.getElementById("cashPaid");const errorAlert = document.getElementById("errorAlert");const receiptContainer = document.getElementById("receiptContainer");const customerName = customerNameInput ? customerNameInput.value.trim() : "";const cashPaidValue = cashPaidInput ? cashPaidInput.value : "";if (errorAlert) {errorAlert.style.display = "none";errorAlert.textContent = "";}const itemQuantities = getCartQuantities();let totalCost = 0;let itemsSummaryArray = [];for (const itemId in itemQuantities) {const itemMatch = menuItems.find(i => String(i.id) === String(itemId));if (itemMatch) {const qty = itemQuantities[itemId];totalCost += itemMatch.price * qty;itemsSummaryArray.push(${qty}x ${itemMatch.name});}}if (totalCost === 0) {if (errorAlert) {errorAlert.textContent = "No Selection: Please select at least one menu item by clicking the options.";errorAlert.style.display = "block";}return;}if (customerName === "") {if (errorAlert) {errorAlert.textContent = "Missing Field: Customer Name is required to place an order.";errorAlert.style.display = "block";}return;}const cashPaid = parseFloat(cashPaidValue);const shortByAmount = totalCost - (isNaN(cashPaid) ? 0 : cashPaid);if (isNaN(cashPaid) || cashPaid < totalCost) {if (errorAlert) {errorAlert.textContent = Insufficient funds. Your order costs $${totalCost.toFixed(2)}. You are short by $${shortByAmount.toFixed(2)}.;errorAlert.style.display = "block";}return;}if (errorAlert) {errorAlert.style.display = "none";}const changeDue = cashPaid - totalCost;const now = new Date();const timeString = now.toLocaleDateString() + " " + now.toLocaleTimeString();if (document.getElementById("receiptTime")) document.getElementById("receiptTime").textContent = timeString;if (document.getElementById("rcptName")) document.getElementById("rcptName").textContent = customerName;if (document.getElementById("rcptItem")) document.getElementById("rcptItem").innerHTML = itemsSummaryArray.join("");if (document.getElementById("rcptTotal")) document.getElementById("rcptTotal").textContent = $${totalCost.toFixed(2)};if (document.getElementById("rcptCash")) document.getElementById("rcptCash").textContent = $${cashPaid.toFixed(2)};if (document.getElementById("rcptChange")) document.getElementById("rcptChange").textContent = $${changeDue.toFixed(2)};if (receiptContainer) {receiptContainer.style.display = "block";}}// 8. CLEAR RESET METHOD: Wipes cache memory data back to fresh statesfunction resetForm() {localStorage.removeItem("cartItemIds");if (document.getElementById("customerName")) document.getElementById("customerName").value = "";if (document.getElementById("cashPaid")) document.getElementById("cashPaid").value = "";if (document.getElementById("receiptContainer")) document.getElementById("receiptContainer").style.display = "none";if (document.getElementById("errorAlert")) document.getElementById("errorAlert").style.display = "none";updateInterface();}window.onload = function() {updateInterface();window.addEventListener("keydown", function(event) {if (event.key === "Enter") {processOrder();} else if (event.key === "Backspace") {resetForm();}});};function selectAndGo(itemId) {// Directly targets the explicit button signature without relying on window click contextconst targetBtn = document.querySelector(button[onclick="selectAndGo('${itemId}')"]);if (!targetBtn) return;// State cart updating logicaddToCart(itemId);const freshQty = getCartQuantities()[itemId] || 0;// Target the card block wrapper safelyconst cardBlock = targetBtn.closest('.menu-item-card');if (cardBlock && freshQty > 0) {cardBlock.style.borderColor = "#27ae60";cardBlock.style.backgroundColor = "#f0fff4";cardBlock.style.borderStyle = "solid";cardBlock.style.borderWidth = "1px";targetBtn.textContent = Order This Item (x${freshQty});targetBtn.style.backgroundColor = "#2ecc71";let removeLink = cardBlock.querySelector(.remove-link-${itemId});if (!removeLink) {removeLink = document.createElement("span");removeLink.className = remove-link-${itemId};removeLink.textContent = "Remove 1";removeLink.style = "color: #c0392b; text-decoration: underline; cursor: pointer; font-size: 0.85rem; font-weight: bold; margin-left: 15px; display: inline-block; vertical-align: middle;";removeLink.onclick = function(e) {e.stopPropagation();removeFromCart(itemId);const updatedQty = getCartQuantities()[itemId] || 0;if (updatedQty <= 0) {cardBlock.style.borderColor = "";cardBlock.style.backgroundColor = "";cardBlock.style.borderStyle = "";cardBlock.style.borderWidth = "";targetBtn.textContent = "Order This Item";targetBtn.style.backgroundColor = "";removeLink.remove();} else {targetBtn.textContent = Order This Item (x${updatedQty});}};targetBtn.parentNode.insertBefore(removeLink, targetBtn.nextSibling);}}}
+  const customerName = customerNameInput ? customerNameInput.value.trim() : "";
+  const cashPaidValue = cashPaidInput ? cashPaidInput.value : "";
+
+  if (errorAlert) {
+    errorAlert.style.display = "none";
+    errorAlert.textContent = "";
+  }
+
+  const itemQuantities = getCartQuantities();
+  let totalCost = 0;
+  let itemsSummaryArray = [];
+
+  for (const itemId in itemQuantities) {
+    const itemMatch = menuItems.find(i => String(i.id) === String(itemId));
+    if (itemMatch) {
+      const qty = itemQuantities[itemId];
+      totalCost += itemMatch.price * qty;
+      itemsSummaryArray.push(`${qty}x ${itemMatch.name}`);
+    }
+  }
+
+if (totalCost === 0) {
+    if (errorAlert) {
+      errorAlert.textContent = "No Selection: Please select at least one menu item by clicking the options.";
+      errorAlert.style.display = "block";
+    }
+    return;
+  }
+  
+  if (customerName === "") {
+    if (errorAlert) {
+      errorAlert.textContent = "Missing Field: Customer Name is required to place an order.";
+      errorAlert.style.display = "block";
+    }
+    return;
+  }
+
+  const cashPaid = parseFloat(cashPaidValue);
+  
+  // This calculates shortByAmount HERE so the computer knows what it means
+  const shortByAmount = totalCost - (isNaN(cashPaid) ? 0 : cashPaid);
+
+  if (isNaN(cashPaid) || cashPaid < totalCost) {
+    if (errorAlert) {
+      errorAlert.textContent = `Insufficient funds. Your order costs $${totalCost.toFixed(2)}. You are short by $${shortByAmount.toFixed(2)}.`;
+      errorAlert.style.display = "block";
+    }
+    return;
+  }
+
+
+  if (errorAlert) {
+    errorAlert.style.display = "none";
+  }
+
+  const changeDue = cashPaid - totalCost;
+  const now = new Date();
+  const timeString = now.toLocaleDateString() + " " + now.toLocaleTimeString();
+
+  if (document.getElementById("receiptTime")) document.getElementById("receiptTime").textContent = timeString;
+  if (document.getElementById("rcptName")) document.getElementById("rcptName").textContent = customerName;
+  if (document.getElementById("rcptItem")) document.getElementById("rcptItem").innerHTML = itemsSummaryArray.join("<br>");
+  if (document.getElementById("rcptTotal")) document.getElementById("rcptTotal").textContent = `$${totalCost.toFixed(2)}`;
+  if (document.getElementById("rcptCash")) document.getElementById("rcptCash").textContent = `$${cashPaid.toFixed(2)}`;
+  if (document.getElementById("rcptChange")) document.getElementById("rcptChange").textContent = `$${changeDue.toFixed(2)}`;
+
+  if (receiptContainer) {
+    receiptContainer.style.display = "block";
+  }
+}
+
+// 8. CLEAR RESET METHOD: Wipes cache memory data back to fresh states
+function resetForm() {
+  localStorage.removeItem("cartItemIds");
+  if (document.getElementById("customerName")) document.getElementById("customerName").value = "";
+  if (document.getElementById("cashPaid")) document.getElementById("cashPaid").value = "";
+  if (document.getElementById("receiptContainer")) document.getElementById("receiptContainer").style.display = "none";
+  if (document.getElementById("errorAlert")) document.getElementById("errorAlert").style.display = "none";
+  updateInterface();
+}
+
+window.onload = function() {
+  updateInterface();
+  
+  window.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      processOrder();
+    } else if (event.key === "Backspace") {
+      resetForm();
+    }
+  });
+};
+
+ function selectAndGo(itemId) {
+  // Directly targets the explicit button signature without relying on window click context
+  const targetBtn = document.querySelector(`button[onclick="selectAndGo('${itemId}')"]`);
+  if (!targetBtn) return;
+
+  // State cart updating logic
+  addToCart(itemId);
+  const freshQty = getCartQuantities()[itemId] || 0;
+
+  // Target the card block wrapper safely
+  const cardBlock = targetBtn.closest('.menu-item-card');
+
+  if (cardBlock && freshQty > 0) {
+    cardBlock.style.borderColor = "#27ae60";
+    cardBlock.style.backgroundColor = "#f0fff4";
+    cardBlock.style.borderStyle = "solid";
+    cardBlock.style.borderWidth = "1px";
+    
+    targetBtn.textContent = `Order This Item (x${freshQty})`;
+    targetBtn.style.backgroundColor = "#2ecc71";
+
+    let removeLink = cardBlock.querySelector(`.remove-link-${itemId}`);
+    if (!removeLink) {
+      removeLink = document.createElement("span");
+      removeLink.className = `remove-link-${itemId}`;
+      removeLink.textContent = "Remove 1";
+      removeLink.style = "color: #c0392b; text-decoration: underline; cursor: pointer; font-size: 0.85rem; font-weight: bold; margin-left: 15px; display: inline-block; vertical-align: middle;";
+      
+      removeLink.onclick = function(e) {
+        e.stopPropagation();
+        removeFromCart(itemId);
+        
+        const updatedQty = getCartQuantities()[itemId] || 0;
+        if (updatedQty <= 0) {
+          cardBlock.style.borderColor = "";
+          cardBlock.style.backgroundColor = "";
+          cardBlock.style.borderStyle = "";
+          cardBlock.style.borderWidth = "";
+          targetBtn.textContent = "Order This Item";
+          targetBtn.style.backgroundColor = "";
+          removeLink.remove();
+        } else {
+          targetBtn.textContent = `Order This Item (x${updatedQty})`;
+        }
+      };
+      
+      targetBtn.parentNode.insertBefore(removeLink, targetBtn.nextSibling);
+    }
+  }
+}
