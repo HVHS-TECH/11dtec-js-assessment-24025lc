@@ -251,6 +251,18 @@ h2 {
   background: linear-gradient(135deg, #f39c12, #e67e22);
 }
 
+
+.menu-item-image-box.meal-image-fix {
+  background: transparent !important; /* Removes the white/gray underlying background box */
+}
+
+.menu-item-image-box.meal-image-fix img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Prevents cropping if your transparent product asset has unique margins */
+  background: transparent !important;
+}
+
 /* ==========================================================================
    6. ORDER PANEL ELEMENTS
    ========================================================================== */
