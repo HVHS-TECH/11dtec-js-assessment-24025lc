@@ -347,3 +347,28 @@ footer {
   padding: 20px 20px 20px 5px; 
 }
 
+
+
+
+
+.menu-category-section, .menu-category-container {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+.category-heading {
+  flex: 0 1 100% !important;
+}
+
+.menu-item-card {
+  flex: 0 1 calc(50% - 8px) !important;
+  margin-bottom: 0px !important;
+}
+
+@media (max-width: 768px) {
+  .menu-item-card {
+    flex: 0 1 100% !important;
+  }
+}
