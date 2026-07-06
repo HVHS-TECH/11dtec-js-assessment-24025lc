@@ -53,10 +53,10 @@
       </div>
       
       <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-        
-        <div class="menu-item-image-box" style="background: transparent !important;">
-          
-          <img src="images.html/Classic_Cafe_Cheeseburger_Meal.png" alt="Burger" style="width: 100% !important; height: 100% !important; object-fit: cover !important;">
+        <!-- FIXED: Expanded width to 320px and background to transparent so it fits the wide banner shape perfectly -->
+        <div class="menu-item-image-box" style="width: 320px !important; background: transparent !important;">
+          <!-- FIXED: Kept object-fit: contain to show 100% of the graphic uncropped -->
+          <img src="images.html/Classic_Cafe_Cheeseburger_Meal.png" alt="Burger" style="width: 100% !important; height: 100% !important; object-fit: contain !important;">
         </div>
         <div class="menu-item-content">
           <div>
@@ -68,6 +68,8 @@
           </div>
         </div>
       </div>
+
+
 
       <div class="menu-item-card" style="box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
         <div class="menu-item-image-box"><img src="images.html/Buttermilk_Fried_Chicken_Burger.png" alt="Burger"></div>
