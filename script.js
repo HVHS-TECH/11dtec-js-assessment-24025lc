@@ -89,11 +89,9 @@ function toggleItemSelection(itemId, isChecked) {
 
 // 5. GRID GENERATION LAYOUT: Dynamically paints item rows onto the web page interface for both pages
 function renderMenuLayout() {
-  alert("renderMenuLayout: start");
   const container = document.getElementById("menuContainer");
   if (!container) return; // Safely exit if the target layout hook doesn't exist on the current page
   
-  alert("renderMenuLayout: menuContainer is present")
   container.innerHTML = ""; 
   const itemQuantities = getCartQuantities();
   const categories = [...new Set(menuItems.map(item => item.category))];
