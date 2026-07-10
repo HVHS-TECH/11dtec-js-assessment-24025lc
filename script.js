@@ -93,6 +93,7 @@ function renderMenuLayout() {
   const container = document.getElementById("menuContainer");
   if (!container) return; // Safely exit if the target layout hook doesn't exist on the current page
   
+  alert()
   container.innerHTML = ""; 
   const itemQuantities = getCartQuantities();
   const categories = [...new Set(menuItems.map(item => item.category))];
