@@ -97,7 +97,6 @@ h1.home-title {
   padding: 5px 10px;  /* Optional: adds a little cushion on the left and right sides of the text */
 }
 
-
 h1.menu-title {
   color: rgb(255, 255, 255);
   background: rgb(0, 0, 0);
@@ -117,9 +116,6 @@ h1.ordering-title {
   margin: 5px 0 0 5px;
   padding: 5px 10px;  /* Optional: adds a little cushion on the left and right sides of the text */
 }
-
-
-
 
 h2 {
   color: rgb(0, 0, 0);
