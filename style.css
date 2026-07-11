@@ -362,12 +362,10 @@ h2 {
 /* ==========================================================================
    8. FOOTERS
    ========================================================================== */
-/* Unique property for footer. */
- footer {
-  color: rgb(255, 255, 255);
-  padding: 20px 20px 20px 5px; 
-}
 
+
+
+   
 .menu-category-section, .menu-category-container {
   display: flex !important;
   flex-wrap: wrap !important;
