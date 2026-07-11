@@ -106,9 +106,15 @@ h2 {
   display: block;
 }
 
-.intro-banner-link {
+/* Shared properties for intro-link classes */
+.intro-link, .intro-link-bottom {
   max-width: 600px;
   margin-top: 20px;
+}
+
+/* Unique property for intro-link-bottom class */
+.intro-link-bottom {
+  margin-bottom: 20px;
 }
 
 /* =================================================================================================
