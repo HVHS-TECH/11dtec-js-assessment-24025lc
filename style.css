@@ -10,14 +10,14 @@ body {
   background-position: center;
   background-attachment: fixed;
   font-family: 'Inter', sans-serif;
-  min-height: 100vh; /* Lets the page grow dynamically but remain at least screen-length */
+  min-height: 100vh; /* Let the page grow dynamically but remain at least screen-length */
   margin-left: 150px;
   margin-right: 150px;
 }
 
 /* =================================================================================================
    2. PAGE SPECIFIC BACKGROUNDS
-   DEVELOPER NOTE: Handled body overrides for specific views using separate classes.
+   DEVELOPER NOTE: Add specific views using separate classes.
    =================================================================================================
  */
 body.index-page {
@@ -33,7 +33,7 @@ body.ordering-page {
 }
 
 /* =================================================================================================
-   3. ORIGINAL NAVIGATION & BANNERS
+   3. NAVIGATION & BANNERS
    =================================================================================================
  */
 /* Shared properties for button classes */
@@ -50,7 +50,7 @@ body.ordering-page {
 }
 
 /* Unique properties for button class.
-   The buttonleft class does not have a margin-left setting because the nav HTML element sets the
+   The buttonleft class does not have a margin-left setting because the body HTML element sets the
    spacing to the left edge of the leftmost button. */
 .button {
   margin-left: 10px;
@@ -67,7 +67,6 @@ body.ordering-page {
   background-color: rgb(255, 255, 255);
   border-radius: 50px;
   width: 100%;
-  margin: 20px auto;
 }
 
 /* Typography Hierarchy Headers */
