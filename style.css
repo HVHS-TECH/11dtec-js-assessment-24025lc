@@ -55,7 +55,7 @@ body.ordering-page {
 }
 
 /* Unique properties for button class.
-   The buttonleft class does not have a margin-left setting because the body HTML element sets the
+   The buttonleft class does not have a margin-left setting because the body CSS rule sets the
    spacing to the left edge of the leftmost button. */
 .button {
   margin-left: 10px;
