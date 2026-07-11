@@ -11,7 +11,7 @@ body {
   background-attachment: fixed;
   font-family: 'Inter', sans-serif;
   min-height: 100vh; /* Let the page grow dynamically but remain at least screen-length */
-  margin: 50px 0px 50px 0px;
+  margin: 0px 50px 0px 50px;
   padding: 0px;
 }
 
