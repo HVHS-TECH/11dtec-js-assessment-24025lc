@@ -95,10 +95,15 @@ h2 {
   margin: 5px 0 0 5px;
 }
 
+.intro-banner-ad {
+  max-width: 600px;
+}
+
 .intro-banner-ad > img {
   max-width: 600px;
   max-height: 300px;
   object-fit: contain; /* Prevents aspect ratio distortion of branding graphics */
+  display: block;
 }
 
 .intro-banner-link {
