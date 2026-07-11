@@ -1,8 +1,9 @@
-/* ==========================================================================
+/* =================================================================================================
    1. GLOBAL STYLES & FONTS
    AUTHOR: Liam Chung (Liam Chung Web Design Solutions)
    PURPOSE: Reset margins and establish fallback typography for the web project.
-   ========================================================================== */
+   =================================================================================================
+ */
 body {
   background-color: rgb(0, 0, 0); 
   background-size: cover;
@@ -14,10 +15,11 @@ body {
   margin-right: 150px;
 }
 
-/* ==========================================================================
+/* =================================================================================================
    2. PAGE SPECIFIC BACKGROUNDS
    DEVELOPER NOTE: Handled body overrides for specific views using separate classes.
-   ========================================================================== */
+   =================================================================================================
+ */
 body.index-page {
   background-image: url("images.html/Fancy_Forest.png");
 }
@@ -30,19 +32,10 @@ body.ordering-page {
   background-image: url("images.html/Singapore_City.png");
 }
 
-.menu-header-block { background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 8px; margin-bottom: 50px; }
-.menu-item-card { background: rgba(255, 255, 255, 0.95); margin-bottom: 15px; display: flex; gap: 20px; padding: 15px; border-radius: 8px; align-items: center; }
-.menu-item-image-box { width: 100px; height: 100px; background: #eee; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
-.menu-item-image-box img { width: 100%; height: 100%; object-fit: cover; }
-.menu-item-content { flex-grow: 1; }
-.category-heading { background-color: #27ae60; color: white; padding: 10px; border-radius: 4px; margin-top: 25px; }
-.order-btn { background: #27ae60; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: bold; margin-top: 5px; }
-.go-checkout-btn { background: #e67e22; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px; }
-.price-badge { float: right; color: #27ae60; font-weight: bold; }
-
-/* ==========================================================================
+/* =================================================================================================
    3. ORIGINAL NAVIGATION & BANNERS
-   ========================================================================== */
+   =================================================================================================
+ */
 /* Shared properties for button classes */
 .button, .buttonleft {
   background-color: #28a745;
@@ -124,10 +117,11 @@ h2 {
   margin: 10px 0 10px 5px;      
 }
 
-/* ==========================================================================
+/* =================================================================================================
    4. MASTER LAYOUT GRID (THE FIX)
    DESIGN INTENTION: Split-pane setup dividing menu generation from configuration controls.
-   ========================================================================== */
+   =================================================================================================
+ */
 .pos-container {
   max-width: 1200px;         
   margin: 20px auto;         
@@ -137,9 +131,26 @@ h2 {
   padding: 0 40px;           
 }
 
-/* ==========================================================================
+/* =================================================================================================
    5. MENU & COMPONENT PANELS
-   ========================================================================== */
+   =================================================================================================
+ */
+
+
+
+.menu-header-block { background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 8px; margin-bottom: 50px; }
+.menu-item-card { background: rgba(255, 255, 255, 0.95); margin-bottom: 15px; display: flex; gap: 20px; padding: 15px; border-radius: 8px; align-items: center; }
+.menu-item-image-box { width: 100px; height: 100px; background: #eee; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+.menu-item-image-box img { width: 100%; height: 100%; object-fit: cover; }
+.menu-item-content { flex-grow: 1; }
+.category-heading { background-color: #27ae60; color: white; padding: 10px; border-radius: 4px; margin-top: 25px; }
+.order-btn { background: #27ae60; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: bold; margin-top: 5px; }
+.go-checkout-btn { background: #e67e22; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px; }
+.price-badge { float: right; color: #27ae60; font-weight: bold; }
+
+
+
+
 .menu-header-block { 
   background: rgba(255, 255, 255, 0.9); 
   padding: 20px; 
@@ -259,9 +270,10 @@ h2 {
   background: transparent !important;
 }
 
-/* ==========================================================================
+/* =================================================================================================
    6. ORDER PANEL ELEMENTS
-   ========================================================================== */
+   =================================================================================================
+ */
 .pos-card { 
   background: rgba(255, 255, 255, 0.95); /* High transparency white contrast sheet overlays */
   padding: 20px; 
@@ -325,9 +337,10 @@ h2 {
   border-radius: 4px; 
 }
 
-/* ==========================================================================
+/* =================================================================================================
    7. RECEIPT SUMMARY MODULE
-   ========================================================================== */
+   =================================================================================================
+ */
 .receipt-container { 
   background: white; 
   padding: 20px; 
@@ -346,9 +359,10 @@ h2 {
   font-size: 1.1rem; 
 }
 
-/* ==========================================================================
+/* =================================================================================================
    8. FOOTERS
-   ========================================================================== */
+   =================================================================================================
+ */
 /* Unique properties for footer. */
 footer {
   color: white;
@@ -377,9 +391,10 @@ footer {
 }
 
 
-/* ==========================================================================
+/* =================================================================================================
    PERFECT TWO-COLUMN MENU CARD FIX
-   ========================================================================== */
+   =================================================================================================
+ */
 
 /* 1. Turn the outer category containers into wrapping flex environments */
 .menu-category-section, .menu-category-container {
@@ -409,9 +424,10 @@ footer {
 
 
 
-/* ==========================================================================
+/* =================================================================================================
    ORDERING PAGE: FORCE TWO ITEMS PER ROW FIX
-   ========================================================================== */
+   =================================================================================================
+ */
 
 /* 1. Force each category block container to layout items horizontally */
 .category-block {
