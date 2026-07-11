@@ -19,7 +19,6 @@ body {
    DEVELOPER NOTE: Handled body overrides for specific views using separate classes.
    ========================================================================== */
 body.menu-page {
-  background-color: rgb(0, 0, 0);
   background-image: url("images.html/Mountain_Sunset.png") !important; /* Forces theme over global default */
   background-size: cover; 
   background-position: center; 
