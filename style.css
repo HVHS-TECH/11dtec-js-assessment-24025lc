@@ -5,7 +5,7 @@
    =================================================================================================
  */
 body {
-  background-color: rgb(0, 0, 0);
+  background-color: #000000;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -39,13 +39,13 @@ body.ordering-page {
 /* Shared properties for button classes */
 .button, .buttonleft {
   background-color: #28a745;
-  color: white;
+  color: #ffffff;
   padding: 10px 30px;
   text-decoration: none;
   display: inline-block;
   border-radius: 50px; /* Pill-shaped navigational controls design choice */
   font-weight: bold;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -59,13 +59,13 @@ body.ordering-page {
 
 .button:hover {
   transform: translateY(-2px); /* Subtle lifting motion on pointer hover states */
-  box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 8px rgb(0 0 0 / 0.15);
 }
 
 .horizontal {
   border: none;
   height: 8px;
-  background-color: rgb(255, 255, 255);
+  background-color: #ffffff;
   border-radius: 50px;
   width: 100%;
 }
@@ -73,7 +73,7 @@ body.ordering-page {
 /* Typography Hierarchy Headers */
 /* Shared properties for h1 classes */
 h1 {
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   display: inline-block; /* Shortens the background to match the text length */
   font-weight: bold;
   font-size: 40px;
@@ -81,18 +81,17 @@ h1 {
 }
 
 h1.home-title {
-  background: rgb(94, 94, 94);
+  background: #5e5e5e;
 }
 
 h1.menu-title, h1.ordering-title {
-  background: rgb(0, 0, 0);
+  background: #000000;
 }
 
 h2 {
-  color: rgb(0, 0, 0);
+  color: #000000;
   font-weight: bold;
   font-size: 40px;
-  margin: 5px 0 0 5px;
 }
 
 .intro-banner-ad {
@@ -123,21 +122,21 @@ h2 {
   text-align: center;
   padding: 25px 20px; /* Increased top/bottom padding to make it physically bigger */
   background: linear-gradient(135deg, #e67e22, #d35400);
-  color: white;
+  color: #ffffff;
   font-size: 1.6rem; /* Slightly larger typography size for premium legibility */
   font-weight: bold;
   text-decoration: none;
   border-radius: 12px;
   letter-spacing: 1px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 4px rgb(0 0 0 / 0.4);
+  box-shadow: 0 6px 15px rgb(0 0 0 / 0.3);
   transition: all 0.3s ease;
 }
 
 /* Dynamic lifting behavior when user points to button */
 .jumbotron-link:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 20px rgb(0 0 0 / 0.4);
   background: linear-gradient(135deg, #f39c12, #e67e22);
 }
 
@@ -147,19 +146,24 @@ h2 {
  */
 .menu-display-container {
   padding: 20px 20px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgb(255 255 255 / 0.15);
   border-radius: 12px;
 }
 
-.menu-header-block {
-  background: rgba(255, 255, 255, 0.9);
+.menu-display-header {
+  background: rgb(255 255 255 / 0.9);
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+
+
+
 .menu-item-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgb(255 255 255 / 0.95);
   margin-bottom: 15px;
   display: flex; /* Dynamic element sizing inside custom cards */
   gap: 20px;
@@ -171,7 +175,7 @@ h2 {
 .menu-item-image-box {
   width: 200px;        /* Increased from 100px to make images bigger */
   height: 200px;       /* Increased from 100px to maintain a perfect square aspect ratio */
-  background: #eee;
+  background: #eeeeee;
   border-radius: 6px;
   overflow: hidden;    /* Clips overlapping boundaries cleanly */
   flex-shrink: 0;      /* Prevents thumbnails from collapsing inside narrow layout screens */
@@ -188,7 +192,7 @@ h2 {
 
 .category-heading {
   background-color: #27ae60;
-  color: white;
+  color: #ffffff;
   padding: 10px;
   border-radius: 4px;
   margin-top: 25px;
@@ -196,7 +200,7 @@ h2 {
 
 .order-btn {
   background: #27ae60;
-  color: white;
+  color: #ffffff;
   border: none;
   padding: 6px 12px;
   cursor: pointer;
@@ -239,10 +243,10 @@ h2 {
 
 
 .pos-card {
-  background: rgba(255, 255, 255, 0.95); /* High transparency white contrast sheet overlays */
+  background: rgb(255 255 255 / 0.95); /* High transparency white contrast sheet overlays */
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Pronounced depth shadow to separate interaction card layers */
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.3); /* Pronounced depth shadow to separate interaction card layers */
 }
 
 .form-group {
@@ -275,7 +279,7 @@ h2 {
 }
 
 .selection-preview-box {
-  background: #eee;
+  background: #eeeeee;
   padding: 15px;
   border-radius: 4px;
   margin-top: 15px;
@@ -283,7 +287,7 @@ h2 {
 
 .btn-reset {
   background: #e74c3c; /* Noticeable alert red for layout clearing controls */
-  color: white;
+  color: #ffffff;
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -293,7 +297,7 @@ h2 {
 
 .btn-order {
   background: #27ae60; /* Vibrant corporate green for successful path trigger actions */
-  color: white;
+  color: #ffffff;
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -306,11 +310,11 @@ h2 {
    =================================================================================================
  */
 .receipt-container {
-  background: white;
+  background: #ffffff;
   padding: 20px;
   border-radius: 4px;
   margin-top: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.2);
   display: none;
   font-family: monospace; /* Monospacing simulates authentic thermal receipt outputs */
   border-top: 4px dashed #333; /* Perforated layout style visual details */
@@ -329,7 +333,7 @@ h2 {
  */
 /* Unique properties for footer. */
 footer {
-  color: white;
+  color: #ffffff;
 }
 
 .menu-category-section, .menu-category-container {
