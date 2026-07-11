@@ -50,6 +50,10 @@ body.ordering-page {
 /* ==========================================================================
    3. ORIGINAL NAVIGATION & BANNERS
    ========================================================================== */
+nav, footer {
+  margin-left: 50px;
+}  
+
 .top-banner-section > img {
   width: 100%;            
   max-width: 600px;       
@@ -59,7 +63,8 @@ body.ordering-page {
   margin: 10px 0 10px 5px;      
 }
 
-.button {
+/* Shared properties for button classes */
+.button, .buttonleft {
   background-color: #28a745;
   color: white;
   padding: 10px 30px;
@@ -69,6 +74,11 @@ body.ordering-page {
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   margin-top: 10px;
+}
+
+/* Unique properties for button class.
+   The buttonleft class does not have a margin-left setting. */
+.button {
   margin-left: 10px;
 }
 
