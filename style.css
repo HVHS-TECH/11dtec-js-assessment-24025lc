@@ -70,34 +70,22 @@ body.ordering-page {
 }
 
 /* Typography Hierarchy Headers */
+
+h1 {
+  color: rgb(255, 255, 255);
+  display: inline-block; /* Shortens the background to match the text length */
+  font-weight: bold;
+  font-size: 40px;
+  margin: 5px 0 0 5px;
+  padding: 5px 10px;  /* Optional: adds a little cushion on the left and right sides of the text */
+}
+
 h1.home-title {
-  color: rgb(255, 255, 255);
   background: none;
-  display: inline-block; /* Shortens the background to match the text length */
-  font-weight: bold;
-  font-size: 40px;
-  margin: 5px 0 0 5px;
-  padding: 5px 10px;  /* Optional: adds a little cushion on the left and right sides of the text */
 }
 
-h1.menu-title {
-  color: rgb(255, 255, 255);
+h1.menu-title, h1.ordering-title {
   background: rgb(0, 0, 0);
-  display: inline-block; /* Shortens the background to match the text length */
-  font-weight: bold;
-  font-size: 40px;
-  margin: 5px 0 0 5px;
-  padding: 5px 10px;  /* Optional: adds a little cushion on the left and right sides of the text */
-}
-
-h1.ordering-title {
-  color:rgb(255, 255, 255);
-  background: rgb(0, 0, 0);
-  display: inline-block; /* Shortens the background to match the text length */
-  font-weight: bold;
-  font-size: 40px;
-  margin: 5px 0 0 5px;
-  padding: 5px 10px;  /* Optional: adds a little cushion on the left and right sides of the text */
 }
 
 h2 {
