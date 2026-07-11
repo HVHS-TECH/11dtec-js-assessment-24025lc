@@ -50,7 +50,7 @@ body.ordering-page {
 /* ==========================================================================
    3. ORIGINAL NAVIGATION & BANNERS
    ========================================================================== */
-/* Shared properties */
+/* Shared properties for nav and footer. */
  nav, footer {
   margin-left: 150px;
   margin-right: 150px;
@@ -362,14 +362,11 @@ h2 {
 /* ==========================================================================
    8. FOOTERS
    ========================================================================== */
-footer {
+/* Unique property for footer. */
+ footer {
   color: rgb(255, 255, 255);
   padding: 20px 20px 20px 5px; 
 }
-
-
-
-
 
 .menu-category-section, .menu-category-container {
   display: flex !important;
