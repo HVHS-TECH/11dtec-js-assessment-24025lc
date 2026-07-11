@@ -20,7 +20,7 @@ body {
    DEVELOPER NOTE: Add specific views using separate classes.
    =================================================================================================
  */
-body.index-page {
+body.home-page {
   background-image: url("images.html/Fancy_Forest.png");
 }
 
