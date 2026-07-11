@@ -146,8 +146,7 @@ h2 {
    =================================================================================================
  */
 .menu-display-container {
-  max-width: 2000px;
-  margin: 0 auto 0 20px;
+  margin: 0 20px 0 20px;
   padding: 0 20px;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 12px;
