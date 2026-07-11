@@ -121,18 +121,6 @@ h2 {
    5. MENU & COMPONENT PANELS
    =================================================================================================
  */
- 
- 
- 
-.menu-item-card { background: rgba(255, 255, 255, 0.95); margin-bottom: 15px; display: flex; gap: 20px; padding: 15px; border-radius: 8px; align-items: center; }
-.menu-item-content { flex-grow: 1; }
-.category-heading { background-color: #27ae60; color: white; padding: 10px; border-radius: 4px; margin-top: 25px; }
-.order-btn { background: #27ae60; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: bold; margin-top: 5px; }
-.go-checkout-btn { background: #e67e22; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px; }
-.price-badge { float: right; color: #27ae60; font-weight: bold; }
-
-
-
 .menu-header-block {
   background: rgba(255, 255, 255, 0.9);
   padding: 20px;
@@ -167,6 +155,11 @@ h2 {
 .menu-item-content {
   flex-grow: 1;
 }
+
+.go-checkout-btn { background: #e67e22; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px; }
+.price-badge { float: right; color: #27ae60; font-weight: bold; }
+
+
 
 .category-heading {
   background-color: #27ae60;
