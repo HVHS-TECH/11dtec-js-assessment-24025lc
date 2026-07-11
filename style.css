@@ -70,7 +70,7 @@ body.ordering-page {
 }
 
 /* Typography Hierarchy Headers */
-
+/* Shared properties for h1 classes */
 h1 {
   color: rgb(255, 255, 255);
   display: inline-block; /* Shortens the background to match the text length */
