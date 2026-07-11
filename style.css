@@ -99,12 +99,10 @@ h2 {
   max-width: 600px;
   max-height: 300px;
   object-fit: contain; /* Prevents aspect ratio distortion of branding graphics */
-  display: block;
 }
 
 .intro-banner-link {
   max-width: 600px;
-  display: block;
 }
 
 /* =================================================================================================
