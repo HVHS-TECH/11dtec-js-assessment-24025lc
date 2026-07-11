@@ -117,7 +117,7 @@ h2 {
 
 /* Unique property for intro-link-bottom class */
 .intro-link-bottom {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Add a small gap between the bottom link and the footer */
 }
 
 /* Premium styled large button layout rules */
