@@ -17,7 +17,7 @@ body {
 
 /* Add vertical space only when a block element follows another block element */
 * + * {
-  margin-block-start: 60px;
+  margin-block-start: 100px;
 }
 
 /* =================================================================================================
@@ -80,8 +80,7 @@ h1 {
   display: inline-block; /* Shortens the background to match the text length */
   font-weight: bold;
   font-size: 40px;
-  margin: 5px 0 0 5px;
-  padding: 5px 10px;  /* Optional: adds a little cushion on the left and right sides of the text */
+  padding: 10px 10px;  /* Optional: adds a little cushion on the left and right sides of the text */
 }
 
 h1.home-title {
