@@ -81,7 +81,7 @@ h1 {
 }
 
 h1.home-title {
-  background: none;
+  background: rgb(0, 0, 0);
 }
 
 h1.menu-title, h1.ordering-title {
