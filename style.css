@@ -10,7 +10,7 @@ body {
   background-position: center;
   background-attachment: fixed;
   font-family: 'Inter', sans-serif;
-  min-height: 100vh; /* Let the page grow dynamically but remain at least screen-length */
+  min-height: 98vh; /* Let the page grow dynamically but remain at least screen-length */
   margin-left: 50px;
   margin-right: 50px;
 }
