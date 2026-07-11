@@ -11,8 +11,8 @@ body {
   background-attachment: fixed;
   font-family: 'Inter', sans-serif;
   min-height: 100vh; /* Let the page grow dynamically but remain at least screen-length */
-  margin-left: 150px;
-  margin-right: 150px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 /* =================================================================================================
