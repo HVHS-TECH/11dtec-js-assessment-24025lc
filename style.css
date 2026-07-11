@@ -68,7 +68,7 @@ body.ordering-page {
 .button, .buttonleft {
   background-color: #28a745;
   color: white;
-  padding-right: 30px;
+  padding: 10px, 30px;
   text-decoration: none;
   display: inline-block;
   border-radius: 50px; /* Pill-shaped navigational controls design choice */
@@ -78,9 +78,9 @@ body.ordering-page {
 }
 
 /* Unique properties for button class.
-   The buttonleft class does not have margin-left and padding-left settings because the nav HTML element sets the spacing to the left edge of the  */
+   The buttonleft class does not have a margin-left setting because the nav HTML element sets the
+   spacing to the left edge of the leftmost button. */
 .button {
-  padding-left: 10px;
   margin-left: 10px;
 }
 
