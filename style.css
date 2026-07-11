@@ -68,7 +68,7 @@ body.ordering-page {
 .button, .buttonleft {
   background-color: #28a745;
   color: white;
-  padding: 10px, 30px;
+  padding: 10px 30px;
   text-decoration: none;
   display: inline-block;
   border-radius: 50px; /* Pill-shaped navigational controls design choice */
