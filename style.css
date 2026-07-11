@@ -15,6 +15,11 @@ body {
   margin-right: 150px;
 }
 
+/* Add vertical space only when a block element follows another block element */
+* + * {
+  margin-block-start: 10px;
+}
+
 /* =================================================================================================
    2. PAGE SPECIFIC BACKGROUNDS
    DEVELOPER NOTE: Add specific views using separate classes.
@@ -101,7 +106,6 @@ h2 {
   max-height: 300px;
   object-fit: contain; /* Prevents aspect ratio distortion of branding graphics */
   display: block;
-  margin: 10px 0 10px 5px;
 }
 
 /* =================================================================================================
