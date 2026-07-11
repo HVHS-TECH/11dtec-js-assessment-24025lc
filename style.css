@@ -11,7 +11,8 @@ body {
   background-attachment: fixed; /* Keeps the forest background anchored smoothly */
   font-family: 'Inter', sans-serif;
   min-height: 100vh; /* Lets the page grow dynamically but remain at least screen-length */
-  margin: 0;
+  margin-left: 150px;
+  margin-right: 150px;
 }
 /* ==========================================================================
    2. PAGE SPECIFIC BACKGROUNDS
@@ -49,12 +50,6 @@ body.ordering-page {
 /* ==========================================================================
    3. ORIGINAL NAVIGATION & BANNERS
    ========================================================================== */
-/* Shared properties for nav and footer. */
- nav, footer {
-  margin-left: 150px;
-  margin-right: 150px;
-}
-
 /* Shared properties for button classes */
 .button, .buttonleft {
   background-color: #28a745;
