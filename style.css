@@ -117,18 +117,28 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* =================================================================================================
-   4. MASTER LAYOUT GRID (THE FIX)
-   DESIGN INTENTION: Split-pane setup dividing menu generation from configuration controls.
-   =================================================================================================
- */
-.pos-container {
-  max-width: 1200px;
-  margin: 20px auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Two columns split evenly side-by-side */
-  gap: 30px;
-  padding: 0 40px;
+/* Premium styled large button layout rules */
+.jumbotron-link {
+  display: block;
+  text-align: center;
+  padding: 25px 20px; /* Increased top/bottom padding to make it physically bigger */
+  background: linear-gradient(135deg, #e67e22, #d35400);
+  color: white;
+  font-size: 1.6rem; /* Slightly larger typography size for premium legibility */
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 12px;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Dynamic lifting behavior when user points to button */
+.jumbotron-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #f39c12, #e67e22);
 }
 
 /* =================================================================================================
@@ -195,30 +205,6 @@ h2 {
   font-weight: bold;
 }
 
-/* Premium styled large button layout rules */
-.fancy-menu-link {
-  display: block;
-  text-align: center;
-  padding: 25px 20px; /* Increased top/bottom padding to make it physically bigger */
-  background: linear-gradient(135deg, #e67e22, #d35400);
-  color: white;
-  font-size: 1.6rem; /* Slightly larger typography size for premium legibility */
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 12px;
-  letter-spacing: 1px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-/* Dynamic lifting behavior when user points to button */
-.fancy-menu-link:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-  background: linear-gradient(135deg, #f39c12, #e67e22);
-}
-
 .menu-item-image-box.meal-image-fix {
   background: transparent !important; /* Removes the white/gray underlying background box */
 }
@@ -234,6 +220,18 @@ h2 {
    6. ORDER PANEL ELEMENTS
    =================================================================================================
  */
+
+.pos-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns split evenly side-by-side */
+  gap: 30px;
+  padding: 0 40px;
+}
+
+
+
 .pos-card {
   background: rgba(255, 255, 255, 0.95); /* High transparency white contrast sheet overlays */
   padding: 20px;
