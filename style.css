@@ -46,6 +46,8 @@ body.ordering-page {
   border-radius: 50px; /* Pill-shaped navigational controls design choice */
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* Unique properties for button class.
