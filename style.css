@@ -15,11 +15,6 @@ body {
   margin-right: 150px;
 }
 
-/* Add vertical space only when a block element follows another block element */
-* + * {
-  margin-block-start: 100px;
-}
-
 /* =================================================================================================
    2. PAGE SPECIFIC BACKGROUNDS
    DEVELOPER NOTE: Add specific views using separate classes.
