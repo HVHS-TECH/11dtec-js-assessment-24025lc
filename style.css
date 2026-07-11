@@ -11,7 +11,7 @@ body {
   background-attachment: fixed;
   font-family: 'Inter', sans-serif;
   min-height: 100vh; /* Let the page grow dynamically but remain at least screen-length */
-  
+
   /* Must set top and bottom margins to 0px, and top and bottom padding to 0px to avoid a vertical
      scrollbar appearing when the min-height: 100vh; property setting is used.
      A vertical scrollbar will be visible on the home page if not configured correctly. */ 
