@@ -17,7 +17,7 @@ body {
 
 /* Add vertical space only when a block element follows another block element */
 * + * {
-  margin-block-start: 10px;
+  margin-block-start: 60px;
 }
 
 /* =================================================================================================
@@ -51,7 +51,6 @@ body.ordering-page {
   border-radius: 50px; /* Pill-shaped navigational controls design choice */
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  margin-top: 10px;
 }
 
 /* Unique properties for button class.
