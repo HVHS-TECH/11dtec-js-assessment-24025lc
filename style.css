@@ -50,9 +50,11 @@ body.ordering-page {
 /* ==========================================================================
    3. ORIGINAL NAVIGATION & BANNERS
    ========================================================================== */
-nav, footer {
-  margin-left: 50px;
-}  
+/* Shared properties */
+ nav, footer {
+  margin-left: 150px;
+  margin-right: 150px;
+}
 
 .top-banner-section > img {
   width: 100%;            
@@ -67,7 +69,7 @@ nav, footer {
 .button, .buttonleft {
   background-color: #28a745;
   color: white;
-  padding: 10px 30px;
+  padding-right: 30px;
   text-decoration: none;
   display: inline-block;
   border-radius: 50px; /* Pill-shaped navigational controls design choice */
@@ -77,8 +79,9 @@ nav, footer {
 }
 
 /* Unique properties for button class.
-   The buttonleft class does not have a margin-left setting. */
+   The buttonleft class does not have margin-left and padding-left settings. */
 .button {
+  padding-left: 10px;
   margin-left: 10px;
 }
 
