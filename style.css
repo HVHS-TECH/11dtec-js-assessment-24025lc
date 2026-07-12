@@ -354,6 +354,8 @@ h3 {
  */
 /* Unique properties for footer. */
 footer {
+  background-color: #000000;
+  margin-top: 20px;
   color: #ffffff;
 }
 
