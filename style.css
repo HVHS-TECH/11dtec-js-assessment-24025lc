@@ -394,3 +394,32 @@ footer {
     max-width: 100% !important;
   }
 }
+
+
+/* AUTOMATED BANNER SLIDESHOW LAYOUT */
+.intro-banner-ad {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure images stack directly on top of each other for cross-fading */
+.intro-banner-ad .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+/* Keep the first image layout space active so the banner has proper height */
+.intro-banner-ad .slide:first-child {
+  position: relative;
+}
+
+/* The active class triggered by JavaScript to animate opacity */
+.intro-banner-ad .slide.active {
+  opacity: 1;
+}

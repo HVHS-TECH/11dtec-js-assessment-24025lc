@@ -343,3 +343,32 @@ window.onload = function() {
       if (event.key === "Backspace") 
         {if (document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") 
           {resetForm();}}});};
+
+
+
+
+// 12. AUTOMATED HOME BANNER SLIDESHOW SYSTEM
+let currentSlideIndex = 0;
+
+function runSlideshow() {
+  const slides = document.querySelectorAll(".slide");
+  if (slides.length === 0) return; // Exit safely if not on the Home index page
+
+  // 1. Remove active state from the current slide
+  slides[currentSlideIndex].classList.remove("active");
+
+  // 2. Cycle index tracking forward
+  currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+
+  // 3. Add active state to reveal the next slide frame smoothly
+  slides[currentSlideIndex].classList.add("active");
+}
+
+// Ensure the very first slide is marked active when the window opens
+window.addEventListener("DOMContentLoaded", function() {
+  const firstSlide = document.querySelector(".slide");
+  if (firstSlide) firstSlide.classList.add("active");
+});
+
+// Automatically switch slides every 3 seconds (3000 milliseconds)
+setInterval(runSlideshow, 3000);
