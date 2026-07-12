@@ -164,6 +164,25 @@ h2 {
   box-sizing: border-box;
 }
 
+.menu-category-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* This forces the card to shrink to exactly half the container width minus the gap */
+  flex: 0 0 calc(50% - 8px);
+}
+
+
+.menu-category-section {
+}
+
+
+
+
 
 
 
@@ -342,10 +361,6 @@ footer {
 }
 
 .menu-category-section, .menu-category-container {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 16px !important;
-  width: 100% !important;
 }
 
 .category-heading {
@@ -371,11 +386,6 @@ footer {
 
 /* 1. Turn the outer category containers into wrapping flex environments */
 .menu-category-section, .menu-category-container {
-  display: flex !important;
-  flex-flow: row wrap !important;
-  gap: 16px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
 }
 
 /* 2. Make sure the green title banner stretches across the full width */
@@ -385,8 +395,7 @@ footer {
 }
 
 /* 3. Force the cards to behave exactly like  layout image items */
-.menu-category-section .menu-item-card,
-.menu-category-container .menu-item-card {
+.menu-item-card {
   /* This forces the card to shrink to exactly half the container width minus the gap */
   flex: 0 0 calc(50% - 8px) !important;
   width: calc(50% - 8px) !important;
