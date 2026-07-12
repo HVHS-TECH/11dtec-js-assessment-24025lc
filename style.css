@@ -9,7 +9,7 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  font-family: 'Yuyu', sans-serif;
+  font-family: 'Geomini', sans-serif;
   min-height: 100vh; /* Let the page grow dynamically but remain at least screen-length */
 
   /* Must set top and bottom margins to 0px, and top and bottom padding to 0px to avoid a vertical
