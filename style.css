@@ -176,12 +176,13 @@ h2 {
   flex: 0 0 calc(50% - 8px);
 }
 
-
-.menu-category-section {
+.menu-category-title {
+  background-color: #27ae60;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 25px;
 }
-
-
-
 
 
 
@@ -212,14 +213,6 @@ h2 {
 
 .menu-item-content {
   flex-grow: 1;
-}
-
-.category-heading {
-  background-color: #27ae60;
-  color: #ffffff;
-  padding: 10px;
-  border-radius: 4px;
-  margin-top: 25px;
 }
 
 .order-btn {
@@ -360,13 +353,6 @@ footer {
   color: #ffffff;
 }
 
-.menu-category-section, .menu-category-container {
-}
-
-.category-heading {
-  flex: 0 1 100% !important;
-}
-
 .menu-item-card {
   flex: 0 1 calc(50% - 8px) !important;
   margin-bottom: 0px !important;
@@ -383,16 +369,6 @@ footer {
    PERFECT TWO-COLUMN MENU CARD FIX
    =================================================================================================
  */
-
-/* 1. Turn the outer category containers into wrapping flex environments */
-.menu-category-section, .menu-category-container {
-}
-
-/* 2. Make sure the green title banner stretches across the full width */
-.category-heading {
-  flex: 0 0 100% !important;
-  width: 100% !important;
-}
 
 /* 3. Force the cards to behave exactly like  layout image items */
 .menu-item-card {
