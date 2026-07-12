@@ -399,27 +399,54 @@ footer {
 /* AUTOMATED BANNER SLIDESHOW LAYOUT */
 .intro-banner-ad {
   position: relative;
-  overflow: hidden;
+  width: 100%;
+  display: block;
 }
 
-/* Ensure images stack directly on top of each other for cross-fading */
+/* Base slide settings matching original proportions */
 .intro-banner-ad .slide {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+/* Overlay inactive frames without collapsing layout dimension spaces */
+.intro-banner-ad .slide:not(:first-child) {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
 }
 
-/* Keep the first image layout space active so the banner has proper height */
-.intro-banner-ad .slide:first-child {
-  position: relative;
-}
-
-/* The active class triggered by JavaScript to animate opacity */
+/* Visibility anchor */
 .intro-banner-ad .slide.active {
   opacity: 1;
+}
+
+/* ABSOLUTE NAVIGATION DOT PANEL POSITIONING */
+.slideshow-dots-container {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+/* The style parameters for your index indicators */
+.slideshow-dots-container .dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.4s ease, transform 0.4s ease;
+}
+
+/* White highlight styling for the active frame dot tracker */
+.slideshow-dots-container .dot.active-dot {
+  background-color: #ffffff;
+  transform: scale(1.15);
 }

@@ -352,23 +352,35 @@ let currentSlideIndex = 0;
 
 function runSlideshow() {
   const slides = document.querySelectorAll(".slide");
-  if (slides.length === 0) return; // Exit safely if not on the Home index page
+  const dots = document.querySelectorAll(".dot");
+  if (slides.length === 0) return;
 
-  // 1. Remove active state from the current slide
+  // 1. Remove active markers from current elements
   slides[currentSlideIndex].classList.remove("active");
+  if (dots.length > 0) dots[currentSlideIndex].classList.remove("active-dot");
 
-  // 2. Cycle index tracking forward
+  // 2. Step index counter forward
   currentSlideIndex = (currentSlideIndex + 1) % slides.length;
 
-  // 3. Add active state to reveal the next slide frame smoothly
+  // 3. Apply visibility classes to the new match elements
   slides[currentSlideIndex].classList.add("active");
+  if (dots.length > 0) dots[currentSlideIndex].classList.add("active-dot");
 }
 
-// Ensure the very first slide is marked active when the window opens
-window.addEventListener("DOMContentLoaded", function() {
-  const firstSlide = document.querySelector(".slide");
-  if (firstSlide) firstSlide.classList.add("active");
-});
+// Global browser initiation execution layer
+window.addEventListener("load", function() {
+  const slides = document.querySelectorAll(".slide");
+  const dots = document.querySelectorAll(".dot");
 
-// Automatically switch slides every 3 seconds (3000 milliseconds)
-setInterval(runSlideshow, 3000);
+  if (slides.length > 0) {
+    // Force wipe inline fallback parameters to unleash styling
+    slides.forEach(s => s.style.display = "");
+    
+    // Core structural target item zero initialization
+    slides[0].classList.add("active");
+    if (dots.length > 0) dots[0].classList.add("active-dot");
+    
+    // Trigger loop execution cycle sequence
+    setInterval(runSlideshow, 3500);
+  }
+});
