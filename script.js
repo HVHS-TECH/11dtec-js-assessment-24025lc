@@ -87,10 +87,10 @@ function toggleItemSelection(itemId, isChecked) {
   }
 }
 
-// 5. GRID GENERATION LAYOUT: Dynamically paints item rows onto the web page interface for both pages
+// 5. GRID GENERATION LAYOUT: Dynamically paints item rows onto the web page interface for Ordering.html
 function renderMenuLayout() {
   const container = document.getElementById("menuContainer");
-  if (!container) return; // Safely exit if the target layout hook doesn't exist on the current page
+  if (!container) return; // Safely exit if running on Menu.html to prevent script errors
   
   container.innerHTML = ""; 
   const itemQuantities = getCartQuantities();
@@ -152,31 +152,28 @@ function renderMenuLayout() {
   });
 }
 
-// 5b. EXTRA CARD VIEW SYNC LAYER: Updates the visual card blocks shown in your screenshot
-function syncCardLayoutElements() {
+// 5b. HARDCODED CARD LAYOUT SYNC LAYER: Scans and updates static cards on Menu.html
+function syncStaticCardLayout() {
+  const itemQuantities = getCartQuantities();
+  
   menuItems.forEach(item => {
-    // Finds the button matching this specific item's ID inside your card view layout
-    const targetBtn = document.querySelector(`button[onclick*="'${item.id}'"]`) || document.getElementById(`btn_${item.id}`);
+    const targetBtn = document.querySelector(`button[onclick="selectAndGo('${item.id}')"]`);
     if (!targetBtn) return;
 
-    // Look for a parent wrapper card element
-    const cardBlock = targetBtn.closest('.menu-item-card') || targetBtn.parentElement.parentElement;
+    const cardBlock = targetBtn.closest(".menu-item-card");
     if (!cardBlock) return;
 
-    const freshQty = getCartQuantities()[item.id] || 0;
+    const qty = itemQuantities[item.id] || 0;
 
-    if (freshQty > 0) {
-      // 1. Highlight the card item box green
+    if (qty > 0) {
       cardBlock.style.borderColor = "#27ae60";
       cardBlock.style.backgroundColor = "#f0fff4";
       cardBlock.style.borderStyle = "solid";
       cardBlock.style.borderWidth = "1px";
       
-      // 2. Update the button text to show correct quantity tracking
-      targetBtn.textContent = `Order This Item (x${freshQty})`;
+      targetBtn.textContent = `Order This Item (x${qty})`;
       targetBtn.style.backgroundColor = "#2ecc71";
 
-      // 3. Dynamically insert the missing red "Remove 1" link element
       let removeLink = cardBlock.querySelector(`.remove-link-${item.id}`);
       if (!removeLink) {
         removeLink = document.createElement("span");
@@ -191,7 +188,6 @@ function syncCardLayoutElements() {
         targetBtn.parentNode.insertBefore(removeLink, targetBtn.nextSibling);
       }
     } else {
-      // Clear visual highlights if the quantity hits zero
       cardBlock.style.borderColor = "";
       cardBlock.style.backgroundColor = "";
       cardBlock.style.borderStyle = "";
@@ -205,30 +201,10 @@ function syncCardLayoutElements() {
   });
 }
 
-// MULTI-VIEW INTERFACE LISTENER
-// Fires instantly when switching screens or modifying order items on separate tabs
-window.addEventListener("storage", function(event) {
-  if (event.key === "cartItemIds") {
-    if (typeof updateInterface === "function") {
-      updateInterface(); 
-    } else {
-      renderMenuLayout();
-    }
-    syncCardLayoutElements();
-  }
-});
-
-// Also run the card builder synchronization directly on layout initialization loading
-const originalOnload = window.onload;
-window.onload = function() {
-  if (originalOnload) originalOnload();
-  syncCardLayoutElements();
-};
-
-
-// 6. SYNC ENGINE: Keeps prices and lists inside the preview board refreshed
+// 6. SYNC ENGINE: Keeps prices, lists, and view structures fully matched
 function updateInterface() {
   renderMenuLayout();
+  syncStaticCardLayout();
 
   const previewName = document.getElementById("previewName");
   const previewPrice = document.getElementById("previewPrice");
@@ -285,7 +261,7 @@ function processOrder() {
     }
   }
 
-if (totalCost === 0) {
+  if (totalCost === 0) {
     if (errorAlert) {
       errorAlert.textContent = "No Selection: Please select at least one menu item by clicking the options.";
       errorAlert.style.display = "block";
@@ -302,8 +278,6 @@ if (totalCost === 0) {
   }
 
   const cashPaid = parseFloat(cashPaidValue);
-  
-  // This calculates shortByAmount HERE so the computer knows what it means
   const shortByAmount = totalCost - (isNaN(cashPaid) ? 0 : cashPaid);
 
   if (isNaN(cashPaid) || cashPaid < totalCost) {
@@ -313,7 +287,6 @@ if (totalCost === 0) {
     }
     return;
   }
-
 
   if (errorAlert) {
     errorAlert.style.display = "none";
@@ -345,65 +318,26 @@ function resetForm() {
   updateInterface();
 }
 
+// 9. HIGH VISIBILITY MENU CARD CLICK INTERCEPTOR
+function selectAndGo(itemId) {
+  addToCart(itemId);
+}
+
+// 10. CROSS-PAGE WINDOWS SYNC EVENT LISTENER
+window.addEventListener("storage", function(event) {
+  if (event.key === "cartItemIds") {
+    updateInterface();
+  }
+});
+
+// 11. INITIAL RUNTIME ENGINE LOAD HOOK
 window.onload = function() {
   updateInterface();
   
   window.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
       processOrder();
-    } else if (event.key === "Backspace") {
-      resetForm();
-    }
-  });
-};
-
- function selectAndGo(itemId) {
-  // Directly targets the explicit button signature without relying on window click context
-  const targetBtn = document.querySelector(`button[onclick="selectAndGo('${itemId}')"]`);
-  if (!targetBtn) return;
-
-  // State cart updating logic
-  addToCart(itemId);
-  const freshQty = getCartQuantities()[itemId] || 0;
-
-  // Target the card block wrapper safely
-  const cardBlock = targetBtn.closest('.menu-item-card');
-
-  if (cardBlock && freshQty > 0) {
-    cardBlock.style.borderColor = "#27ae60";
-    cardBlock.style.backgroundColor = "#f0fff4";
-    cardBlock.style.borderStyle = "solid";
-    cardBlock.style.borderWidth = "1px";
-    
-    targetBtn.textContent = `Order This Item (x${freshQty})`;
-    targetBtn.style.backgroundColor = "#2ecc71";
-
-    let removeLink = cardBlock.querySelector(`.remove-link-${itemId}`);
-    if (!removeLink) {
-      removeLink = document.createElement("span");
-      removeLink.className = `remove-link-${itemId}`;
-      removeLink.textContent = "Remove 1";
-      removeLink.style = "color: #c0392b; text-decoration: underline; cursor: pointer; font-size: 0.85rem; font-weight: bold; margin-left: 15px; display: inline-block; vertical-align: middle;";
-      
-      removeLink.onclick = function(e) {
-        e.stopPropagation();
-        removeFromCart(itemId);
-        
-        const updatedQty = getCartQuantities()[itemId] || 0;
-        if (updatedQty <= 0) {
-          cardBlock.style.borderColor = "";
-          cardBlock.style.backgroundColor = "";
-          cardBlock.style.borderStyle = "";
-          cardBlock.style.borderWidth = "";
-          targetBtn.textContent = "Order This Item";
-          targetBtn.style.backgroundColor = "";
-          removeLink.remove();
-        } else {
-          targetBtn.textContent = `Order This Item (x${updatedQty})`;
-        }
-      };
-      
-      targetBtn.parentNode.insertBefore(removeLink, targetBtn.nextSibling);
-    }
-  }
-}
+    } else 
+      if (event.key === "Backspace") 
+        {if (document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") 
+          {resetForm();}}});};
