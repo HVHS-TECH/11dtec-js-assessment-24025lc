@@ -50,7 +50,8 @@ body.ordering-page {
   border-radius: 50px; /* Pill-shaped navigational controls design choice */
   font-weight: bold;
   box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
-  margin-top: 20px; /* This sets how far away the buttons are from the top margin */
+  margin-top: 20px; /* This sets how far away the buttons are from the top margin of the body html
+                       element */
   margin-bottom: 10px;
 }
 
