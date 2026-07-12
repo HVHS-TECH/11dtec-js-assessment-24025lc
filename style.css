@@ -190,18 +190,30 @@ h3 {
   width: 100%;
 }
 
-
-
-
 .menu-item-card {
   background: rgb(255 255 255 / 0.95);
-  margin-bottom: 15px;
   display: flex; /* Dynamic element sizing inside custom cards */
   gap: 20px;
   padding: 15px;
   border-radius: 8px;
   align-items: center;
+
+  flex: 0 1 calc(50% - 8px) !important;
+
+  width: calc(50% - 8px) !important;
+  max-width: calc(50% - 8px) !important;
+  box-sizing: border-box !important;
 }
+
+
+.menu-item-card:hover {
+  transform: translateY(-2px);
+}
+
+
+
+
+
 
 .menu-item-image-box {
   width: 200px;        /* Increased from 100px to make images bigger */
@@ -359,33 +371,10 @@ footer {
   color: #ffffff;
 }
 
-.menu-item-card {
-  flex: 0 1 calc(50% - 8px) !important;
-  margin-bottom: 0px !important;
-}
-
-@media (max-width: 768px) {
-  .menu-item-card {
-    flex: 0 1 100% !important;
-  }
-}
-
-
 /* =================================================================================================
    PERFECT TWO-COLUMN MENU CARD FIX
    =================================================================================================
  */
-
-/* 3. Force the cards to behave exactly like  layout image items */
-.menu-item-card {
-  /* This forces the card to shrink to exactly half the container width minus the gap */
-  flex: 0 0 calc(50% - 8px) !important;
-  width: calc(50% - 8px) !important;
-  max-width: calc(50% - 8px) !important;
-  box-sizing: border-box !important;
-  margin-bottom: 0px !important; /* Spacing is now handled cleanly by the container gap */
-}
-
 
 
 /* =================================================================================================
