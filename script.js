@@ -31,6 +31,7 @@ const menuItems = [
   { id: "drink_5", category: "Drinks", name: "Frozen Coke", price: 3.50, desc: "Icy, slushy frozen classic Coca-Cola." },
   { id: "drink_6", category: "Drinks", name: "Frozen Sprite", price: 3.50, desc: "Icy, slushy frozen lemon-lime refreshing drink." },
   { id: "drink_7", category: "Drinks", name: "Frozen Fanta", price: 3.50, desc: "Icy, slushy frozen orange Fanta treat." },
+  { id: "drink_8", category: "Drinks", name: "Frozen Raspberry", price: 3.50, desc: "Icy, slushy, frozen pink Fanta treat." },
   
   // Extras Category
   { id: "extra_1", category: "Extras", name: "Large Side of Chips", price: 4.00, desc: "Thick-cut chunky pub style chips seasoned with sea salt." },
