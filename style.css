@@ -443,35 +443,3 @@ body.home-page .intro-banner-ad .slide {
   object-fit: cover !important;            
 }
 
-/* UNIFIED RELATIVE DISPLAY FLOW FOR NAVIGATION DOTS PANEL BELOW IMAGES */
-body.home-page .slideshow-dots-container {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  position: relative !important;
-  top: auto !important;
-  left: auto !important;
-  transform: none !important;
-  width: 90vw !important;         /* Matches the exact width of your wide banner box layout */
-  height: 20px !important;            
-  margin-top: 15px !important;        
-  margin-bottom: 25px !important;     
-  z-index: 99 !important;
-}
-
-/* Individual dot tracking circular element structures */
-body.home-page .slideshow-dots-container .dot {
-  width: 10px !important;
-  height: 10px !important;
-  background-color: rgba(51, 51, 51, 0.4) !important; /* Dark charcoal tint visible against trees */
-  border-radius: 50% !important;
-  display: inline-block !important;
-  margin: 0 5px !important;
-  transition: background-color 0.4s ease, transform 0.4s ease !important;
-}
-
-/* High contrast black selection indicator for active frames */
-body.home-page .slideshow-dots-container .dot.active-dot {
-  background-color: #333333 !important;
-  transform: scale(1.2) !important;
-}
