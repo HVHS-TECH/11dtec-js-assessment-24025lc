@@ -355,14 +355,14 @@ function runSlideshow() {
   const dots = document.querySelectorAll(".dot");
   if (slides.length === 0) return;
 
-  // Remove active markers from the current item elements
+  // Remove active markers from the current elements
   slides[currentSlideIndex].classList.remove("active");
   if (dots.length > 0) dots[currentSlideIndex].classList.remove("active-dot");
 
-  // Step the index tracking counter forward
+  // Step index counter forward
   currentSlideIndex = (currentSlideIndex + 1) % slides.length;
 
-  // Apply visibility classes to the new matching elements
+  // Apply visibility classes to the new match elements
   slides[currentSlideIndex].classList.add("active");
   if (dots.length > 0) dots[currentSlideIndex].classList.add("active-dot");
 }
@@ -373,14 +373,14 @@ window.addEventListener("load", function() {
   const dots = document.querySelectorAll(".dot");
 
   if (slides.length > 0) {
-    // Clear the inline style overrides to unleash CSS opacity rules
+    // Clear inline display properties to let CSS take over
     slides.forEach(s => s.style.display = "");
     
-    // CORRECTED LINE: Targets the single first element item node instead of the array list
+    // FIX: Targets index [0] to apply the class to the FIRST slide only, not the whole group
     slides[0].classList.add("active");
     if (dots.length > 0) dots[0].classList.add("active-dot");
     
-    // Trigger loop execution cycle sequence every 3.5 seconds
+    // Trigger loop execution cycle sequence
     setInterval(runSlideshow, 3500);
   }
 });

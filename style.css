@@ -396,14 +396,18 @@ footer {
 }
 
 
-/* AUTOMATED BANNER SLIDESHOW LAYOUT */
+/* ==========================================================================
+   FINAL UNIFIED AUTOMATED BANNER SLIDESHOW SYSTEM
+   ========================================================================== */
+
+/* Base slideshow structural wrapper box layout */
 .intro-banner-ad {
   position: relative;
   width: 100%;
   display: block;
 }
 
-/* Base slide settings matching original proportions */
+/* Individual slider frames matching image properties */
 .intro-banner-ad .slide {
   width: 100%;
   height: auto;
@@ -412,97 +416,62 @@ footer {
   transition: opacity 1.2s ease-in-out;
 }
 
-/* Overlay inactive frames without collapsing layout dimension spaces */
+/* Overlay inactive images over the base layout boundary line */
 .intro-banner-ad .slide:not(:first-child) {
   position: absolute;
   top: 0;
   left: 0;
 }
 
-/* Visibility anchor */
+/* Visibility selector toggled via script runtime engine loops */
 .intro-banner-ad .slide.active {
   opacity: 1;
 }
 
-/* ABSOLUTE NAVIGATION DOT PANEL POSITIONING */
-.slideshow-dots-container {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-  z-index: 10;
-}
-
-/* The style parameters for your index indicators */
-.slideshow-dots-container .dot {
-  width: 10px;
-  height: 10px;
-  background-color: rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.4s ease, transform 0.4s ease;
-}
-
-/* White highlight styling for the active frame dot tracker */
-.slideshow-dots-container .dot.active-dot {
-  background-color: #ffffff;
-  transform: scale(1.15);
-}
-
-
 /* EXTEND AND SHIFT BANNER SLIDESHOW RIGHT ALIGNED ON HOME SCREEN */
 body.home-page .intro-banner-ad {
-  max-width: 100%;  
-  width: 90vw;                  /* Scales width layout coordinates outward */
-  margin-left: 0;               /* Anchors left edge block alignment perfectly */
-  position: relative;
+  max-width: 100% !important;  
+  width: 90vw !important;                  
+  margin-left: 0 !important;               
+  margin-bottom: 20px !important; 
   z-index: 5;
 }
 
 body.home-page .intro-banner-ad .slide {
-  width: 100%;
-  height: auto;
-  object-fit: cover;            /* Keeps original item dimensions proportional */
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;            
 }
 
-/* POSITION THE DOTS DIRECTLY BELOW THE SLIDESHOW CONTAINER */
-body.home-page .intro-banner-ad {
-  margin-bottom: 25px; /* Adds space underneath the banner for the dots */
-}
-
+/* UNIFIED RELATIVE DISPLAY FLOW FOR NAVIGATION DOTS PANEL BELOW IMAGES */
 body.home-page .slideshow-dots-container {
-  position: absolute;
-  top: 100%;             /* Pushes container past the exact bottom of the images */
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 10px;      /* Clear padding gap beneath the image line */
-  display: flex;
-  gap: 8px;
-  z-index: 99;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  width: 90vw !important;         /* Matches the exact width of your wide banner box layout */
+  height: 20px !important;            
+  margin-top: 15px !important;        
+  margin-bottom: 25px !important;     
+  z-index: 99 !important;
 }
 
-/* NATURAL RELATIVE LAYOUT POSITION FOR SLIDESHOW DOTS */
-body.home-page .slideshow-dots-container {
-  display: flex;
-  justify-content: center; /* Centers the dots horizontally under your wide images */
-  gap: 8px;
-  margin-top: 15px;        /* Crisp padding gap directly underneath the image frame boundary line */
-  margin-bottom: 20px;     /* Breathing room block spacer before the orange link elements */
-}
-
-/* Darkens indicators to deep high-visibility gray against your tree background */
+/* Individual dot tracking circular element structures */
 body.home-page .slideshow-dots-container .dot {
-  width: 10px;
-  height: 10px;
-  background-color: rgba(51, 51, 51, 0.4);
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.4s ease, transform 0.4s ease;
+  width: 10px !important;
+  height: 10px !important;
+  background-color: rgba(51, 51, 51, 0.4) !important; /* Dark charcoal tint visible against trees */
+  border-radius: 50% !important;
+  display: inline-block !important;
+  margin: 0 5px !important;
+  transition: background-color 0.4s ease, transform 0.4s ease !important;
 }
 
+/* High contrast black selection indicator for active frames */
 body.home-page .slideshow-dots-container .dot.active-dot {
-  background-color: #333333;
-  transform: scale(1.15);
+  background-color: #333333 !important;
+  transform: scale(1.2) !important;
 }
