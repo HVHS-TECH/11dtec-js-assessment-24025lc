@@ -355,8 +355,9 @@ h3 {
 /* Unique properties for footer. */
 footer {
   background-color: #000000;
-  margin-top: 20px;
+  margin: 8px 0;
   color: #ffffff;
+  padding: 10px 0; /* Adds 10px of space to the top and bottom inside the background */
 }
 
 /* =================================================================================================
