@@ -99,6 +99,12 @@ h2 {
   font-size: 30px;
 }
 
+h3 {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 25px;
+}
+
 .intro-banner-ad {
   max-width: 600px;
 }
@@ -178,7 +184,6 @@ h2 {
 
 .menu-category-title {
   background-color: #27ae60;
-  color: #ffffff;
   padding: 20px;
   border-radius: 8px;
   margin-top: 25px;
