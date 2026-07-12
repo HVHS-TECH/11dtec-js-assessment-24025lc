@@ -3,9 +3,9 @@ console.log("Welcome to Pavilion Kitchen - Final Balanced Edition");
 // 1. CENTRAL MENU DATABASE: Property names are perfectly unified to "desc"
 const menuItems = [
   { id: "burg_1", category: "Gourmet Burgers", name: "The Classic Cafe Cheeseburger", price: 8.00, desc: "Premium beef patty, melted cheddar, lettuce, tomato, pickles."},
-  { id: "burg_2", category: "Gourmet Burgers", name: "The Classic Cafe Cheeseburger Meal", price: 17.00, desc: "Contains the Classic Cafe Cheeseburger with Large Fries, Chicken Nuggets and a Coke all for just $17.00." },
+  { id: "burg_2", category: "Gourmet Burgers", name: "The Classic Cafe Cheeseburger Meal", price: 17.00, desc: "Contains the Classic Cafe Cheeseburger along with Large Fries, Chicken Nuggets" },
   { id: "burg_3", category: "Gourmet Burgers", name: "Buttermilk Fried Chicken Burger", price: 12.00, desc: "Crispy fried chicken breast, creamy slaw, pickles, and spicy chipotle mayo." },
-  { id: "burg_4", category: "Gourmet Burgers", name: "Smoky BBQ Bacon Burger", price: 11.00, desc: "Beef patty, crispy bacon, cheddar, crispy onion rings, and smoky barbecue sauce." },
+  { id: "burg_4", category: "Gourmet Burgers", name: "Smoky BBQ Bacon Burger", price: 11.00, desc: "Beef patty, crispy bacon, crispy onion rings, and smoky barbecue sauce." },
   { id: "burg_5", category: "Gourmet Burgers", name: "Smashed Avocado & Veggie Burger", price: 11.00, desc: "Plant-based patty, smashed avocado, rocket, and garlic aioli." },
   { id: "pie_1", category: "Savoury Pies", name: "Chunky Steak & Mushroom Pie", price: 5.00, desc: "Slow-cooked beef chunks in a rich gravy with button mushrooms, encased in a flaky puff pastry." },
   { id: "pie_2", category: "Savoury Pies", name: "Classic Mince & Cheese Pie", price: 5.00, desc: "Seasoned lean minced beef with a thick layer of melted cheddar or mozzarella." },
