@@ -205,33 +205,39 @@ h3 {
   box-sizing: border-box !important;
 }
 
-
 .menu-item-card:hover {
   transform: translateY(-2px);
 }
 
-
-
-
-
-
-.menu-item-image-box {
+.menu-item-card-image {
   width: 200px;        /* Increased from 100px to make images bigger */
   height: 200px;       /* Increased from 100px to maintain a perfect square aspect ratio */
-  background: #eeeeee;
   border-radius: 6px;
   overflow: hidden;    /* Clips overlapping boundaries cleanly */
   flex-shrink: 0;      /* Prevents thumbnails from collapsing inside narrow layout screens */
 }
-.menu-item-image-box img {
+
+.menu-item-card-image > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.menu-item-content {
+.menu-item-card-content {
+  display: flex;
   flex-grow: 1;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  padding: 10px 0;
 }
+
+
+
+
+
+
+
 
 .order-btn {
   background: #27ae60;
