@@ -355,14 +355,14 @@ function runSlideshow() {
   const dots = document.querySelectorAll(".dot");
   if (slides.length === 0) return;
 
-  // 1. Remove active markers from current elements
+  // Remove active markers from the current item elements
   slides[currentSlideIndex].classList.remove("active");
   if (dots.length > 0) dots[currentSlideIndex].classList.remove("active-dot");
 
-  // 2. Step index counter forward
+  // Step the index tracking counter forward
   currentSlideIndex = (currentSlideIndex + 1) % slides.length;
 
-  // 3. Apply visibility classes to the new match elements
+  // Apply visibility classes to the new matching elements
   slides[currentSlideIndex].classList.add("active");
   if (dots.length > 0) dots[currentSlideIndex].classList.add("active-dot");
 }
@@ -373,14 +373,14 @@ window.addEventListener("load", function() {
   const dots = document.querySelectorAll(".dot");
 
   if (slides.length > 0) {
-    // Force wipe inline fallback parameters to unleash styling
+    // Clear the inline style overrides to unleash CSS opacity rules
     slides.forEach(s => s.style.display = "");
     
-    // Core structural target item zero initialization
+    // CORRECTED LINE: Targets the single first element item node instead of the array list
     slides[0].classList.add("active");
     if (dots.length > 0) dots[0].classList.add("active-dot");
     
-    // Trigger loop execution cycle sequence
+    // Trigger loop execution cycle sequence every 3.5 seconds
     setInterval(runSlideshow, 3500);
   }
 });

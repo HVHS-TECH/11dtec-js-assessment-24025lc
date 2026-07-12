@@ -483,25 +483,26 @@ body.home-page .slideshow-dots-container {
   z-index: 99;
 }
 
-/* POSITION SLIDESHOW DOTS IN THE REGULAR DOCUMENT FLOW BELOW THE BANNER */
+/* NATURAL RELATIVE LAYOUT POSITION FOR SLIDESHOW DOTS */
 body.home-page .slideshow-dots-container {
-  position: relative;    /* Removes absolute positioning to sit naturally below the frame */
-  top: auto;
-  left: auto;
-  transform: none;
   display: flex;
-  justify-content: center; /* Centers the dots horizontally underneath the image */
+  justify-content: center; /* Centers the dots horizontally under your wide images */
   gap: 8px;
-  margin-top: 15px;      /* Clear padding gap directly beneath the banner image line */
-  margin-bottom: 15px;   /* Adds breathing room before your menu exploration links */
-  z-index: 99;
+  margin-top: 15px;        /* Crisp padding gap directly underneath the image frame boundary line */
+  margin-bottom: 20px;     /* Breathing room block spacer before the orange link elements */
 }
 
-/* Darkens dots to high-contrast charcoal so they remain sharp against your backdrop */
+/* Darkens indicators to deep high-visibility gray against your tree background */
 body.home-page .slideshow-dots-container .dot {
+  width: 10px;
+  height: 10px;
   background-color: rgba(51, 51, 51, 0.4);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.4s ease, transform 0.4s ease;
 }
 
 body.home-page .slideshow-dots-container .dot.active-dot {
   background-color: #333333;
+  transform: scale(1.15);
 }
