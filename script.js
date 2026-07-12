@@ -7,6 +7,7 @@ const menuItems = [
   { id: "burg_3", category: "Gourmet Burgers", name: "Buttermilk Fried Chicken Burger", price: 12.00, desc: "Crispy fried chicken breast, pickles, and mayo." },
   { id: "burg_4", category: "Gourmet Burgers", name: "Smoky BBQ Bacon Burger", price: 11.00, desc: "Beef patty, crispy bacon and onion rings, along with smoky barbecue sauce." },
   { id: "burg_5", category: "Gourmet Burgers", name: "Smashed Avocado & Veggie Burger", price: 11.00, desc: "Plant-based patty, smashed avocado, rocket, and garlic aioli." },
+  { id: "burg_6", category: "Gourmet Burgers", name: "Buttermilk Fried Chicken Burger Meal", price: 17.00, desc: "Contains the Buttermilk Fried Chicken Burger along with Large Fries and Crispy Bacon."},
   { id: "pie_1", category: "Savoury Pies", name: "Chunky Steak & Mushroom Pie", price: 5.00, desc: "Slow-cooked beef in a rich gravy with mushrooms, enhanced with a puff pastry." },
   { id: "pie_2", category: "Savoury Pies", name: "Classic Mince & Cheese Pie", price: 5.00, desc: "Seasoned lean minced beef with a thick layer of melted cheddar or mozzarella." },
   { id: "pie_3", category: "Savoury Pies", name: "Creamy Chicken & Leek Pie", price: 5.00, desc: "Tender chicken breast pieces cooked in a creamy white wine and leek sauce." },
