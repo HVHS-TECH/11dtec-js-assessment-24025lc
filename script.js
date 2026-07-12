@@ -152,12 +152,78 @@ function renderMenuLayout() {
   });
 }
 
-// CROSS-PAGE MEMORY SYNC ENGINE: Force updates screens instantly when data changes across tabs
+// 5b. EXTRA CARD VIEW SYNC LAYER: Updates the visual card blocks shown in your screenshot
+function syncCardLayoutElements() {
+  menuItems.forEach(item => {
+    // Finds the button matching this specific item's ID inside your card view layout
+    const targetBtn = document.querySelector(`button[onclick*="'${item.id}'"]`) || document.getElementById(`btn_${item.id}`);
+    if (!targetBtn) return;
+
+    // Look for a parent wrapper card element
+    const cardBlock = targetBtn.closest('.menu-item-card') || targetBtn.parentElement.parentElement;
+    if (!cardBlock) return;
+
+    const freshQty = getCartQuantities()[item.id] || 0;
+
+    if (freshQty > 0) {
+      // 1. Highlight the card item box green
+      cardBlock.style.borderColor = "#27ae60";
+      cardBlock.style.backgroundColor = "#f0fff4";
+      cardBlock.style.borderStyle = "solid";
+      cardBlock.style.borderWidth = "1px";
+      
+      // 2. Update the button text to show correct quantity tracking
+      targetBtn.textContent = `Order This Item (x${freshQty})`;
+      targetBtn.style.backgroundColor = "#2ecc71";
+
+      // 3. Dynamically insert the missing red "Remove 1" link element
+      let removeLink = cardBlock.querySelector(`.remove-link-${item.id}`);
+      if (!removeLink) {
+        removeLink = document.createElement("span");
+        removeLink.className = `remove-link-${item.id}`;
+        removeLink.textContent = "Remove 1";
+        removeLink.style = "color: #c0392b; text-decoration: underline; cursor: pointer; font-size: 0.85rem; font-weight: bold; margin-left: 15px; display: inline-block; vertical-align: middle;";
+        
+        removeLink.onclick = function(e) {
+          e.stopPropagation();
+          removeFromCart(item.id);
+        };
+        targetBtn.parentNode.insertBefore(removeLink, targetBtn.nextSibling);
+      }
+    } else {
+      // Clear visual highlights if the quantity hits zero
+      cardBlock.style.borderColor = "";
+      cardBlock.style.backgroundColor = "";
+      cardBlock.style.borderStyle = "";
+      cardBlock.style.borderWidth = "";
+      targetBtn.textContent = "Order This Item";
+      targetBtn.style.backgroundColor = "";
+      
+      const removeLink = cardBlock.querySelector(`.remove-link-${item.id}`);
+      if (removeLink) removeLink.remove();
+    }
+  });
+}
+
+// MULTI-VIEW INTERFACE LISTENER
+// Fires instantly when switching screens or modifying order items on separate tabs
 window.addEventListener("storage", function(event) {
   if (event.key === "cartItemIds") {
-    updateInterface();
+    if (typeof updateInterface === "function") {
+      updateInterface(); 
+    } else {
+      renderMenuLayout();
+    }
+    syncCardLayoutElements();
   }
 });
+
+// Also run the card builder synchronization directly on layout initialization loading
+const originalOnload = window.onload;
+window.onload = function() {
+  if (originalOnload) originalOnload();
+  syncCardLayoutElements();
+};
 
 
 // 6. SYNC ENGINE: Keeps prices and lists inside the preview board refreshed
