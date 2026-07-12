@@ -452,15 +452,56 @@ footer {
 }
 
 
-/* WIDEN BANNER IMAGES STRUT ONLY ON THE INDEX HOME PAGE */
+/* EXTEND AND SHIFT BANNER SLIDESHOW RIGHT ALIGNED ON HOME SCREEN */
 body.home-page .intro-banner-ad {
-  max-width: 100%;  /* Breaks original bounds to fill screen real-estate */
-  width: 100vw;     /* Leverages full viewport window layout sizing widths */
-  margin-left: calc(-50vw + 50%); /* Centers the wide element perfectly to bypass page margins */
+  max-width: 100%;  
+  width: 90vw;                  /* Scales width layout coordinates outward */
+  margin-left: 0;               /* Anchors left edge block alignment perfectly */
+  position: relative;
+  z-index: 5;
 }
 
 body.home-page .intro-banner-ad .slide {
   width: 100%;
   height: auto;
-  object-fit: cover; /* Keeps aspect ratios matching clean layouts without stretching textures */
+  object-fit: cover;            /* Keeps original item dimensions proportional */
+}
+
+/* POSITION THE DOTS DIRECTLY BELOW THE SLIDESHOW CONTAINER */
+body.home-page .intro-banner-ad {
+  margin-bottom: 25px; /* Adds space underneath the banner for the dots */
+}
+
+body.home-page .slideshow-dots-container {
+  position: absolute;
+  top: 100%;             /* Pushes container past the exact bottom of the images */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;      /* Clear padding gap beneath the image line */
+  display: flex;
+  gap: 8px;
+  z-index: 99;
+}
+
+/* POSITION SLIDESHOW DOTS IN THE REGULAR DOCUMENT FLOW BELOW THE BANNER */
+body.home-page .slideshow-dots-container {
+  position: relative;    /* Removes absolute positioning to sit naturally below the frame */
+  top: auto;
+  left: auto;
+  transform: none;
+  display: flex;
+  justify-content: center; /* Centers the dots horizontally underneath the image */
+  gap: 8px;
+  margin-top: 15px;      /* Clear padding gap directly beneath the banner image line */
+  margin-bottom: 15px;   /* Adds breathing room before your menu exploration links */
+  z-index: 99;
+}
+
+/* Darkens dots to high-contrast charcoal so they remain sharp against your backdrop */
+body.home-page .slideshow-dots-container .dot {
+  background-color: rgba(51, 51, 51, 0.4);
+}
+
+body.home-page .slideshow-dots-container .dot.active-dot {
+  background-color: #333333;
 }
