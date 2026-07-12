@@ -152,6 +152,13 @@ function renderMenuLayout() {
   });
 }
 
+// CROSS-PAGE MEMORY SYNC ENGINE: Force updates screens instantly when data changes across tabs
+window.addEventListener("storage", function(event) {
+  if (event.key === "cartItemIds") {
+    updateInterface();
+  }
+});
+
 
 // 6. SYNC ENGINE: Keeps prices and lists inside the preview board refreshed
 function updateInterface() {
