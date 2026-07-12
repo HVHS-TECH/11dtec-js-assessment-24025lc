@@ -450,3 +450,17 @@ footer {
   background-color: #ffffff;
   transform: scale(1.15);
 }
+
+
+/* WIDEN BANNER IMAGES STRUT ONLY ON THE INDEX HOME PAGE */
+body.home-page .intro-banner-ad {
+  max-width: 100%;  /* Breaks original bounds to fill screen real-estate */
+  width: 100vw;     /* Leverages full viewport window layout sizing widths */
+  margin-left: calc(-50vw + 50%); /* Centers the wide element perfectly to bypass page margins */
+}
+
+body.home-page .intro-banner-ad .slide {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Keeps aspect ratios matching clean layouts without stretching textures */
+}
