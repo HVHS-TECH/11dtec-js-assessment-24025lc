@@ -232,13 +232,6 @@ h3 {
   padding: 10px 0;
 }
 
-
-
-
-
-
-
-
 .order-btn {
   background: #27ae60;
   color: #ffffff;
@@ -256,17 +249,6 @@ h3 {
   font-weight: bold;
 }
 
-.menu-item-image-box.meal-image-fix {
-  background: transparent !important; /* Removes the white/gray underlying background box */
-}
-
-.menu-item-image-box.meal-image-fix img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Prevents cropping if your transparent product asset has unique margins */
-  background: transparent !important;
-}
-
 /* =================================================================================================
    5. ORDERING PANELS
    =================================================================================================
@@ -280,8 +262,6 @@ h3 {
   gap: 30px;
   padding: 0 40px;
 }
-
-
 
 .pos-card {
   background: rgb(255 255 255 / 0.95); /* High transparency white contrast sheet overlays */
@@ -376,12 +356,6 @@ h3 {
 footer {
   color: #ffffff;
 }
-
-/* =================================================================================================
-   PERFECT TWO-COLUMN MENU CARD FIX
-   =================================================================================================
- */
-
 
 /* =================================================================================================
    ORDERING PAGE: FORCE TWO ITEMS PER ROW FIX
