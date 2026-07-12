@@ -62,7 +62,7 @@ body.ordering-page {
   margin-left: 10px;
 }
 
-.button:hover {
+.button:hover, .buttonleft:hover {
   transform: translateY(-2px); /* Subtle lifting motion on pointer hover states */
   box-shadow: 0 6px 8px rgb(0 0 0 / 0.15);
 }
