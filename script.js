@@ -2,28 +2,32 @@ console.log("Welcome to Pavilion Kitchen - Final Balanced Edition");
 
 // 1. CENTRAL MENU DATABASE: Property names are perfectly unified to "desc"
 const menuItems = [
+  // Burgers Category
   { id: "burg_1", category: "Gourmet Burgers", name: "The Classic Cafe Cheeseburger", price: 8.00, desc: "Premium beef patty, melted cheddar, lettuce, tomato, pickles."},
   { id: "burg_2", category: "Gourmet Burgers", name: "The Classic Cafe Cheeseburger Meal", price: 17.00, desc: "Contains the Classic Cafe Cheeseburger along with Large Fries, Chicken Nuggets." },
   { id: "burg_3", category: "Gourmet Burgers", name: "Buttermilk Fried Chicken Burger", price: 12.00, desc: "Crispy fried chicken breast, pickles, and mayo." },
-  { id: "burg_4", category: "Gourmet Burgers", name: "Smoky BBQ Bacon Burger", price: 11.00, desc: "Beef patty, crispy bacon and onion rings, along with smoky barbecue sauce." },
-  { id: "burg_5", category: "Gourmet Burgers", name: "Smashed Avocado & Veggie Burger", price: 11.00, desc: "Plant-based patty, smashed avocado, rocket, and garlic aioli." },
-  { id: "burg_6", category: "Gourmet Burgers", name: "Buttermilk Fried Chicken Burger Meal", price: 17.00, desc: "Contains the Buttermilk Fried Chicken Burger along with Large Fries and Crispy Bacon."},
+  { id: "burg_4", category: "Gourmet Burgers", name: "Buttermilk Fried Chicken Burger Meal", price: 17.00, desc: "Contains the Buttermilk Fried Chicken Burger along with Large Fries and Crispy Bacon."},
+  { id: "burg_5", category: "Gourmet Burgers", name: "Smoky BBQ Bacon Burger", price: 11.00, desc: "Beef patty, crispy bacon and onion rings, along with smoky barbecue sauce." },
+  { id: "burg_6", category: "Gourmet Burgers", name: "Smashed Avocado & Veggie Burger", price: 11.00, desc: "Plant-based patty, smashed avocado, rocket, and garlic aioli." },
+
+  // Pies Category
   { id: "pie_1", category: "Savoury Pies", name: "Chunky Steak & Mushroom Pie", price: 5.00, desc: "Slow-cooked beef in a rich gravy with mushrooms, enhanced with a puff pastry." },
   { id: "pie_2", category: "Savoury Pies", name: "Classic Mince & Cheese Pie", price: 5.00, desc: "Seasoned lean minced beef with a thick layer of melted cheddar or mozzarella." },
   { id: "pie_3", category: "Savoury Pies", name: "Creamy Chicken & Leek Pie", price: 5.00, desc: "Tender chicken breast pieces cooked in a creamy white wine and leek sauce." },
   { id: "pie_4", category: "Savoury Pies", name: "Roasted Vegetable & Feta Pie", price: 5.00, desc: "Seasonal roasted vegetables with crumbled feta cheese in a crusty pastry." },
-  
+
   // Steaks Category
   { id: "steak_1", category: "Steaks", name: "Eye Fillet (Filet Mignon)", price: 25.00, desc: "Tender eye fillet grilled to perfection." },
   { id: "steak_2", category: "Steaks", name: "Ribeye (Scotch Fillet)", price: 27.00, desc: "Juicy scotch fillet cooked to your liking." },
   { id: "steak_3", category: "Steaks", name: "New York Strip", price: 25.00, desc: "Classic strip steak seasoned and grilled." },
   { id: "steak_4", category: "Steaks", name: "Ribeye (Scotch Fillet) Meal", price: 27.00, desc: "Juicy scotch fillet along with Large Fries and Crispy Bacon." },  
+
   // Pastas Category
   { id: "pasta_1", category: "Pastas", name: "Chicken and Mushroom Fettuccine", price: 18.00, desc: "Fettuccine pasta with chicken and mushrooms in a creamy sauce." },
   { id: "pasta_2", category: "Pastas", name: "Basil Pesto and Bocconcini Fusilli", price: 16.00, desc: "Fusilli pasta tossed in basil pesto with fresh bocconcini." },
   { id: "pasta_3", category: "Pastas", name: "Chilli Garlic Prawn Linguine", price: 21.00, desc: "Linguine pasta with prawns in a spicy chilli garlic sauce." },
   { id: "pasta_4", category: "Pastas", name: "Extra Roasted Vegetable and Ricotta Cannelloni", price: 17.00, desc: "Cannelloni filled with roasted vegetables and ricotta cheese." },
-  
+
   // Drinks Category
   { id: "drink_1", category: "Drinks", name: "Coke", price: 3.50, desc: "Refreshing classic Coca-Cola." },
   { id: "drink_2", category: "Drinks", name: "Fanta", price: 3.50, desc: "Bright and bubbly orange soda." },
@@ -33,7 +37,7 @@ const menuItems = [
   { id: "drink_6", category: "Drinks", name: "Frozen Sprite", price: 3.50, desc: "Icy, slushy frozen lemon-lime refreshing drink." },
   { id: "drink_7", category: "Drinks", name: "Frozen Fanta", price: 3.50, desc: "Icy, slushy frozen orange Fanta treat." },
   { id: "drink_8", category: "Drinks", name: "Frozen Raspberry", price: 3.50, desc: "Icy, slushy, frozen pink Fanta treat." },
-  
+
   // Extras Category
   { id: "extra_1", category: "Extras", name: "Large Side of Chips", price: 4.00, desc: "Thick-cut chunky pub style chips seasoned with sea salt." },
   { id: "extra_2", category: "Extras", name: "Crispy Bacon", price: 3.50, desc: "Add an extra portion of perfectly crisped bacon rasher strips." },
