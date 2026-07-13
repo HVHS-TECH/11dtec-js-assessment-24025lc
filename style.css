@@ -85,11 +85,7 @@ h1 {
   padding: 10px 10px;  /* Optional: adds a little cushion on the left and right sides of the text */
 }
 
-h1.home-title {
-  background: #000000;
-}
-
-h1.menu-title, h1.ordering-title {
+h1.home-title, h1.menu-title, h1.ordering-title {
   background: #000000;
 }
                            
