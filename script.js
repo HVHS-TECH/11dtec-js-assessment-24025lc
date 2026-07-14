@@ -208,17 +208,17 @@ function syncStaticCardLayout() {
         targetBtn.parentNode.insertBefore(removeLink, targetBtn.nextSibling);
       }
     } else {
-      // Completely strip off active structural styling decorations when item quantities hit zero
+      // Completely strips off active structural styling decorations when item quantities hit zero
       cardBlock.style.borderColor = "";
       cardBlock.style.backgroundColor = "";
       cardBlock.style.borderStyle = "";
       cardBlock.style.borderWidth = "";
       
-      // Restore standard operational label text and default colorations to action buttons
+      // Restores standard operational label text and default colorations to action buttons
       targetBtn.textContent = "Order This Item";
       targetBtn.style.backgroundColor = "";
       
-      // Look up at any cancellation links from view structures to clean layouts
+      // Looks up at any cancellation links from view structures to clean layouts
       const removeLink = cardBlock.querySelector(`.remove-link-${item.id}`);
       if (removeLink) removeLink.remove();
     }
