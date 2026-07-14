@@ -161,52 +161,71 @@ function renderMenuLayout() {
 
 // 5b. HARDCODED CARD LAYOUT SYNC LAYER: Scans and updates static cards on Menu.html
 function syncStaticCardLayout() {
+  // Retrieves the unified map of item IDs and their current selection counts from storage
   const itemQuantities = getCartQuantities();
   
+  // Iterates through every master menu entity to check its matching interface card state
   menuItems.forEach(item => {
+    // Locates the specific standard action button bound to this item's ID on Menu.html
     const targetBtn = document.querySelector(`button[onclick="selectAndGo('${item.id}')"]`);
-    if (!targetBtn) return;
+    if (!targetBtn) return; // Exit if the current view does not render this specific menu action element
 
+    // Locates the structural parent layout container hosting this specific menu option asset
     const cardBlock = targetBtn.closest(".menu-item-card");
-    if (!cardBlock) return;
+    if (!cardBlock) return; // Guard against broken or missing HTML markup blocks
 
+    // Fetches the parsed item counter amount safely; default to zero if absent
     const qty = itemQuantities[item.id] || 0;
 
+    // Checks if the customer has actively chosen at least one unit of this selection item
     if (qty > 0) {
+      // Applies active accent colorations onto boundaries to visibly highlight selected blocks
       cardBlock.style.borderColor = "#27ae60";
       cardBlock.style.backgroundColor = "#f0fff4";
       cardBlock.style.borderStyle = "solid";
       cardBlock.style.borderWidth = "1px";
       
+      // Updates action button text string directly to display current live tally feedback
       targetBtn.textContent = `Order This Item (x${qty})`;
-      targetBtn.style.backgroundColor = "#2ecc71";
+      targetBtn.style.backgroundColor = "#2ecc71"; // Switch to an active confirmation color palette
 
+      // Queries for an existing incremental detachment trigger element within this specific card block
       let removeLink = cardBlock.querySelector(`.remove-link-${item.id}`);
       if (!removeLink) {
+        // Builds a fresh anchor element instance since no cancellation link exists yet
         removeLink = document.createElement("span");
         removeLink.className = `remove-link-${item.id}`;
         removeLink.textContent = "Remove 1";
+        // Applies inline layout spacing properties to nest neatly beside the primary button asset
         removeLink.style = "color: #c0392b; text-decoration: underline; cursor: pointer; font-size: 0.85rem; font-weight: bold; margin-left: 15px; display: inline-block; vertical-align: middle;";
         
+        // Intercepts bubbling event traces to isolate click actions cleanly within this inline link element
         removeLink.onclick = function(e) {
-          e.stopPropagation();
-          removeFromCart(item.id);
+          e.stopPropagation(); // Avoids triggering parent grid card actions unexpectedly
+          removeFromCart(item.id); // Decrements internal selection tallies by exactly one unit
         };
+        // Injects the freshly created cancellation link element right next to the main action button
         targetBtn.parentNode.insertBefore(removeLink, targetBtn.nextSibling);
       }
     } else {
+      // Completely strip off active structural styling decorations when item quantities hit zero
       cardBlock.style.borderColor = "";
       cardBlock.style.backgroundColor = "";
       cardBlock.style.borderStyle = "";
       cardBlock.style.borderWidth = "";
+      
+      // Restore standard operational label text and default colorations to action buttons
       targetBtn.textContent = "Order This Item";
       targetBtn.style.backgroundColor = "";
       
+      // Look up at any cancellation links from view structures to clean layouts
       const removeLink = cardBlock.querySelector(`.remove-link-${item.id}`);
       if (removeLink) removeLink.remove();
     }
   });
 }
+
+
 
 // 6. SYNC ENGINE: Keeps prices, lists, and view structures fully matched
 function updateInterface() {
