@@ -381,7 +381,7 @@ window.addEventListener("load", function() {
     // Clear inline display properties to let CSS take over
     slides.forEach(s => s.style.display = "");
     
-    // FIX: Targets index [0] to apply the class to the FIRST slide only, not the whole group
+    
     slides[0].classList.add("active");
     if (dots.length > 0) dots[0].classList.add("active-dot");
     
