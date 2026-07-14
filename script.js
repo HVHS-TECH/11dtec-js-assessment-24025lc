@@ -43,7 +43,8 @@ const menuItems = [
   { id: "extra_2", category: "Extras", name: "Crispy Bacon", price: 3.50, desc: "Add an extra portion of perfectly crisped bacon rasher strips." },
   { id: "extra_3", category: "Extras", name: "Chicken Nuggets", price: 6.00, desc: "Golden, bite-sized chicken nuggets served with choice of dipping sauce." },
   { id: "extra_4", category: "Extras", name: "Crispy Onion Rings", price: 5.00, desc: "Battered and deep-fried whole onion rings served crunchy and warm." },
-  { id: "extra_5", category: "Extras", name: "Garlic Bread", price: 3.00, desc: "Toasted baguette slices layered with premium herb and garlic butter." }
+  { id: "extra_5", category: "Extras", name: "Garlic Bread", price: 3.00, desc: "Toasted baguette slices layered with premium herb and garlic butter." },
+  { id: "extra_6", category: "Extras", name: "Mozzarella Sticks", price: 5.00, desc: "Golden-fried, mozzarella sticks with warm marinara dipping sauce." },
 ];
 
 // 2. STORAGE ENGINE: Reads flat string lists from local application memory
