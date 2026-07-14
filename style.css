@@ -177,8 +177,6 @@ h3 {
   flex: 0 0 calc(50% - 8px);
   margin-top: 40px;
   
-  /* Aligns the left-over single item (Mozzarella Sticks) to the right side */
-  justify-content: flex-end; 
 }
 
 .menu-category-title {
