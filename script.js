@@ -159,72 +159,73 @@ function renderMenuLayout() {
   });
 }
 
-// 5b. HARDCODED CARD LAYOUT SYNC LAYER: Scans and updates static cards on Menu.html
+// 5b. HARDCODED CARD LAYOUT SYNC LAYER: Updates static menu cards on Menu.html
 function syncStaticCardLayout() {
-  // Retrieves the unified map of item IDs and their current selection counts from storage
+  // Gets the current quantities of all items in the cart
   const itemQuantities = getCartQuantities();
   
-  // Iterates through every master menu entity to check its matching interface card state
+  // Loops through every item in the master menu database
   menuItems.forEach(item => {
-    // Locates the specific standard action button bound to this item's ID on Menu.html
+    // Finds the "Order This Item" button for this specific item on Menu.html
     const targetBtn = document.querySelector(`button[onclick="selectAndGo('${item.id}')"]`);
-    if (!targetBtn) return; // Exit if the current view does not render this specific menu action element
+    if (!targetBtn) return; // Skip if this item isn't displayed on the current page
 
-    // Locates the structural parent layout container hosting this specific menu option asset
+    // Finds the card element container that holds this button
     const cardBlock = targetBtn.closest(".menu-item-card");
-    if (!cardBlock) return; // Guard against broken or missing HTML markup blocks
+    if (!cardBlock) return; // Skip if the HTML structure is missing the card class
 
-    // Fetches the parsed item counter amount safely; default to zero if absent
+    // Gets the quantity for this item (default to 0 if not in cart)
     const qty = itemQuantities[item.id] || 0;
 
-    // Checks if the customer has actively chosen at least one unit of this selection item
+    // Checks if the user has added at least 1 unit of this item to the cart
     if (qty > 0) {
-      // Applies active accent colorations onto boundaries to visibly highlight selected blocks
+      // Highlight the card with a green border and light green background
       cardBlock.style.borderColor = "#27ae60";
       cardBlock.style.backgroundColor = "#f0fff4";
       cardBlock.style.borderStyle = "solid";
       cardBlock.style.borderWidth = "1px";
       
-      // Updates action button text string directly to display current live tally feedback
+      // Updates the button text to show the current quantity
       targetBtn.textContent = `Order This Item (x${qty})`;
-      targetBtn.style.backgroundColor = "#2ecc71"; // Switch to an active confirmation color palette
+      targetBtn.style.backgroundColor = "#2ecc71"; // Change button to bright green
 
-      // Queries for an existing incremental detachment trigger element within this specific card block
+      // Checks if a "Remove 1" link already exists for this card
       let removeLink = cardBlock.querySelector(`.remove-link-${item.id}`);
       if (!removeLink) {
-        // Builds a fresh anchor element instance since no cancellation link exists yet
+        // Create a new "Remove 1" clickable link
         removeLink = document.createElement("span");
         removeLink.className = `remove-link-${item.id}`;
         removeLink.textContent = "Remove 1";
-        // Applies inline layout spacing properties to nest neatly beside the primary button asset
+        
+        // Styles the link so it looks like a red underlined option next to the button
         removeLink.style = "color: #c0392b; text-decoration: underline; cursor: pointer; font-size: 0.85rem; font-weight: bold; margin-left: 15px; display: inline-block; vertical-align: middle;";
         
-        // Intercepts bubbling event traces to isolate click actions cleanly within this inline link element
+        // Handles clicking the "Remove 1" option
         removeLink.onclick = function(e) {
-          e.stopPropagation(); // Avoids triggering parent grid card actions unexpectedly
-          removeFromCart(item.id); // Decrements internal selection tallies by exactly one unit
+          e.stopPropagation();     // Prevent the click from triggering any card-level events
+          removeFromCart(item.id); // Remove exactly 1 unit of this item from the cart
         };
-        // Injects the freshly created cancellation link element right next to the main action button
+        
+        // Inserts the "Remove 1" link directly after the primary action button
         targetBtn.parentNode.insertBefore(removeLink, targetBtn.nextSibling);
       }
     } else {
-      // Completely strips off active structural styling decorations when item quantities hit zero
+      // Clears the green highlight styling if the item quantity is 0
       cardBlock.style.borderColor = "";
       cardBlock.style.backgroundColor = "";
       cardBlock.style.borderStyle = "";
       cardBlock.style.borderWidth = "";
       
-      // Restores standard operational label text and default colorations to action buttons
+      // Resets the button text and color back to defaults
       targetBtn.textContent = "Order This Item";
       targetBtn.style.backgroundColor = "";
       
-      // Looks up at any cancellation links from view structures to clean layouts
+      // Finds and completely remove the "Remove 1" link if it exists
       const removeLink = cardBlock.querySelector(`.remove-link-${item.id}`);
       if (removeLink) removeLink.remove();
     }
   });
 }
-
 
 
 // 6. SYNC ENGINE: Keeps prices, lists, and view structures fully matched
