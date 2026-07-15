@@ -176,7 +176,6 @@ h3 {
   /* This forces the card to shrink to exactly half the container width minus the gap */
   flex: 0 0 calc(50% - 8px);
   margin-top: 40px;
-  
 }
 
 .menu-category-title {
