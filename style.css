@@ -14,8 +14,8 @@ body {
 
   /* Must set top and bottom margins to 0px, and top and bottom padding to 0px to avoid a vertical
      scrollbar appearing when the min-height: 100vh; property setting is used.
-     A vertical scrollbar will be visible on the home page if not configured correctly. */ 
-  margin: 0px 50px 0px 50px; 
+     A vertical scrollbar will be visible on the home page if not configured correctly. */
+  margin: 0px 50px 0px 50px;
   padding: 0px;
 }
 
@@ -429,16 +429,15 @@ footer {
 
 /* EXTEND AND SHIFT BANNER SLIDESHOW RIGHT ALIGNED ON HOME SCREEN */
 body.home-page .intro-banner-ad {
-  max-width: 100% !important;  
-  width: 90vw !important;                  
-  margin-left: 0 !important;               
-  margin-bottom: 20px !important; 
+  max-width: 100% !important;
+  width: 90vw !important;
+  margin-left: 0 !important;
+  margin-bottom: 20px !important;
   z-index: 5;
 }
 
 body.home-page .intro-banner-ad .slide {
   width: 100% !important;
   height: auto !important;
-  object-fit: cover !important;            
+  object-fit: cover !important;
 }
-
