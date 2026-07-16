@@ -32,17 +32,19 @@
 
   <!-- MAIN CONTAINER: flexbox/grid layout defined in style.css to split menus and settings side-by-side -->
   <main class="ordering-display-container">
+
     <!-- LEFT CARD: Container for generating interactive food items via JavaScript DOM insertion -->
-    <section class="pos-card">
+    <div class="ordering-card">
       <h2>Menu Options (Click to Select)</h2>
+
       <!-- Crucial hook point where script.js loops through array data and injects button nodes dynamically -->
       <div id="menuContainer"></div>
-    </section>
+    </div>
 
     <!-- RIGHT CARD: Handles data inputs, live previews, execution buttons, and structural receipts -->
-    <section class="pos-card">
+    <section class="ordering-card">
       <h2>Order Settings</h2>
-      
+
       <!-- ERROR BOX: Set to display:none by default. Script.js toggles this block if inputs fail validation checks -->
       <div id="errorAlert" class="alert alert-danger" style="display:none; background:#f8d7da; color:#721c24; padding:10px; border-radius:4px; margin-bottom:15px; font-weight:bold;"></div>
 

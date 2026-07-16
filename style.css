@@ -258,16 +258,17 @@ h3 {
   grid-template-columns: 1fr 1fr; /* Two columns split evenly side-by-side */
   gap: 30px;
   max-width: 80%;
+  margin-inline: auto;
 }
 
-
-
-.pos-card {
+.ordering-card {
   background: rgb(255 255 255 / 0.95); /* High transparency white contrast sheet overlays */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgb(0 0 0 / 0.3); /* Pronounced depth shadow to separate interaction card layers */
 }
+
+
 
 .form-group {
   margin-bottom: 15px;
