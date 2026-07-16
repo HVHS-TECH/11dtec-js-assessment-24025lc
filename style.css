@@ -249,15 +249,17 @@ h3 {
    5. ORDERING PANELS
    =================================================================================================
  */
+.ordering-display-container {
+  padding: 20px 20px;
+  background: rgb(255 255 255 / 0.15);
+  border-radius: 12px;
 
-.pos-container {
-  max-width: 1200px;
-  margin: 20px auto;
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two columns split evenly side-by-side */
   gap: 30px;
-  padding: 0 40px;
 }
+
+
 
 .pos-card {
   background: rgb(255 255 255 / 0.95); /* High transparency white contrast sheet overlays */
