@@ -257,6 +257,7 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two columns split evenly side-by-side */
   gap: 30px;
+  max-width: 80%;
 }
 
 
