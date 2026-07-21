@@ -335,6 +335,16 @@ function processOrder() {
   }
 }
 
+  // 7b. TUTORIALS REFERENCED: 
+
+  // https://www.youtube.com/watch?v=NO5kUNxGIu0 // The JavaScript DOM explained in 5 minutes!
+  // https://www.youtube.com/watch?v=In0nB0ABaUk // JavaScript Form Validation
+  // https://www.youtube.com/watch?v=wsTv9y931o8 // Learn CSS Flexbox in 20 Minutes (Course)
+  
+
+
+
+
 // 8. CLEAR RESET METHOD: Wipes cache memory data back to fresh states
 function resetForm() {
   localStorage.removeItem("cartItemIds");
@@ -391,6 +401,9 @@ function runSlideshow() {
   slides[currentSlideIndex].classList.add("active");
   if (dots.length > 0) dots[currentSlideIndex].classList.add("active-dot");
 }
+
+// Slideshow Idea also came from Udan R and Sandro N. Two Year 11's at HVHS.
+
 
 // Global browser initiation execution layer
 window.addEventListener("load", function() {
