@@ -228,7 +228,7 @@ function syncStaticCardLayout() {
 }
 
 
-// 6. SYNC ENGINE: Keeps prices, lists, and view structures fully matched
+// 6. SYNC ENGINE: Keeps prices, lists, and view structures fully matched on Ordering.html
 function updateInterface() {
   renderMenuLayout();
   syncStaticCardLayout();
