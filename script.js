@@ -311,6 +311,7 @@ function processOrder() {
     }
     return;
   }
+  
   const cashPaid = parseFloat(cashPaidValue);
   const shortByAmount = totalCost - (isNaN(cashPaid) ? 0 : cashPaid);
 
