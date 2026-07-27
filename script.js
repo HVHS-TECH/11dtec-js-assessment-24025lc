@@ -304,18 +304,15 @@ function processOrder() {
     return;
   }
  
+     const cashPaid = parseFloat(cashPaidValue);
     if (isNaN(cashPaid) || cashPaid < totalCost) {
     if (errorAlert) {
-      errorAlert.textContent = "Insufficient funds: Your order costs $${totalCost.toFixed(2)}. You are short by $${shortByAmount.toFixed(2)}.";
+      const shortByAmount = totalCost - (isNaN(cashPaid) ? 0 : cashPaid);
+      errorAlert.textContent = `Insufficient funds: Your order costs $${totalCost.toFixed(2)}. You are short by $${shortByAmount.toFixed(2)}.`;
       errorAlert.style.display = "block";
     }
     return;
   }
-  
-  const cashPaid = parseFloat(cashPaidValue);
-  const shortByAmount = totalCost - (isNaN(cashPaid) ? 0 : cashPaid);
-
- 
 
   if (errorAlert) {
     errorAlert.style.display = "none";
