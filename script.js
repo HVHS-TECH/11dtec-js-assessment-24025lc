@@ -306,7 +306,7 @@ function processOrder() {
  
     if (isNaN(cashPaid) || cashPaid < totalCost) {
     if (errorAlert) {c
-      errorAlert.textContent = "Insufficient funds. Your order costs $${totalCost.toFixed(2)}. You are short by $${shortByAmount.toFixed(2)}.";
+      errorAlert.textContent = "Insufficient funds: Your order costs $${totalCost.toFixed(2)}. You are short by $${shortByAmount.toFixed(2)}.";
       errorAlert.style.display = "block";
     }
     return;
